@@ -149,42 +149,42 @@ and discuss the lessons we learned.
 \section{Related Work}
 \label{sec:related}
 
-The last decade, World Wide Web became the most popular way for the Internet users to perform everyday
-tasks. Researchers and companies, in their attempt to make robust and easily maintainable web applications,
-developed many frameworks and tools in order to formalize and enhance the creation and maintenance process.
+During the last decade, the World Wide Web became a popular platform for many {\sc IT} applications.
+Researchers and companies, in their attempt to make robust and easily maintainable web applications,
+developed many frameworks and tools to formalize and make efficient the creation and maintenance process.
 
 Fraternali \cite{FRA99} analyzed and studied the perspectives of
 web development. He pointed out, that the development process has
-five distinct perspectives: (1) {\em Process}, (2) {\em Models, Languages and Notation}, (3) {\em Reuse}, (4) {\em Architecture} and (5) {\em Usability}.
-These include elements like e.g. {\em Requirements}, {\em  Prototyping and validation}, {\em Evolution and maintenance}, that apply in
-software engineering scientific areas, and other more aesthetic elements like {\em Visual Quality} and {\em Degree of Proactivity}.
-As we will see in section \ref{sec:req}, we took into consideration all the above perspectives and we introduced a few more, like {\em Openness} and {\em Observability}.
-As a plus, in our methodology we implement the system taking very seriously the aspect of a maintainer, and how we could distribute the update procedure.
+five distinct perspectives: (1) {\em process}, (2) {\em models, languages and notation}, (3) {\em reuse}, (4) {\em architecture} and (5) {\em usability}.
+These include elements like {\em requirements}, {\em  prototyping and validation}, {\em evolution and maintenance}, that apply in
+software engineering scientific areas, and other aesthetic elements like {\em visual quality} and {\em degree of proactivity}.
+As we will see in section \ref{sec:req}, in our work we took into consideration all the above perspectives and we introduced a few more, like {\em openness}
+and {\em observability}.
+As a plus, in our methodology we implement the system taking into account the organizational aspect of maintainability of content and the underlying application.
 
-Fraternali \cite{FRA99} categorizes also relevant software tools into six individual categories: (1) {\em Visual editors and site managers},
- (2) {\em Web-enabled hypermedia authoring tools}, (3) {\em Web-DBPL (Database Programming Languages) integrators}, (4) {\em Web form editors, report writers,
+In addition, Fraternali categorizes relevant software tools into six individual categories: (1) {\em visual editors and site managers},
+ (2) {\em web-enabled hypermedia authoring tools}, (3) {\em web-DBPL (database programming languages) integrators}, (4) {\em web form editors, report writers,
  and database publishing wizards},
- (5) {\em Multiparadigm tools} and (6) {\em Model-driven application generators} \cite{FRA99}. These tools are both commercial and open-source and they are widely used.
- In section \ref{subsec:key-tech}, we will see that in our case widely source open source tools were chosen in order to satisfy the \textit{Openness} functional requirement.
+ (5) {\em multiparadigm tools} and (6) {\em model-driven application generators} \cite{FRA99}. These tools are both commercial and open-source and they are widely used.
+ In section \ref{subsec:key-tech}, we will see that in our case we chose open source tools were chosen in order to satisfy the {\em openness} functional requirement.
  
 Many research groups also designed and implemented frameworks to organize the web development process. These frameworks addressed issues
-such as {\em Lifecycle Coverage}, {\em Process Automation}, {\em Modeling Abstractions}, {\em Reuse and Components} etc. The most popular implementations are 
-{\sc Araneus} \cite{MAM03}, 
-{\sc Autoweb} \cite{FP00} and {\sc Strudel} \cite{FFLS00}. Many are extended in order to enhance their abilities, e.g. the Strudel
-framework introduced a declarative query language, called {\em StruQL} that were later extended by the {\em FunStruQL} \cite{FST99}. Another interesting 
-proposal framework is WebJinn \cite{KL03}. This framework tries to resolve the crosscutting concerns in web development.
+such as {\em lifecycle coverage}, {\em process automation}, {\em modeling abstractions}, {\em reuse and components}. The most popular implementations are 
+Araneus \cite{MAM03}, 
+Autoweb \cite{FP00} and Strudel \cite{FFLS00}. Many are extended to enhance their abilities. For example, the Strudel
+framework introduced a declarative query language, called StruQL that was later extended by FunStruQL \cite{FST99}. Another interesting
+framework is WebJinn \cite{KL03}. This framework tries to resolve the crosscutting concerns in web development.
 
-All the above architectures are introducing new development methodologies and languages/scriptlets in order to achieve their goals e.g. {\sc Strudel} with {\sc StruQL} 
-and {\sc Araneus} with {\sc homer}. Our basic guideline was to create a system 
-that will be depend only to well-known technologies like {\em xml} and {\em cvs}. To do so, it was tricky because we didn't want to cut off features while trying to 
-achieve this goal.
+All the above architectures are introducing development methodologies and languages/scriptlets to achieve their goals. For example, Strudel with StruQL
+and Araneus with homer. Our goal was to create a system
+that would depend only well-known technologies like {\sc xml} and {\sc cvs}.
 
-Along with the software tools, a visual notation also introduced to specify composition and navigation features in
-hypertext applications. This language is {\sc WebML} \cite{CFB00,WEBML}, a language based on standards like Entity-Relationship model {\sc (erd)} and {\sc uml} \cite{UML}. 
+For a successful high-level design of a web application, a visual notation also introduced to specify composition and navigation features in
+hypertext applications. This language is {\sc WebML} \cite{CFB00,WEBML}, a language based on standards like Entity-Relationship model {\sc (erd)} and {\sc uml} \cite{UML}.
 {\sc WebML} has been proposed in the context of {\sc W3I3} Esprit project.
-{\sc Araneus} also defined a logical model known as the {\em Araneus Logical Model} \cite{MAM03}.
-These higher level abstractions are well defined and very useful for the overall design of a web site, but they are based on custom technologies.
-In our case we based our semantics on {\sc xml} and {\sc BibTeX} to provide a common technology layer.
+Araneus also defined a logical model known as the Araneus Logical Model \cite{MAM03}.
+These higher level abstractions are well defined and very useful for the overall design of a web site, but are based on custom technologies.
+In our case we based our semantics on {\sc xml} and {\sc BibTeX} to provide a common data abstraction layer.
 
 \section{Methodology}
 \label{sec:meth}
