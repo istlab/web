@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page id="Required: g_sense_software" group="Required: g_sense">
+	<page_name>
+		<!-- Page name -->
+	</page_name>
+	<page_body>
+		<!-- The XHTML 1.0 compliant body of the page -->
+	</page_body>
+</page>
