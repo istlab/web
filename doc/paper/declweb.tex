@@ -164,7 +164,7 @@ framework is WebJinn \cite{KL03}. This framework tries to resolve the crosscutti
 
 All the above architectures are introducing development methodologies and languages/scriptlets to achieve their goals. For example, Strudel with StruQL
 and Araneus with homer. Our goal was to create a system
-that would depend onS well-known technologies like {\sc xml} and {\sc cvs}.
+that would depend on well-known technologies like {\sc xml} and {\sc cvs}.
 
 For a successful high-level design of a web application,
 a visual notation is often introduced to specify composition and navigation features in
@@ -224,29 +224,29 @@ the definitive version web site's contents.
 
 One can easily discern from the above points the similarities of our
 approach with distributed software development.
-A version control system is used to distribute the artefacts among
+A version control system is used to distribute the artifacts among
 developers in their current form, and a building tool, such as {\em make}
 or {\em ant} guides the building process.
 Developers edit and build their work locally, and commit it to a central server when ready.
 The repository on the central server is the source for creating the end-result
 of the product, through a -usually- {\em daily build} process.
-As we will see in later secion, in our case the developers work with {\sc xml} and {\sc xslt}
-files, instead of programming language source code files, and the {\sc build} process can be called excsulsivelt as a part of
+As we will see in later section, in our case the developers work with {\sc xml} and {\sc xslt}
+files, instead of programming language source code files, and the {\sc build} process can be called exclusively as a part of
 the self-reviewing process.
 
-We do not propose a Content Management System, but an approach for managing content based on mature widely 
-deployed and tested software configuration management tools.  Our approach can be readily adopted by teams already using SCM.  Our use of industry-standard data formats and tools provides us with
-
-\begin{itemize}
-	\item proven scalability (the same tools have been used to manage multi-million line software projects)
-
-	\item flexibility (the tools are used as building blocks and a freely configurable environment)
-\end{itemize}
-
-The downside of our approach is many features that come out of the box in CMSs need to be explicitly tailored in our approach.
-
-
-
+Similarities also exist in the context of content management systems ({\sc cms}) and enterprise content management ({\sc ecm}).
+{\sc cms} support the creation, management, distribution, publishing, and discovery of corporate information, where {\sc ecm} 
+involves a broader range of organizational information. Leading {\sc ecm} providers include Interwoven (www.interwoven.com), 
+Vignette (www.vignette.com), Documentum (www.documentum.com) and others. In those systems, similar motivation to ours 
+leads the research and analogous goals are set \cite{KW05,DOC05}. For example, the infeasibility of static HTML pages for modern 
+web sites and the problems of database-driven approach are also mentioned in \cite{KW05}. Quite recently, {\sc cms}s based solely on 
+open standards architecture have been developed, utilizing methodologies similar to those described here \cite{OS05}. However,
+ we do not propose a content management system but an approach for managing content based on established, widely deployed 
+and tested software configuration management tools. Our approach can be readily adopted by teams already using {\sc cms}. 
+Our use of industry-standard data formats and tools provides us with proven scalability (the same tools have been used 
+to manage multi-million line software projects) and flexibility (the tools are used as building blocks and a freely 
+configurable environment). The downside of our approach is that many features that come out of the box in {\sc cms}s need 
+to be explicitly tailored in our approach.
 
 \section{Designing a Prototype}
 
@@ -804,8 +804,9 @@ During the initial lit we can see that only the two committed
 changes. It was the development period of the system. After the initial development, a few 
 pioneer content developers started to use the system and commit {\sc xml} and bibliography data. In this period 
 we also tested the system thoroughly and developed the finalized the presentation of the web site. After the end of
-the test period all users became active and began to commit data in a parallel manner. Figure \ref{fig:cvs-log} proves that we achieved 
-one of our primary goals, converting the web site maintenance monolithic procedure into a distributed over time and multiple user development activity.
+the test period all users became active and began to commit data in a parallel manner. Figure \ref{fig:cvs-log} 
+proves that we achieved one of our primary goals, converting the web site maintenance monolithic procedure 
+into a distributed over time and multiple user development activity.
 
 \section{Acknowledgments}
 \label{sec:ack}
