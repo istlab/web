@@ -9,17 +9,15 @@ digraph G{
 	content_provider [label="Content Developer"];
 	public_data [label="Public Data"];
 	system_administrator [label="Content Administrator"];
-	repository [label="Data Repository"];
 	end_user [label="Content Consumer"];
 	organisation [label="Organisation"];
 	
 	content_provider->public_data [label="submit"];
 	system_administrator->content_provider [label="support"];
-	system_administrator->repository [label="maintain"];
 	content_provider->organisation [label="is member"];
 	public_data->organisation [label="describe"];
 	end_user->organisation [label="interested"];
-	public_data->repository [label="stored"];
-	end_user->public_data [label="consumes"];
 	organisation->public_data [label="has"];
+	end_user->public_data [label="consumes"];
+	system_administrator->public_data [label="inspects"];
 }
