@@ -9,4 +9,4 @@ all: Diag.eps rankyear.eps
 	latex declweb.tex
 
 clean:
-	-rm *.eps *.aux *.blg *.dvi *.log *.ps *.eps
+	-rm *.eps *.aux *.blg *.dvi *.log *.ps *.eps *~

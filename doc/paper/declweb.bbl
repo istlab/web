@@ -1,31 +1,31 @@
 \begin{thebibliography}{Lam94}
 
-\bibitem[BF01]{BF01}
+\bibitem[1]{BF01}
 Moshe Bar and Karl~Franz Fogel.
 \newblock {\em Open Source Development with {CVS}}.
 \newblock The Coriolis Group, Scottsdale, AZ, 2001.
 
-\bibitem[CS95]{CS95b}
+\bibitem[2]{CS95b}
 Michael~A. Cusumano and Richard~W. Selby.
 \newblock {\em Microsoft Secrets}.
 \newblock The Free Press, 1995.
 
-\bibitem[HM01]{HM01}
+\bibitem[3]{HM01}
 Elliotte~Rusty Harold and W.~Scott Means.
 \newblock {\em {XML} in a Nutshell}.
 \newblock O'Reilly and Associates, Sebastopol, CA, 2001.
 
-\bibitem[Lam94]{Lam94}
+\bibitem[4]{Lam94}
 Leslie Lamport.
 \newblock {\em LATEX: A Document Preparation System}.
 \newblock Addison-Wesley, Reading, MA, second edition, 1994.
 
-\bibitem[OT91]{OTT91}
+\bibitem[5]{OTT91}
 Andrew Oram and Steve Talbott.
 \newblock {\em Managing Projects with {make}}.
 \newblock O'Reilly and Associates, Sebastopol, CA, second edition, 1991.
 
-\bibitem[SG97]{SG97}
+\bibitem[6]{SG97}
 Diomidis Spinellis and V.~Guruprasad.
 \newblock Lightweight languages as software engineering tools.
 \newblock In J.~Christopher Ramming, editor, {\em {USENIX} Conference on
