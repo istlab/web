@@ -1,6 +1,4 @@
 %
-% (C) Copyright 2000 Diomidis Spinellis.  All rights reserved.
-%
 % $Id$
 %
 
@@ -14,13 +12,17 @@
 \usepackage{listings}
 
 % listings language set
-\lstdefinelanguage{PROJECTXML}
-{morekeywords={project,id,scientific_coordinator,type,project_manager,shortname,projtitle,startdate,web_site,funding_agency,
-funding_programme,project_code,enddate,partner,shortname,country,web_site,group},
+\lstdefinelanguage{SEMINARXSD}
+{morekeywords={xs,schema,xmlns,element,name,complexType,sequence,simpleType,restriction,base,pattern,value,attribute},
 sensitive=false
 }
 
-\lstdefinelanguage{PROJECTXSLT}
+\lstdefinelanguage{SEMINARXML}
+{morekeywords={seminar,sem_date,sem_time,sem_url,sem_title,sem_room,sem_url,sem_duration,by},
+sensitive=false
+}
+
+\lstdefinelanguage{SEMINARXSLT}
 {morekeywords={xsl,template,match,mode,value,of,select,element,name,attribute,if,test},
 sensitive=false
 }
@@ -63,7 +65,7 @@ approach are well-known open source tools, such as CVS and XML.
 \end{abstract}
 
 \subsection*{Keywords}
-Web applications, XML, make, Bibtex, XSLT, DTD
+Web applications, XML, make, Bibtex, XSLT, X-Schema.
 
 \section{Introduction}
 \label{sec:intro}
@@ -269,21 +271,6 @@ other non-functional requirements.
 Yearly changes in web site rankings.}
 \end{figure}
 
-\subsection{Key Technologies}
-
-In order to meet the requirements we set in section 2, we decided to adopt open and popular
-technologies as key elements of our system. For data representation we used XML and bibtex.\\
-XML is a simple text format derived from SGML (Standard Generalized Markup Language). XML 
-provides a hierachical model to describe data \cite{W3C_XML}. For data transformations we 
-implemented a system based on XSLT \cite{W3C_XSLT}. XSLT is a language for tranforming XML documents.
-transforming XML.\\
-BibTex is a program and file format that allows the management of bibliographic entries. Initialy 
-designed by Oren Patashnik and Leslie Lamport for the LaTeX document preparation system. \cite{Pa88} \cite{Ja99}.\\
-To deal with the problem of versioning and multi-persion development we used CVS (Concurent Version System) \cite{CVS}. 
-CVS main usage is for keeping track of text files.\\
-The simple tasks of our system were automated using a make file. Make \cite{gnu_make} a tool 
-which controls the generation of executables and other non-source files of a program from the program's source files.\\
-
 \subsection{Design Concepts}
 
 The guiding paradigm we adopted for designing the process
@@ -309,71 +296,83 @@ requiring a synchronized modification of the data,
 the front end, and the back end.
 
 \begin{figure}
-\lstset{language=XML,basicstyle=\ttfamily}
+\lstset{language=SEMINARXSD,basicstyle=\ttfamily}
 {\begin{lstlisting}
-<!ELEMENT project (
-  shortname, projtitle, startdate?, 
-  enddate, web_site?, funding_agency?, 
-  funding_programme?, project_code?, partner*,
-  logo?, description)>
-<!ATTLIST project
-  id ID #REQUIRED group IDREFS #REQUIRED
-  scientific_coordinator IDREF #IMPLIED
-  project_manager IDREF #IMPLIED
-  type (consulting | rtd | training | dissemination) #REQUIRED >
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+ <xs:element name="seminar">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="sem_date">
+     <xs:simpleType>
+      <xs:restriction base="xs:string">
+       <xs:pattern value="[0-9]{8}" />
+      </xs:restriction>
+     </xs:simpleType>
+    </xs:element>
+    <xs:element name="sem_time" type="xs:string" />
+    <xs:element name="sem_title" type="xs:string" />
+    <xs:element name="sem_room" type="xs:string" />
+    <xs:element name="sem_url" type="xs:string" minOccurs="0" />
+    <xs:element name="sem_duration" type="xs:string" />
+   </xs:sequence>
+   <xs:attribute name="by" type="xs:string" />
+  </xs:complexType>
+ </xs:element>
+</xs:schema>
 \end{lstlisting}}
-\caption{The projects DTD file}
+\caption{The projects X-Schema file}
 \label{fig:project-dtd}
 \end{figure}
 
 \begin{figure}
-\lstset{language=PROJECTXML,basicstyle=\ttfamily}
+\lstset{language=SEMINARXML,basicstyle=\ttfamily}
 {\begin{lstlisting}
-<project id="p_mexpress"
-  group="g_eltrun g_sense g_wrc" scientific_coordinator="m_dds"
-  type="rtd" project_manager="m_pateli">
-  <shortname>mExpress</shortname>
-  <projtitle>mobile in-EXhibition PRovision 
-  of Electronic Support Services</projtitle>
-  <startdate>20020305</startdate>
-  <enddate>20040401</enddate>
-  <web_site>http://mexpress.intranet.gr/</web_site>
-  <funding_agency>European Commission</funding_agency>
-  <funding_programme>IST</funding_programme>
-  <project_code>IST-2001-33432</project_code>
-  <partner>
-    <shortname>Ericsson</shortname>
-    <country>DK</country>
-    <web_site>http://www.ericsson.com/</web_site>
-  </partner>
-</project>
+<?xml version="1.0"?>
+<seminar by="m_bkarak">
+ <sem_date>20040314</sem_date>
+ <sem_time>19:00</sem_time>
+ <sem_title>Regular Expressions</sem_title>
+ <sem_room>906</sem_room>
+ <sem_url>http://www.eltrun.gr/seminar/presentations.ppt</sem_url>
+ <sem_duration>3 hrs</sem_duration>
+</seminar>
 \end{lstlisting}}
-\caption{A typical project XML file}
+\caption{A typical seminar XML file}
 \label{fig:project-xml}
 \end{figure}
 
 \begin{figure}
-\lstset{language=PROJECTXSLT,basicstyle=\ttfamily}
+\lstset{language=SEMINARXSLT,basicstyle=\ttfamily}
 {\begin{lstlisting}
-<xsl:template match="project" mode="full">
-  <h1> 
-  	<xsl:value-of select="shortname" /> -
-	<xsl:value-of select="projtitle" /> 
-  </h1>
-  <xsl:element name="img">
-  	<xsl:attribute name="src">
-		<xsl:value-of select="logo" />
-	</xsl:attribute>
-  </xsl:element>
-  <br /> <br />
-  <xsl:if test="count(project_code) != 0">
-    	Project Code: 
-	<xsl:value-of select="project_code" />
-	<xsl:if test="@international = 'yes'">
-		(International)
-	</xsl:if> 
-	<br/>
-</xsl:if>
+<xsl:template match="seminar" mode="full">
+ <h3><xsl:value-of select="sem_title" /></h3>
+ <!-- Create the anchor -->
+ <xsl:element name="a">
+  <xsl:attribute name="name">
+   <xsl:value-of select="sem_date" />
+  </xsl:attribute>
+ </xsl:element>
+ Presenter: <xsl:apply-templates 
+ 	     select="/eltrun/member_list/member [@id=current()/@by]" 
+	     mode="simple-ref" />
+	     <br />
+ Date: <xsl:call-template name="date">
+	<xsl:with-param name="date" select="sem_date" />
+       </xsl:call-template>
+       <br />
+ Time: <xsl:value-of select="sem_time" />
+       <br />
+ Duration: <xsl:value-of select="sem_duration" />
+	    <br />
+ Location: <xsl:value-of select="sem_room" />
+	   <br /><br />
+ <xsl:element name="a">
+  <xsl:attribute name="href">
+   <xsl:value-of select="sem_url"/>
+  </xsl:attribute>
+  Download the presentation
+ </xsl:element>
+</xsl:template>
 \end{lstlisting}}
 \caption{The XSLT transformation file for projects}
 \label{fig:project-xslt}
@@ -384,41 +383,42 @@ the front end, and the back end.
 {\begin{lstlisting}
 <html>
 <head>
-	<meta http-equiv="Content-Type" 
-	 content="text/html; charset=UTF-8">
-	<!--Generated by $Id: declweb.tex,v 1.2 
-	 2004/02/19 23:34:28 dds Exp $-->
-	<title>ELTRUN  - Project Details</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../images/styles.css" type="text/css" rel="stylesheet">
+<!--Generated by 
+$Id$
+-->
+<title>ELTRUN Seminars</title>
 </head>
 <body>
-  <h1>
-  mExpress - mobile in-EXhibition 
-  PRovision of Electronic Support Services
-  </h1>
-  <img src="../images/p_mexpress.gif" />
-  <br /><br />
-  Project Code: IST-2001-33432 (International) <br />
-  Funding programme: IST<br />
-  Funding Agency: European Commission<br />
-  Project type: RTD<br/>editor<br />
-  Web site:
-  <a href="http://mexpress.intranet.gr/">
-  http://mexpress.intranet.gr/
-  </a><br /><br />
-  Starting date: 5 March 2002<br/>
-  Ending date: 1 April 2004<br />
-  Scientific coordinator:
-  <a href="../members/m_dds.html">
-  Dr. Diomidis Spinellis
-  </a><br />
-  Project Manager:
-  <a href="../members/m_pateli.html">
-  Mrs. Ada Pateli
-  </a><br>
+<a href="http://www.eltrun.gr/">
+<img src="../images/heading.jpg" 
+ alt="ELTRUN - The e-Business Center" border="0">
+</a><br><table border="0">
+<tbody valign="top">
+<tr>
+<td align="left" width="82%">
+<h2>Eltrun Seminars</h2>
+<a href="index.html#20040314">14 March 2004 - Regular Expressions</a>
+<br><br><br>
+<h3>Regular Expressions</h3>
+<a name="20040314"></a>
+	    Presenter: <a href="../members/m_bkarak.html">Mr. Vassilios Karakoidas</a><br>
+	    Date:
+	    14 March 2004<br>
+	    Time: 19:00<br>
+	    Duration: 3 hrs<br>
+	    Location: 906<br><br><a href="http://www.eltrun.gr/seminar/presentations.ppt">
+		Download the presentation
+	    </a>
+</td>
+</tr>
+</tbody>
+</table>
 </body>
 </html>
 \end{lstlisting}}
-\caption{A generated HTML project file}
+\caption{A generated HTML seminar file}
 \label{fig:project-html}
 \end{figure}
 
@@ -490,30 +490,40 @@ The use cases that comprise our system are (Figure \ref{fig:use-case-diagram}):
 In figure \ref{fig:maintain-content-diagram} we show the activity diagram of the most complex use case in the system. The Content Developer first updates the local repository and then begins the initiation of data maintanance by adding, removing or modifying XML files and bibtex entries. Upon completion data vaildation must be performed before the commit to the CVS repository. If data are valid, then local web site generation must be performed to correct possible presentation problems. After that, the data are ready to be submitted to the main CVS repository and from their to the web site.
 
 \section{Implementation}
+
+\subsection{Key Technologies}
+
 Once the design was finalized,
 implementation proved to be an almost ``hollow'' activity,
 since it did not involve almost anything of what
 is typically described as coding.
 
 The first step involved selecting and setting up the
-appropriate tools.
+appropriate tools. In order to meet the requirements we set in section 2, 
+we decided to use open and popular
+technologies as key elements of our system.
 We adopted the concurrent versions system
-({\sc cvs}) \cite{BF01} to coordinate the distribution
+({\sc cvs}) \cite{BF01} \cite{CVS} to coordinate the distribution
 and update of all the system's elements.
 Authentication for managing content was handled by the
 Unix group membership mechanism of the host where the
 {\sc cvs} repository was stored.
 We also used
-BibTeX and {\em bib2html} for transforming the publications
+{\em BibTeX} \cite{Pa88} \cite{Ja99} and {\em bib2xhtml} for transforming the publications
 into {\sc html} and
 {\em xmlstarlet} \cite{Gru04} for validating and transforming
-all other {\sc xml}-based data.
-Finally, {\sc gnu} {\em make} and a couple of shell script
+all other {\sc xml}-based data \cite{W3C_XML}.
+For data transformations we 
+implemented a system based on XSLT \cite{W3C_XSLT}. XSLT is a language for tranforming XML documents.
+transforming XML.
+Finally, {\sc gnu} {\em make} \cite{gnu_make} and a couple of shell script
 constructs were used for handling the project's {\em Makefile}.
 The complete setup including all tools proved to be portable
 between Unix and Microsoft Windows, with team members working
 on machines running different versions of Windows, {\sc gnu}/Linux,
 and Free{\sc bsd}.
+
+\subsection{System Development}
 
 The next step was a series of iterations where we
 modeled the data's schema on representative {\sc xml}

@@ -11,6 +11,10 @@ all: Diag.eps rankyear.eps
 	bibtex declweb
 	latex declweb.tex
 
+show: all
+	dvips declweb.dvi
+	gv declweb.ps
+
 clean:
 	-rm -f *.aux
 	-rm -f *.blg
