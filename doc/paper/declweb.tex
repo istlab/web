@@ -41,15 +41,16 @@ Traditionally, the realization of Web sites involves either
 static content developed using web authoring tools or dynamic
 content delivered by a database driven front-end,
 where the structured content is organized
-in a relational schema and dynamically generated on the fly.
+in a relational schema and dynamically generated.
 The limitations of statically-authored web pages are easy to discern and
 for a number of applications, the use of a database
 introduces a level of additional complexity that
 makes the choice a part of the problem space rather than the solution space.
-Based on the distributed software development approach, we present a suitable for managing 
+Based on the distributed software development approach, we present a methodology suitable for managing 
 middle-sized semi-dynamic web sites. The technological dimensions of this
 approach are well-known open source technologies, such as version control systems
-and {\sc xml} transformation tools.
+and {\sc xml} transformation tools. The prototype framework we developed for the testing of the proposed methodology
+is also demonstrated, along with interesting conclusions from our framework acceptance.
 \end{abstract}
 
 \subsection*{Keywords}
@@ -69,19 +70,20 @@ implementation style, based on the declarative specification
 of all the site's elements.
 
 The limitations of statically-authored web pages are easy to discern.
-The content is authored in an unorganized manner, and, as a result,
+The content is authored in an loosely organized manner, manually updated web pages, and, as a result,
 can be inconsistent in both structure and presentation.
 While the use of cascading style sheets can help one obtain a
 consistent look, their use still requires discipline.
-Moreover, the authored pages remain unstructured and the resulting
-site can be difficult to modify and reorganize.
+Moreover, the authored pages remain loosely structured and the resulting
+site can be difficult to modify and reorganize. In addition, the information is often duplicated
+among hard coded web pages.
 Furthermore, the static authoring model often imposes a centralized
 management and maintenance style;
 all additions and changes have to go through a single person,
 creating a bottleneck, often leading to outdated content.
 
-Adopting a database driven approach is supposed to
-solve the aforementioned problems.
+Adopting a database driven approach solves
+the aforementioned problems.
 Separating the source data from its (dynamically generated)
 marked-up version ({\sc html} code) leads to a consistent
 yet flexible generation of web pages.
@@ -166,7 +168,7 @@ In addition, Fraternali categorizes relevant software tools into six individual 
  (2) {\em web-enabled hypermedia authoring tools}, (3) {\em web-DBPL (database programming languages) integrators}, (4) {\em web form editors, report writers,
  and database publishing wizards},
  (5) {\em multiparadigm tools} and (6) {\em model-driven application generators} \cite{FRA99}. These tools are both commercial and open-source and they are widely used.
- In section \ref{subsec:key-tech}, we will see that in our case we chose open source tools to satisfy the {\em openness} functional requirement.
+ In section \ref{subsec:key-tech}, we will see that in our case we chose open source tools to satisfy the {\em openness} non-functional requirement.
  
 Many research groups also designed and implemented frameworks to organize the web development process. These frameworks addressed issues
 such as {\em lifecycle coverage}, {\em process automation}, {\em modeling abstractions}, {\em reuse and components}. The most popular implementations are 
@@ -177,16 +179,16 @@ framework is WebJinn \cite{KL03}. This framework tries to resolve the crosscutti
 
 All the above architectures are introducing development methodologies and languages/scriptlets to achieve their goals. For example, Strudel with StruQL
 and Araneus with homer. Our goal was to create a system
-that would depend only well-known technologies like {\sc xml} and {\sc cvs}.
+that would depend onS well-known technologies like {\sc xml} and {\sc cvs}.
 
 For a successful high-level design of a web application,
-a visual notation if often introduced to specify composition and navigation features in
+a visual notation is often introduced to specify composition and navigation features in
 hypertext applications.
 As an example, {\sc WebML} \cite{CFB00,WEBML} is a language based on standards like Entity-Relationship model {\sc (erd)} and {\sc uml} \cite{UML}.
 {\sc WebML} has been proposed in the context of {\sc W3I3} Esprit project.
 Araneus also defined a logical model known as the Araneus Logical Model \cite{MAM03}.
 These higher level abstractions are well defined and very useful for the overall design of a web site, but are based on custom technologies.
-In our case we based our semantics on {\sc xml} and {\sc BibTeX} to provide a common data abstraction layer.
+In our case we based our semantics on {\sc xml} to provide a common data abstraction layer.
 
 Some of the characteristics of our approach have also been implemented by
 Jenkins \cite{Jen04} in what he terms
@@ -242,9 +244,12 @@ developers in their current form, and a building tool, such as {\em make}
 or {\em ant} guides the building process.
 Developers edit and build their work locally, and commit it to a central server when ready.
 The repository on the central server is the source for creating the end-result
-of the product, through a {\em daily build} process.
-In our case however, the developers work with {\sc xml} and {\sc xslt}
-files, instead of programming language source code files.
+of the product, through a -usually- {\em daily build} process.
+As we will see in later secion, in our case the developers work with {\sc xml} and {\sc xslt}
+files, instead of programming language source code files, and the {\sc build} process can be called excsulsivelt as a part of
+the self-reviewing process.
+
+\section{Designing a prototype}
 
 To illustrate our methodology in concrete terms
 the following sections contain as a case-study the design and implementation
@@ -253,8 +258,8 @@ Through the case study we will demonstrate the key points applied in
 practice, discuss important technical and human issues we faced,
 and present the lessons we learned.
 
-\section{Requirements}
-\label{sec:req}
+\subsection{Requirements}
+\label{sec:requirements}
 
 \begin{figure}
 \begin{center}
@@ -289,18 +294,18 @@ As an example of the type of content we were looking for,
 each member, group, or project should have a web page with a list
 of the corresponding publications;
 each group should have pages listing its projects and members. 
-In order to have the ability add web site data that is not part of the aforementioned categories,
+In order to have the ability to add web site data that is not part of the aforementioned categories,
 each group can have additional pages of unstructured {\sc xhtml} content, in a dictated manner.
 Finally, each member of our groups may be performing a presentation in our group's weekly seminar.
 
+Before embarking on our third attempt,
+we articulated those non-functional requirements, to ensure that our 
+third attempt would produce
+a result with a longer life span.
 As we hinted in the previous section, the problem with
 the previous implementations was not the creation of the site
 satisfying the functional specifications,
 but the lack of a number of important non-functional requirements.
-Before embarking on our third attempt,
-we articulated those non-functional requirements
-we thought important, to ensure that our third attempt would produce
-a result with a longer life span.
 The following is a list of the non-functional properties
 we deemed important enough to guide our design.
 
@@ -349,15 +354,12 @@ using existing tools, if their choice satisfied the
 other non-functional properties.
 \end{description} 
 
-\section{Design Process}
-
 \subsection{Conceptual Framework}
 
 The system's conceptual framework is illustrated in Figure \ref{fig:conc-model}.
 The main concept in our system is the {\em Organization}. Each {\em Organization} has 
 information that interests {\em Content Consumers}. They 
-access the organization's {\em Public Data}.
-To obtain information regarding the {\em Organization}.
+access the organization's {\em Public Data}, in order to obtain it.
 It has also {\em Content Developers} 
 who are usually its members. {\em Content Developers} update the 
 {\em Public Data} for the {\em Organization}. {\em Content Administrators} 
@@ -379,7 +381,8 @@ Our main guiding principle was to create a continuous, multi-person
 development activity.
 Live web sites continuously evolve;
 adopting the content authoring paradigm implied
-by our first approach was a mistake.
+by our first approach was a mistake. The content of our web site resulted often stale and inconsistent, as a result 
+of a single person update process.
 Empirical evidence supports this observation.
 Figure \ref{fig:rankyear} illustrates the changes
 in usability rankings given to 21 Greek government department
@@ -437,8 +440,9 @@ We have three actors (roles) interacting with the system:
 
 \begin{description}
 \item[ContentDeveloper] A Content Developer is responsible for uploading data in the system. 
-In our case, is typically a person for each research group. Content Developers can upload data files and 
-import new bibliography entries.
+In our case, a Content Developer is typically a single person for each research group. They can upload data files and 
+import new bibliography entries in the repository, review and correct any presentation problems and finally publish the 
+updated content..
 
 \item[ContentAdministrator] The Content Administrator is responsible for the maintenance 
 and the further extension of the system. A Content Administrator corrects problems with the data, develops 
@@ -459,7 +463,7 @@ The use cases that comprise our system are:
 \begin{description}
 \item[Maintain schemas, transformations and users] This use case describes the 
 maintenance and development procedures of the system. Each Content Developer can
-update the data schemas the transformation scripts in order to correct errors 
+update the data schemas and the transformation scripts in order to correct errors 
 and add new features.
 
 \item[Update local repository] Content Developers have a local copy of the system's files on their workstation. 
@@ -469,7 +473,7 @@ repository command. If there is a conflict, the users must correct the problem
 and rerun the update command.
 
 \item[Commit changes] Content developers and Content Administrators must commit 
-the changes from their local repository to the {\sc cvs} repository in the web site server.
+the changes from their local repository to the {\sc cvs} repository.
 
 \item[Maintain content] This use case allows Content 
 Developers to maintain the content of the web site. 
@@ -508,12 +512,12 @@ data repository. After the update of the data repository the process terminates.
 \label{subsec:key-tech}
 
 Once the design was finalized,
-implementation proved to be an almost hollow activity,
+implementation proved to be an almost strange and interesting activity,
 since it did not involve almost anything of what
 is typically described as coding.
 
 The first step involved selecting and setting up the
-appropriate tools. In order to meet the requirements we set in section \ref{sec:req}, 
+appropriate tools. In order to meet the requirements we set in section \ref{sec:requirements}, 
 we decided to use popular open
 technologies as key elements of our system.
 We adopted the concurrent versions system
@@ -525,10 +529,12 @@ Unix group membership mechanism of the host where the
 We also used
 {\sc BibTeX} \cite{Pa88, Lam94} and {\sc bib2xhtml} \cite{BibXHMTL} for transforming the publications
 into {\sc xhtml} and
-xmlstarlet \cite{Gru04} for validating and transforming
+\textit{xmlstarlet} \cite{Gru04} for validating and transforming
 all other {\sc xml}-based data \cite{W3C_XML}.
 For data transformations we 
 implemented a system based on {\sc xslt} \cite{W3C_XSLT}, a language for transforming {\sc xml} documents.
+we chose {\sc xslt} as the transformation language, because tt is based on {\sc xml} ({\sc xslt} documents are 100\% valid {\sc xml}), so the
+developers can easily learn xslt, if they understand the basics of {\sc xml} technology.
 Finally, {\sc gnu} {\em make} \cite{gnu_make} and a couple of shell script
 constructs were used for handling the project's makefile.
 The complete setup including all tools proved to be portable
@@ -569,11 +575,11 @@ reference attributes ({\sc idref}s).
 The same file is also used to extract the identifiers of
 all projects, members, and groups into makefile
 variables.
-A simple loop then generates the {\sc xhtml} files
-corresponding to each of the above elements.
+The web pages are assembled through a iteration that applies different pserspctive each time
+to the data. It starts, by generating the group {\sc xhtml} pages, then proceeds with the project, members, groups, seminars, publications.
 Each project, member, group etc. refers to the relevant {\sc xml id}s.
-Upon generation, links are created to
-connect relevant generated pages e.g. each member hyperlinked with the corresponding publications, 
+Upon generation, links are created dynamically each time, to
+connect relevant generated pages e.g., a project is hyperlinked with its corresponding publications,
 which are two different independently generated {\sc xhtml} pages.
 
 The {\sc xhtml} content is, by default, generated on the

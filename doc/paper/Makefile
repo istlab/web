@@ -13,7 +13,6 @@ all: Diag.eps rankyear.eps
 	bibtex declweb
 	latex declweb.tex
 	latex declweb.tex
-	dvips declweb.dvi
 
 show: all
 	dvips declweb.dvi
