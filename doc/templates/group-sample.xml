@@ -15,6 +15,6 @@
 		<!-- relative path to logo image for group, example: ../images/eltrun.jpg --> 
 	</logo>
 	<color>Required
-		<!-- Side menu color in Hexadecimal #RRGGBB (R=Red, G=Green, B=Blue -->
+		<!-- Side menu color in Hexadecimal #RRGGBB (R=Red, G=Green, B=Blue) -->
 	</color>
 </group>
