@@ -31,7 +31,7 @@ sensitive=false
 %\def\epsfsize#1#2{\textwidth}
 \epsfverbosetrue
 
-\title{Declarative Implementatieditoron of Semi-dynamic Web Sites}
+\title{Declarative Implementation of Semi-dynamic Web Sites}
 
 \author{Diomidis Spinellis and Vassilios Karakoidas\\
 Department Management Science and Technology \\
@@ -63,7 +63,7 @@ approach are well-known open source tools, such as CVS and XML.
 \end{abstract}
 
 \subsection*{Keywords}
-Web applications, XML, make, Latex, Bibtex
+Web applications, XML, make, Bibtex, XSLT, DTD
 
 \section{Introduction}
 \label{sec:intro}
@@ -255,7 +255,7 @@ other non-functional requirements.
 
 \end{description} 
 
-\section{Process Design}
+\section{Design Process}
 \label{sec:design}
 \begin{figure}
 \begin{center}
@@ -303,7 +303,7 @@ requiring a synchronized modification of the data,
 the front end, and the back end.
 
 \begin{figure}
-\lstset{language=XML}
+\lstset{language=XML,basicstyle=\ttfamily}
 {\begin{lstlisting}
 <!ELEMENT project (
   shortname, projtitle, startdate?, 
@@ -321,7 +321,7 @@ the front end, and the back end.
 \end{figure}
 
 \begin{figure}
-\lstset{language=PROJECTXML}
+\lstset{language=PROJECTXML,basicstyle=\ttfamily}
 {\begin{lstlisting}
 <project id="p_mexpress"
   group="g_eltrun g_sense g_wrc" scientific_coordinator="m_dds"
@@ -347,7 +347,7 @@ the front end, and the back end.
 \end{figure}
 
 \begin{figure}
-\lstset{language=PROJECTXSLT}
+\lstset{language=PROJECTXSLT,basicstyle=\ttfamily}
 {\begin{lstlisting}
 <xsl:template match="project" mode="full">
   <h1> 
@@ -367,14 +367,14 @@ the front end, and the back end.
 		(International)
 	</xsl:if> 
 	<br/>
-  </xsl:if>
+</xsl:if>
 \end{lstlisting}}
 \caption{The XSLT transformation file for projects}
 \label{fig:project-xslt}
 \end{figure}
 
 \begin{figure}
-\lstset{language=HTML}
+\lstset{language=HTML,basicstyle=\ttfamily}
 {\begin{lstlisting}
 <html>
 <head>
@@ -394,23 +394,21 @@ the front end, and the back end.
   Project Code: IST-2001-33432 (International) <br />
   Funding programme: IST<br />
   Funding Agency: European Commission<br />
-  Project type: RTD<br/>editor
+  Project type: RTD<br/>editor<br />
   Web site:
   <a href="http://mexpress.intranet.gr/">
   http://mexpress.intranet.gr/
-  </a>
-  <br /><br />
+  </a><br /><br />
   Starting date: 5 March 2002<br/>
   Ending date: 1 April 2004<br />
   Scientific coordinator:
   <a href="../members/m_dds.html">
-  	Dr. Diomidis Spinellis
-  </a>
-  <br />
+  Dr. Diomidis Spinellis
+  </a><br />
   Project Manager:
   <a href="../members/m_pateli.html">
-  	Mrs. Ada Pateli
-</a><br>
+  Mrs. Ada Pateli
+  </a><br>
 </body>
 </html>
 \end{lstlisting}}
@@ -440,37 +438,41 @@ and {\sc html} result in figure \ref{fig:project-html}.
 \subsection{Processes}
 
 \begin{figure}
-\includegraphics[scale=0.7]{use-case-diagram}
+\includegraphics[scale=0.5]{use-case-diagram}
 \caption{UML Use Case Diagram of the System}
 \label{fig:use-case-diagram}
 \end{figure}
 
-In figure \ref{fig:use-case-diagram} is depicted a UML use case diagram of our system. 
+In Figure \ref{fig:use-case-diagram} is depicted a UML use case diagram of our system. 
 We have three actors which are interacting with the system:
 
 \begin{description}
-\item[DataCommiter] A DataCommiter is responsible for uploading data in the system. In our case is typically a person
+\item[ContentDeveloper] A DataCommiter is responsible for uploading data in the system. In our case is typically a person
 for each research group. He can upload XML data files and import new bibliography entries.
 
-\item[Developer] The developer is responsible for the maintaince and the evolution of the framework. He corrects problems with the XML Data, develops new features or corrects existing ones in the XSLT scripts and the DTD schemas.
+\item[ContentAdministrator] The developer is responsible for the maintaince and the evolution of the framework. He corrects problems with the XML Data, develops new features or corrects existing ones in the XSLT scripts and the DTD schemas.
 
-\item[EndUser] The EndUsers are outside our system and they have access only int the generated web site.
+\item[ContentConsumer] The EndUsers are outside our system and they have access only int the generated web site.
 \end{description}
 
 The use cases that comprise our system are:
 
 \begin{description}
-\item[Maintain Web Site]
+\item[Maintain schemas, transformations and Users]
 
-\item[Update Latest Version]
+\item[Update local repository]
 
-\item[Commit Changes]
+\item[Commit changes]
 
-\item[Generate Web site]
+\item[Maintain content]
+
+\item[Generate web site]
 
 \item[Validate data]
 
-\item[Browser Web site]
+\item[Manage user accounts]
+
+\item[Browse web site]
 
 \end{description}
 
