@@ -22,14 +22,13 @@
 \renewcommand{\slideleftmargin}{\sliderightmargin}
 
 \newcommand{\Title}[1]{%
-    \begin{flushleft}
+    	\includegraphics{eltrun.eps}
 	\textcolor{navy}{%
-	    \Large{\ding{224} #1}
+	    \Large{#1}
 	    \vskip 0.5ex
 	    \hrule height 0.7pt \relax
 	    \vskip 1ex
 	}
-    \end{flushleft}
 }
 
 \newcommand{\navy}[1]{%
@@ -58,8 +57,8 @@
     \end{picture}}
 \fancyfoot{}
 
+\pagestyle{plain}
 
-\pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 \renewcommand{\headwidth}{\textwidth}
@@ -71,13 +70,13 @@
     \vskip 0.5ex
     \hrule height 0.7pt \relax
     \vskip 1ex
-    \large{\url{\en http://www.eltrun.gr/}}
+    \large{\url{ http://www.eltrun.gr/}}
     \vspace{70pt}
 }
 
 \author{%
 \gr Βασίλειος Καρακόιδας \\
-\footnotesize{\url{\en bkarak@aueb.gr}}
+\footnotesize{\url{bkarak@aueb.gr}}
 }
 
 \date{%
@@ -89,6 +88,25 @@
 
 \begin{slide}
 \maketitle
+\end{slide}
+
+\begin{slide}
+
+\Title{\gr Ο καινούριος ηλεκτρονικός τόπος του \en ELTRUN}
+
+\vskip 1ex
+\begin{dinglist}{56}
+
+	\item \gr Πληροφορίες για ομάδες, μέλη, έργα και δημοσιεύσεις
+	
+	\item \gr Ημιδυναμικό περιεχόμενο
+	
+	\item \en XML, XSLT, make, grep, bibtex, bib2html
+	
+	\item \gr 
+
+\end{dinglist}
+
 \end{slide}
 
 \end{document}
