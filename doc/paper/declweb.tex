@@ -57,7 +57,7 @@ and {\sc XML} transformation tools.
 \end{abstract}
 
 \subsection*{Keywords}
-Web site implementation, semi-dynamic web sites, {\sc xml}, make, BibTeX, {\sc xslt}, X-Schema, {\sc html}.
+Web site implementation, semi-dynamic web sites, {\sc xml}, make, {\sc BibTeX}, {\sc xslt}, X-Schema ({\sc xsd}), {\sc html}.
 
 \section{Introduction}
 \label{sec:intro}
@@ -170,7 +170,7 @@ The methodology can be summarized in a few key points.
 or another declarative formalism.
 Content developers create and edit these to modify the site's contents.
 \item Use {\sc xml} schemas and corresponding tools to validate the content.
-\item Exploit modular {\sc xhtml} \cite{XXX} to create schemas for rich
+\item Exploit modular {\sc xhtml} \cite{W3C_MODULAR_XHTML} to create schemas for rich
 data elements.
 These can be used to allow the inclusion of specific {\sc xhtml} tags
 in the site's {\sc xml} files, without having to reinvent {\sc html}
@@ -184,7 +184,7 @@ with a global undo command with unlimited undo levels.)
 through {\sc xslt}  transformations \cite{HM01}.
 \item Express verification and building dependencies among
 data elements and schemas through {\em make} \cite{MAKE} or {\em ant}
-\cite{XXX} rules.
+\cite{JAKARTA_ANT} rules.
 \item Make the local generation of the site's content the default
 building option to allow developers and administrators to verify
 the results of  their work, before putting them online.
