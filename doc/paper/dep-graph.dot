@@ -4,7 +4,7 @@ digraph G{
 	nodesep=.1;
 	rankdir=LR;
 	node [height=.15,shape=box,fontname="Helvetica",fontsize=8];
-	edge [arrowhead=none,arrowtail=normal];
+	edge [arrowhead=normal,arrowtail=none];
 
 	g_sense_details_html [label="g_sense-details.html"];
 	g_sense_members_html [label="g_sense-members.html"];
