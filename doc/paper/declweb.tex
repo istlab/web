@@ -273,10 +273,11 @@ Yearly changes in web site rankings.}
 
 In order to meet the requirements we set in section 2, we decided to adopt open and popular
 technologies as key elements of our system. For data representation we used XML and bibtex.\\
-XML ...\\
-Bibtex ...\\
-To deal with the problem of versioning and multi-persion development we used CVS. CVS ...\\
-The simple tasks of our systems were automated using a make file. Make is ...\\
+XML \cite{W3C_XML} ...\\
+Bibtex \cite{Pa88} \cite{Ja99} ...\\
+For data transformations we implemented a system based on XSLT \cite{W3C_XSLT}.
+To deal with the problem of versioning and multi-persion development we used CVS \cite{CVS}. CVS ...\\
+The simple tasks of our systems were automated using a make file. Make \cite{gnu_make} is ...\\
 
 \subsection{Design Concepts}
 
@@ -463,21 +464,21 @@ The use cases that comprise our system are:
 \end{figure}
 
 \begin{description}
-\item[Maintain Schemas, Transformations and Users]
+\item[Maintain schemas, transformations and users]
 
-\item[Update Local Repository]
+\item[Update local repository]
 
-\item[Commit Changes]
+\item[Commit changes]
 
-\item[Maintain Content] This use case is described with the acrivity diagram in Figure \ref{fig:maintain-content-diagram}.
+\item[Maintain content] This use case is described with the acrivity diagram in Figure \ref{fig:maintain-content-diagram}.
 
-\item[Generate Web Site]
+\item[Generate web site]
 
-\item[Validate Data]
+\item[Validate data]
 
-\item[Manage User Accounts]
+\item[Manage user accounts]
 
-\item[Browse Web Site]
+\item[Browse web site]
 
 \end{description}
 
@@ -498,7 +499,7 @@ Unix group membership mechanism of the host where the
 We also used
 BibTeX and {\em bib2html} for transforming the publications
 into {\sc html} and
-{\em xmlstarlet} for validating and transforming
+{\em xmlstarlet} \cite{Gru04} for validating and transforming
 all other {\sc xml}-based data.
 Finally, {\sc gnu} {\em make} and a couple of shell script
 constructs were used for handling the project's {\em Makefile}.
