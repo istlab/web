@@ -12,7 +12,7 @@
 \usepackage{graphicx}
 \usepackage[dvips]{color}
 
-\usepackage{kerkis}
+%\usepackage{kerkis}
 
 \definecolor{navy}{rgb}{0.3, 0.3, 0.6}
 
@@ -81,13 +81,11 @@
 \Title{\gr Ο καινούριος δικτυακός τόπος του \en ELTRUN}
 
 \begin{dinglist}{229}
-
 	\item \gr Πληροφορίες για ομάδες, μέλη, έργα και δημοσιεύσεις
 	
 	\item \gr Ημιδυναμικό περιεχόμενο
 	
 	\item \gr Εργαλεία: \en cvs, XML, XSLT, make, grep, bibtex, bib2html
-
 \end{dinglist}
 
 \end{slide}
@@ -98,7 +96,6 @@
 \Title{\gr Ο καινούριος δικτυακός τόπος του \en ELTRUN (2)}
 
 \begin{dinglist}{229}
-
 	\item \gr Δεδομένα σε μορφή \en XML \gr (μέλη, ομάδες, έργα)
 	
 	\item \gr Γλώσσα μετασχηματισμού των δεδομένων η \en XSLT
@@ -106,7 +103,6 @@
 	\item \gr Διαχείριση βιβλιογραφίας με \en bibtex \gr και \en bib2html
 	
 	\item \gr Έλεγχος ορθότητας δεδομένων με την χρήση \en XML validation
-	
 \end{dinglist}
 
 \end{slide}
@@ -119,7 +115,6 @@
 \gr Η διαχείριση γίνεται ακολουθώντας τα παρακάτω βήματα:
 
 \begin{enumerate}
-
 	\item \gr Ανάκτηση της τελευταίας έκδοσης
 	
 	\item \gr Ανανέωση των \en XML \gr δεδομένων
@@ -129,7 +124,6 @@
 	\item \gr Δημιουργία των \en HTML
 	
 	\item \gr Ανανέωση του δικτυακού τόπου
-
 \end{enumerate}
 
 \end{slide}
@@ -140,13 +134,11 @@
 \Title{\gr Ανάκτηση της τελευταίας έκδοσης}
 
 \begin{dinglist}{229}
-
 	\item \gr Την πρώτη φορά: \navy{\en cvs co eltrun-web}
 	
 	\item \gr Τις επόμενες φορές: \navy{\en cvs update eltrun-web}
 	
 	\item \gr Αρχικοποίηση πριν από κάθε ανανέωση:\\ \navy{\en \{install-dir\}/eltrun-web/make clean}
-
 \end{dinglist}
 
 \end{slide}
@@ -157,7 +149,6 @@
 \Title{\gr Που είναι τα αρχεία δεδομένων?}
 
 \begin{dinglist}{229}
-
 	\item \gr Δεδομένα για τα μέλη \navy{\en \{install-dir\}/eltrun-web/data/members/*.xml}
 	
 	\item \gr Δεδομένα για τα έργα \navy{\en \{install-dir\}/eltrun-web/data/projects/*.xml}
@@ -165,7 +156,6 @@
 	\item \gr Δεδομένα για τις ερευνητικές \navy{\en \{install-dir\}/eltrun-web/data/groups/*.xml}
 	
 	\item \gr Δεδομένα για την βιβλιογραφία \navy{\en \{install-dir\}/eltrun-web/data/publications/*.bib}
-
 \end{dinglist}
 
 \end{slide}
@@ -180,6 +170,10 @@
 	\item \gr Για τα δεδομένα \en XML:\\ \navy{\{install-dir\}/eltrun-web/make val}
 	
 	\item \gr Δεν γίνεται έλεγχος στις βιβλιογραφικές αναφορές!!
+	
+	\item \gr Δημιουργία του δικτυακού τόπου τοπικά:\\ \navy{\{install-dir\}/eltrun-web/make html}
+	
+	\item \gr Οι καινούριες ιστοσελίδες βρίσκονται στο:\\ \navy{\{install-dir\}/eltrun-web/public\_html/index.html}
 	
 \end{dinglist}
 
@@ -257,11 +251,11 @@
 
 \begin{dinglist}{229}
 
-	\item \gr Χρησιμοποιείται ένα \en XML \gr έγγραφο για κάθε μέλος
+	\item \gr Χρησιμοποιείται ένα έγγραφο \en XML \gr για κάθε μέλος
 	
 	\item \gr Χρησιμοποιείται συγκεκριμένη ονοματολογία για το χαρακτηριστικό \en Id \navy{m\_\{nickname\}}\\ \gr Παράδειγμα: \en \navy{m\_dds}
 	
-	\item \gr Παράδειγμα βρίσκεται στο αρχείο \en \navy{\{install-dir\}/doc/member-example.xml}
+	\item \gr Παράδειγμα εγγράφου \en XML \gr βρίσκεται στο αρχείο \en \navy{\{install-dir\}/doc/member-example.xml}
 
 \end{dinglist}
 
@@ -271,6 +265,16 @@
 \begin{slide}
 
 \Title{\gr Δομή \en XML \gr εγγράφου για τα έργα}
+
+\begin{dinglist}{229}
+
+	\item \gr Χρησιμοποιείται ένα έγγραφο \en XML \gr για κάθε έργο
+	
+	\item \gr Χρησιμοποιείται συγκεκριμένη ονοματολογία για το χαρακτηριστικό \en Id \navy{p\_\{project-name\}}\\ \gr Παράδειγμα \en \navy{\{m\_express\}}
+	
+	\item \gr Παράδειγμα εγγράφου \en XML \gr βρίσκεται στο αρχείο \en \navy{\{install-dir\}/doc/project-example.xml}
+	
+\end{dinglist}
 
 \end{slide}
 
@@ -298,7 +302,7 @@
 %Slide 16
 \begin{slide}
 
-\Title{\gr Μη ξεχνάμε ότι ...}
+\Title{\gr Μην ξεχνάμε ότι ...}
 
 \begin{dinglist}{47}
 	
@@ -314,7 +318,7 @@
 %Slide 17
 \begin{slide}
 
-\Title{\gr Μη ξεχνάμε ότι ... (2)}
+\Title{\gr Μην ξεχνάμε ότι ... (2)}
 
 \begin{dinglist}{47}
 	\item \gr Πρέπει να είμαστε πολύ προσεκτικοί όταν προσθέτουμε αρχεία (\en \navy{cvs add ...})
