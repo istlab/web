@@ -340,7 +340,7 @@ and have access only in the generated web site.
 The use cases that comprise our system are:
 
 \begin{figure}
-\includegraphics[scale=0.5]{maintain-content-activity}
+\includegraphics[scale=0.6]{maintain-content-activity}
 \caption{UML activity diagram for Maintain Content}
 \label{fig:maintain-content-diagram}
 \end{figure}
@@ -443,6 +443,13 @@ importing existing elements in our {\sc DTD/XSDs}.
 This helped us keep our schema description simple,
 but the corresponding schema expressive.
 
+\begin{figure}[h!]
+\includegraphics[scale=0.6]{generate-web-site}
+\label{fig:generate-web-site}
+\caption{UML Activity diagram for Generate Web Site}
+\end{figure}
+
+In figure \ref{fig:generate-web-site} we illustrated the web site generation process.
 The automated validation and generation of content was
 expressed as makefile rules.
 The individual files {\sc XML} files are merged in a
