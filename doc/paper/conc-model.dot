@@ -1,26 +1,25 @@
 #!/usr/bin/dot
-# $id: $
+# $Id$
 
 digraph G{
-	nodesep=.1;
+	//nodesep=.1;
 	node [height=.15,shape=box,fontname="Helvetica",fontsize=10];
 	edge [arrowhead=normal,arrowtail=none,fontname="Helvetica",fontsize=10];
-
-	html [label="HTML pages"];
+	
 	content_provider [label="Content Developer"];
-	group_data [label="Group Data"];
+	public_data [label="Public Data"];
 	system_administrator [label="Content Administrator"];
 	repository [label="Data Repository"];
 	end_user [label="Content Consumer"];
-	research_group [label="Research Group"];
+	organisation [label="Organisation"];
 	
-	content_provider->group_data [label="submit"];
+	content_provider->public_data [label="submit"];
 	system_administrator->content_provider [label="support"];
 	system_administrator->repository [label="maintain"];
-	end_user->html [label="accessing"];
-	content_provider->research_group [label="is member"];
-	group_data->research_group [label="describe"];
-	end_user->research_group [label="interested"];
-	group_data->repository [label="stored"];
-	repository->html [label="tranformed into"];
+	content_provider->organisation [label="is member"];
+	public_data->organisation [label="describe"];
+	end_user->organisation [label="interested"];
+	public_data->repository [label="stored"];
+	end_user->public_data [label="consumes"];
+	organisation->public_data [label="has"];
 }
