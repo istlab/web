@@ -1,8 +1,11 @@
-<seminar by="Required: m_id">
-	<sem_date>Required</sem_date>
-	<sem_time>Required</sem_time>
-	<sem_title>Required</sem_title>
-	<sem_room>Required</sem_room>
-	<sem_url>Optional</sem_url>
-	<sem_duration>Required</sem_duration>
+<seminar>
+    <sem_date>REQUIRED</sem_date>
+    <sem_time>REQUIRED</sem_time>
+    <sem_room>REQUIRED</sem_room>
+    <sem_duration>REQUIRED</sem_duration>
+        <presentation by="OPTIONAL: m_a m_b ...">
+                  <pres_title>REQUIRED</pres_title>
+                  <pres_url>REQUIRED</pres_url>
+		  <pres_name>OPTIONAL</pres_name>
+        </presentation>
 </seminar>
