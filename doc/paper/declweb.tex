@@ -43,7 +43,7 @@ Web site development, semi-dynamic web sites, {\sc xml}, make, {\sc BibTeX}, {\s
 \label{sec:intro}
 Traditionally, the realization of Web sites involves either
 static content developed using web authoring tools like
-Microsoft's Front Page and DreamWeaver, or dynamic
+icrosoft's Front Page and DreamWeaver, or dynamic
 content delivered by a data-oriented front-end,
 where the structured content is stored in a relational database 
 and dynamically generated on the fly.
@@ -110,7 +110,7 @@ query-style interface.
 Such an interface is typically less usable than browsable web pages,
 and the served content is often ignored by search engines,
 leading to reduced visibility
-of the (meticulously structured) content \cite{DEEP_WEB, JP04}.
+of the (meticulously structured) content \cite{DEEP_WEB,JP04}.
 
 All in all, a database-driven approach appears to be suitable
 only for those with ample resources to justify the full
@@ -311,9 +311,9 @@ Static Content Export & Yes & &\\
 {\sc wai} compliant & Yes & {\sc url} Rewriting & No\\
 \hline
 \end{tabular}
-\caption{Our Methodology features in a glance}
-\label{tbl:cms-matrix}
 \end{center}
+\caption{Methodology features in a glance}
+\label{tbl:cms-matrix}
 \end{figure}
 
 \section{Designing a Prototype}
@@ -434,7 +434,7 @@ and inspecting the submitted {\em Public Data}.
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[scale=0.6]{conc-model}
+\includegraphics[scale=0.8]{conc-model}
 \end{center}
 \caption{Conceptual design of our system}
 \label{fig:conc-model}
@@ -483,18 +483,18 @@ generation process.
 
 \begin{figure}[h!]
 \includegraphics[scale=0.5]{use-case-diagram}
-\caption{UML Use Case Diagram of the System}
+\caption{{\sc uml} Use Case Diagram of the System}
 \label{fig:use-case-diagram}
 \end{figure}
 
-Figure \ref{fig:use-case-diagram} shows a {\sc UML} \cite{UML} use case diagram of our system. 
+Figure \ref{fig:use-case-diagram} shows a {\sc uml} \cite{UML} use case diagram of our system. 
 We have three actors (roles) interacting with the system:
 
 \begin{description}
 \item[ContentDeveloper] A Content Developer is responsible for uploading data in the system. 
 In our case, a Content Developer is typically a single person for each research group. They can upload data files and 
 import new bibliography entries in the repository, review and correct any presentation problems and finally publish the 
-updated content..
+updated content.
 
 \item[ContentAdministrator] The Content Administrator is responsible for the maintenance 
 and the further extension of the system. A Content Administrator corrects problems with the data, develops 
@@ -508,7 +508,7 @@ The use cases that comprise our system are:
 
 \begin{figure}
 \includegraphics[scale=0.6]{maintain-content-activity}
-\caption{UML activity diagram for Maintain Content}
+\caption{{\sc uml} activity diagram for Maintain Content}
 \label{fig:maintain-content-diagram}
 \end{figure}
 
@@ -573,13 +573,13 @@ appropriate tools. In order to meet the requirements we set in section \ref{sec:
 we decided to use popular open
 technologies as key elements of our system.
 We adopted the concurrent versions system
-({\sc cvs}) \cite{BF01, CVS} to coordinate the distribution
+({\sc cvs}) \cite{BF01,CVS} to coordinate the distribution
 and update of all the system's components.
 Authentication for managing content was handled by the
 Unix group membership mechanism of the host where the
 {\sc cvs} repository was installed.
 We also used
-{\sc BibTeX} \cite{Pa88, Lam94} and {\sc bib2xhtml} \cite{BibXHMTL} for transforming the publications
+{\sc BibTeX} \cite{Pa88,Lam94} and {\sc bib2xhtml} \cite{BibXHMTL} for transforming the publications
 into {\sc xhtml} and
 \textit{xmlstarlet} \cite{Gru04} for validating and transforming
 all other {\sc xml}-based data \cite{W3C_XML}.
@@ -614,7 +614,7 @@ but the corresponding schema expressive.
 
 \begin{figure}[h!]
 \includegraphics[scale=0.6]{generate-web-site}
-\caption{UML Activity diagram for generating the web site}
+\caption{{\sc uml} Activity diagram for generating the web site}
 \label{fig:generate-web-site}
 \end{figure}
 
