@@ -68,10 +68,6 @@ When our group faced the successive failure of both the above approaches,
 we decided to adopt the task of exploring ideas for a radically different
 implementation style, based on the declarative specification
 of all the site's elements.
-We believe that our approach and many of the lessons we learned
-can be applied in numerous similar situations,
-leading to a lightweight, structured, consistent, and maintainable
-web site building method.
 
 The limitations of statically-authored web pages are easy to discern.
 The content is entered in an unorganized manner, and, as a result,
@@ -88,11 +84,11 @@ creating a bottleneck, often leading to outdated content.
 Adopting a database driven approach is supposed to
 solve the aforementioned problems.
 Separating the source data from its (dynamically generated)
-marked-up version ({\sc html } code) leads to a consistent
+marked-up version (HTML code) leads to a consistent
 yet flexible generation of web pages.
 In addition, the database's relational model will impose
 its structure on the source data being stored.
-Finally, the use of a database, allows concurrent updates by
+Finally, it allows concurrent updates by
 different users.
 
 However, for a number of applications, the use of a database
@@ -101,18 +97,14 @@ makes the choice a part of
 the problem space rather than the solution space.
 A database-driven web site requires the implementation of a
 front-side interface to transform the web site's content into
-{\sc html} code, and a back-end interface to allow stakeholders
+HTML code, and a back-end interface to allow stakeholders
 enter, review, and update data.
 The back-end client interface typically requires setting up
 and maintaining appropriate access permissions.
 These may need to be integrated into an organization wide single
 login facility, or operated under a specific security policy.
 In the second case procedures for setting up passwords,
-resetting them, and revoking them need to be established
- for a number of applications, the use of a database
-introduces a level of additional complexity that
-makes the choice a part of
-the problem space rather than the solution space.and followed.
+resetting them, and revoking them need to be established and followed.
 A properly running database also requires a skilled database
 administrator to install it, maintain it, organize backups,
 and perform modifications to the database schema.
@@ -133,26 +125,25 @@ query-style interface.
 Such an interface is typically less usable than browsable web pages,
 and the served content is often ignored by search engines,
 leading to reduced visibility
-of the (meticulously structured) content.
+of the (meticulously structured) content \cite{DEEP_WEB}.
 All in all, a database-driven approach appears to be suitable
 only for those with ample resources to justify the full
 development and appropriate maintenance of a sophisticated infrastructure.
 
-A new needed for this problem and we volunteered to 
-set up a project for finding it. We had already undergone the 
-two aproaches we aforementioned.
+A fresh approach needed for this problem and we volunteered to 
+set up a project for finding it.
 The ad-hoc authoring tool--based approach was abandoned,
 because it led to an inconsistent look and stale content,
 while the maintenance of a subsequent database-driven
 design approach was proving intractable for the resources that
 our group could afford.
-Our goal was to experiment with a
-different approach,
+Our goal was to experiment with a different approach,
 proving its suitability for managing middle-sized semi-dynamic
 web sites.
 
 \section{Requirements}
 \label{sec:req}
+
 \begin{figure}
 \begin{center}
 \leavevmode
@@ -188,7 +179,10 @@ the research center and
 each member, group, or project should have a web page with a list
 of the corresponding publications;
 the research center and each group should have pages listing
-their projects and members.
+their projects and members. 
+In order to add in our web site data that are not part of the aforementioned categories,
+each group can have additional pages of non-formal content.
+Finally, each member of our groups could be performing a presentation in our group weekly seminar.
 
 As we hinted in the previous paragraph, the problem with
 the previous implementations was not the creation of the site
@@ -207,8 +201,8 @@ should be available as open source, or supported by multiple vendors.
 We wanted to avoid becoming tied with a particular proprietary
 tool.
 We reasoned that openness would mitigate two risks:
-finding a maintainer trained to use a particular proprietary tool,
-and obtaining resources for upgrading and maintaining the tool.
+(1) finding a maintainer trained to use a particular proprietary tool,
+and (2) obtaining resources for upgrading and maintaining the tool.
 
 \item[Observability]
 The semantic distance between
@@ -217,11 +211,10 @@ should be minimal \cite{SG97}.
 The site's look and content should be maintainable
 using standard tools and techniques.
 If possible, the site's maintainer should not be required to
-learn a scripting language like {\sc php}, or Perl, or
-a framework like Java2EE or {\sc .NET}.
-% declarative specifications & domain specific languages examples
-An approach based on declarative specifications and
-domain-specific languages would allow end-users, or members
+learn a scripting language like PHP, or Perl, or
+a framework like Java2EE or .NET.
+An approach based on declarative specifications \cite{FFLS00} and
+domain-specific languages \cite{DKV00} would allow end-users, or members
 close to end-users be involved in maintaining the site,
 without risking the bottleneck of going through
 multiple intermediaries.
@@ -253,9 +246,8 @@ other non-functional properties.
 \subsection{Conceptual Framework}
 
 In order to design a system that corresponds to the aforementioned principles, 
-we must create it's conceptual framework and observe through a high-level
-approach the systems functions and constraints. This is illustrated 
-in figure \ref{fig:conc-model}.
+we must create it's conceptual framework and observe it through a high-level
+scope. This is illustrated in Figure \ref{fig:conc-model}.
 
 \begin{figure}[h!]
 \begin{center}
@@ -266,15 +258,18 @@ in figure \ref{fig:conc-model}.
 \end{figure}
 
 The main concept in our system is the Research Group. Each group has 
-information that interests Content Consumers. In our system  Content Consumers 
+information that interests Content Consumers. Content Consumers 
 can access the Research Group data thourgh a series of HTML pages.
 
-Each Research Group has Content Developers who are usually its members. Each 
-Content Developer updates the Group Data which are then submitted in the 
-Data Repository.
+Each Research Group has also Content Developers who are usually its members.
+Content Developers update the Group Data, which are then submitted in the 
+Data Repository. The Group Data are typically information of a Research Group.
 
 The HTML pages are produced through a series of transformations of the data that
 are kept in the Data Repository.
+
+Content Administrators are supporting the Content Developers (mostly troubleshooting) 
+and maintain the Data Repository.
 
 \subsection{Design Concepts}
 
@@ -290,7 +285,9 @@ web sites between the years 2002 and 2003.
 The X shape in the rank changes between the one year and the next
 is, we believe, the result of statically authored web pages
 degrading to a point of irrelevance, and then being overhauled
-from scratch.
+from scratch. The change of ranking can be explained as decay of the web site when dropping,
+and re-engineering when rising.
+
 A database-driven approach also hinders evolution.
 Changes to the content's presentation require the modification
 and installation of the front end page generator;
@@ -314,16 +311,16 @@ the front end, and the back end.
 Continuous multi-person development projects are quite
 common in software development.
 Numerous developers contribute and coordinate their work
-through a version control system, like {\sc cvs} that
+through a version control system, like CVS that
 maintains a master repository of the source code.
 Concepts like the daily build \cite{CS95b} or the
-{\em current} and {\em stable} branches as practiced by
+current and stable branches as practiced by
 numerous open source projects allow the maintenance
 of a known-good product.
 What we needed for our approach were appropriate
 declarative language-based formalisms for expressing our data,
-its transformation into {\sc html} pages, and the
-generation process. We were clear that we wouldn't support the content in a {\em Makefile} \cite{OTT91}.
+its transformation into HTML pages, and the
+generation process. We were clear that we wouldn't support the content in a makefile \cite{OTT91}.
 
 \subsection{Processes}
 
@@ -334,18 +331,19 @@ generation process. We were clear that we wouldn't support the content in a {\em
 \end{figure}
 
 In Figure \ref{fig:use-case-diagram} is depicted a UML use case diagram of our system. 
-We have three actors which are interacting with the system:
+We have three actors (roles) which are interacting with the system:
 
 \begin{description}
 \item[ContentDeveloper] A content developer is responsible for uploading data in the system. 
-In our case is typically a person for each research group. He can upload XML data files and import new bibliography entries.
+In our case is typically a person for each research group. He can upload data files and 
+import new bibliography entries.
 
 \item[ContentAdministrator] The content administrator is responsible for the maintenance 
-and the evolution of the system. He corrects problems with the XML Data, develops 
-new features or corrects existing ones in the XSLT scripts and the X-Schemas.
+and the further extension of the system. He corrects problems with the data, develops 
+new features or corrects existing ones in the transformation scripts..
 
-\item[ContentConsumer] The content consumers are outside our system
-and they have access only in the generated web site.
+\item[ContentConsumer] The content consumers are typically outside of our system
+and have access only in the generated web site.
 \end{description}
 
 The use cases that comprise our system are (Figure \ref{fig:use-case-diagram}):
@@ -358,31 +356,33 @@ The use cases that comprise our system are (Figure \ref{fig:use-case-diagram}):
 
 \begin{description}
 \item[Maintain schemas, transformations and users] This use case describes the maintainence and development
- procedures of the system. Each Content Developer can update the DTD schemas, XSL scripts and the make file 
+ procedures of the system. Each Content Developer can update the Data schemas, the trasnforamtion scripts 
  in order to correct errors or add new features.
 
 \item[Update local repository] Each user in the system must update the local repository each time he uses the system. 
-To do so, they must execute a CVS update command. If there is a conflict, the users must correct the problem and rerun the
+To do so, they must execute a  update repository command. If there is a conflict, the users must correct the problem and rerun the
 update command.
 
-\item[Commit changes] Content developers and administrators must commit the changes from their local repository 
+\item[Commit changes] Content developers and Content administrators must commit the changes from their local repository 
 to the CVS repository in the web site server.
 
 \item[Maintain content] This is the overall use case that allows Content Developers to maintain the content of the web site. 
-Content consists of XML data and bibtex collection files.
+Content consists of  group, member, project and seminar data or bibliography collection entries.
 
-\item[Generate web site] Content administrators and developers can generate the web site localy for preview. This procedure is 
-performed with the execution of a make file command. Upon completion, Content administrators can review their content and   
+\item[Generate web site] Content administrators and developers can generate the web site locally for preview. This procedure is 
+performed with the execution of a make file command. Upon completion, the user can review the newly integrated content and inspect 
+for possible presentation problems.
 
-\item[Validate data] Content developers can validate the data in the local repository before the final commit.
+\item[Validate data] Content developers can validate the data in the local repository before the final commit. For the validation procedure
+the system use the appropriate data schemas.
 
-\item[Manage user accounts] Content Administrators can perform user management in the system. 
+\item[Manage user accounts] Content Administrators perform user management in the system. User management consists mainly of two main processes: (1) Authentication , (2) Ownership \& Policy
 
-\item[Browse web site] Normally everyone who is willing to access our web site. They can only browse the generated {\sc HTML} pages.
+\item[Browse web site] This one describes the we site browsing process. Only Content Consumer can access the generated HTML pages.
 
 \end{description} 
 
-In figure \ref{fig:maintain-content-diagram} we show the activity diagram of the most complex use case in the system. The Content Developer first updates the local repository and then begins the initiation of data maintanance by adding, removing or modifying XML files and bibtex entries. Upon completion data vaildation must be performed before the commit to the CVS repository. If data are valid, then local web site generation must be performed to correct possible presentation problems. After that, the data are ready to be submitted to the main CVS repository. After updating the CVS 
+In figure \ref{fig:maintain-content-diagram} we show the activity diagram of the most complex use case in the system. The Content Developer first updates the local repository and then begins the initiation of data maintanance by adding, removing or modifying data files and bibliography entries. Upon completion data vaildation must be performed before the commit to the data repository. If data are valid, then local web site generation must be performed to correct possible presentation problems. After that, the data are ready to be submitted to the main data repository. After the update of the data repository the process terminates.
 
 \section{Implementation}
 
@@ -394,75 +394,81 @@ since it did not involve almost anything of what
 is typically described as coding.
 
 The first step involved selecting and setting up the
-appropriate tools. In order to meet the requirements we set in section 2, 
+appropriate tools. In order to meet the requirements we set in section \ref{sec:req}, 
 we decided to use open and popular
 technologies as key elements of our system.
 We adopted the concurrent versions system
-({\sc cvs}) \cite{BF01} \cite{CVS} to coordinate the distribution
+(CVS) \cite{BF01} \cite{CVS} to coordinate the distribution
 and update of all the system's components.
 Authentication for managing content was handled by the
 Unix group membership mechanism of the host where the
-{\sc cvs} repository was stored.
+CVS repository was installed.
 We also used
-{\em BibTeX} \cite{Pa88} and {\em bib2xhtml} \cite{BibXHMTL} for transforming the publications
-into {\sc html} and
-{\em xmlstarlet} \cite{Gru04} for validating and transforming
-all other {\sc xml}-based data \cite{W3C_XML}.
+BibTeX \cite{Pa88} and bib2xhtml \cite{BibXHMTL} for transforming the publications
+into HTML and
+xmlstarlet \cite{Gru04} for validating and transforming
+all other XML-based data \cite{W3C_XML}.
 For data transformations we 
 implemented a system based on XSLT \cite{W3C_XSLT}. XSLT is a language for tranforming XML documents.
-Finally, {\sc gnu} {\em make} \cite{gnu_make} and a couple of shell script
-constructs were used for handling the project's {\em Makefile}.
+Finally, GNU make \cite{gnu_make} and a couple of shell script
+constructs were used for handling the project's makefile.
 The complete setup including all tools proved to be portable
 between Unix and Microsoft Windows, with team members working
-on machines running different versions of Windows, {\sc gnu}/Linux,
-and Free{\sc BSD}.
+on machines running different versions of Windows, GNU/Linux,
+and FreeBSD..
 
 \subsection{System Development}
 
 The next step was a series of iterations where we
-modeled the data's schema on representative {\sc xml}
-files and concurrently wrote the validation {\sc dtd}s
-and the transformation {\sc xslt}s.
+modeled the data's schema on representative XML
+files. Concurrently wrote the validation DTD/XSDs 
+and the transformation XSLTs. First we developed the DTDs 
+for the data validation, later on we decided to move in XSD schemas in order to
+further data validation to our system.
 The version control system was already proving its value
 at this point
 for coordinating the work between the two paper's authors.
 Because many page elements, like a project's description,
 could contain content more elaborate than plain text,
-we used W3C's modular {\sc xhtml} specification for
-importing existing {\sc xhtml} elements editorin our {\sc dtd}s.
+we used W3C's modular XHTML specification for
+importing existing XHTML elements editor in our DTD/XSDs.
 This helped us keep our schema description simple,
 but the corresponding schema expressive.
 
 The automated validation and generation of content was
-expressed as {\em Makefile} rules.
-The individual files {\sc xml} files are merged in a
-single {\sc xml} file for cross validating identifier
-reference attributes ({\sc idref}).
+expressed as makefile rules.
+The individual files XML files are merged in a
+single XML file for cross validating identifier
+reference attributes (IDREFs).
 The same file is used to extract the identifiers of
-all projects, members, and groups into {\em Makefile}
+all projects, members, and groups into makefile
 variables.
-A simple loop then generates the {\sc html} files
+A simple loop then generates the HTML files
 corresponding to each of the above elements.
+Each project, member, group etc. refer to the relevant XML IDs.
+Upon generation process of the HTML pages, links are created that
+connect relevant pages e.g. each member connect with his publications, 
+which are two different independently generated HTML pages.
 
-The {\sc html} content is by default generated on the
+The HTML content is by default generated on the
 local machine, where its maintainer can verify it.
 After the new content is validated and verified,
-the maintainer can commit the change to the central {\sc CVS} repository. 
-A separate {\em Makefile} rule can then be used,
+the maintainer can commit the change to the central  CVS repository. 
+A separate makefile rule can then be used,
 to execute an update command on the
 host serving the content to the web.
-The command retrieves the updates from the {\sc CVS}
+The command retrieves the updates from the  CVS
 repository and regenerates the pages on the web-server's
 file area.
 All components of our system are under version control,
 all pages are automatically tagged with identifiers
 denoting their source, helping the traceability of changes.
 All exchanges between the developers' machines and the
-{\sc CVS} and web host are performed using the secure session
-shell ({\sc ssh}) protocol guaranteeing the data's integrity
+CVS and web host are performed using the secure
+shell (SSH) as transport protocol guaranteeing the data's integrity
 and confidentiality.
 
-\begin{figure}[h!]
+\begin{figure}
 \lstset{language=MYLANG,basicstyle=\ttfamily}
 {\begin{lstlisting}
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
@@ -491,7 +497,7 @@ and confidentiality.
 \label{fig:project-dtd}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}
 \lstset{language=MYLANG,basicstyle=\ttfamily}
 {\begin{lstlisting}
 <?xml version="1.0"?>
@@ -508,7 +514,7 @@ and confidentiality.
 \label{fig:project-xml}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}
 \lstset{language=MYLANG,basicstyle=\ttfamily}
 {\begin{lstlisting}
 <xsl:template match="seminar" mode="full">
@@ -539,7 +545,7 @@ and confidentiality.
 \label{fig:project-xslt}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}
 \lstset{language=MYLANG,basicstyle=\ttfamily}
 {\begin{lstlisting}
 <tbody valign="top">
@@ -567,10 +573,10 @@ Download the presentation
 \end{figure}
 
 You can see representative samples of a project's
-{\sc dtd} schema description in figure \ref{fig:project-dtd}.
-{\sc Xml} data in figure \ref{fig:project-xml}.
-{\sc Xslt} transformationn in figure \ref{fig:project-xslt},
-and {\sc html} result in figure \ref{fig:project-html}.
+XSD schema description in figure \ref{fig:project-dtd},
+XML data in figure \ref{fig:project-xml},
+XSLT transformationn in figure \ref{fig:project-xslt},
+and HTML result in figure \ref{fig:project-html}.
 
 \begin{figure}
 \includegraphics[scale=0.8]{distro.eps}
@@ -586,7 +592,7 @@ a result we decided to upload a win32 version of the needed tools
 in the main repository under the directory "bin". The installation procedure is very simple,
 and the bootstrap tools that requires are only cvs for 
 the initial check out and a ssh client. The needed keys 
-for the secure shell session are provided once in each user. 
+for the secure shell session are provided once in each user by the Content Administrator. 
 A full version of the system now demands 8 megabytes of space 
 in local machine, plus some extra for the local content store and generation.
 
@@ -595,6 +601,11 @@ in local machine, plus some extra for the local content store and generation.
 \caption{Dependency graph of web site}
 \label{fig:eltrun-web-m-dds-snapshot}
 \end{figure}
+
+In Figure \ref{fig:eltrun-web-m-dds-snapshot} we depicts a graph that shows references between the HTML pages.
+The above figure shows the references  of a member ("m\_dds" is the ID for Diomidis Spinellis), with other pages in the web site.
+The pages starting with "p\_" are projects, with "m\_" members, and "g\_" groups.
+By the time we write this the site has 209 generated HTML pages with 1368 hyperlinks. 
 
 \section{System Adoption}
 \label{sec:adopt}
@@ -605,16 +616,16 @@ Our research center is multidisciplinary: under its roof
 are both hard core software engineers using the same tools
 we adopted in their everyday work, and researchers whose
 background is management science, marketing, or finance
-who are comfortable with {\sc GUI} interfaces.
+who are comfortable with GUI interfaces.
 
 Our fears were justified.
 The first presentation of the system to its users ended
 almost in a revolt.
 Non-technical users expressed their inability to comprehend
-what an {\sc xml} document was, while technical members
-helpfully argued for providing a {\sc gui} front end.
+what an XML document was, while technical members
+helpfully argued for providing a GUI front end.
 By targeting the users with the least technical experience,
-promoting our system's ``vogue'' attributes,
+promoting our system's "vague" attributes,
 such as the use of open source software tools,
 and convincing them to try to enter a few elements into
 the system, we were able to overcome the initial reservations
@@ -623,11 +634,11 @@ and start the data migration process.
 The next round of problems surfaced when users began entering
 malformed or invalid data into the system.
 This resulted in all users acquiring the copies of the malformed
-{\sc xml} files, and strange error messages given to unsuspecting
+XML files, and strange error messages given to unsuspecting
 users.
 As is the custom in a number of development efforts, we had
 expected the users to verify the changes they made before
-committing them into the master repository.
+committing them into the CVS repository.
 Non-technical users were however not aware of this etiquette
 and were committing their changes with the hope they were correct.
 We used the shared list we had established to explain the
@@ -635,20 +646,23 @@ importance of following the correct procedures when committing changes.
 After a few days we got the impression that non-technical users
 were becoming confident in their work, even proud of sharing
 sophisticated tools and processes with software engineers.
-
-Two weeks after the initial system presentation all users where able to upload 
-and maintain their data. The inexperienced users learned to edit XML files,
-importing bibtex entries into the system and commiting to the master CVS repository. 
-They just followed steps in a procedure that they see as a black box. 
 Our technical persons experienced more problems than the inexperienced ones 
-and that was came as a suprise for us. Some of them were already familiar 
+and that came as a suprise for us. Some of them were already familiar 
 with the key technologies and they tried to change the tools proposed with others more user-friendly. 
 These initiatives resulted in corruption of the local repositories, malformed XML data and wrong bibliography entries.
 After a few false attempts they decided to follow the proposed system..
 
+Two weeks after the initial system presentation all users where able to upload 
+and maintain their data. The inexperienced users learned to edit XML files,
+importing bibtex entries into the system and commiting to the CVS repository. 
+They just followed steps in a procedure that they see as a black box. 
+
 \section{Lessons Learned}
 \label{sec:concl}
-We believe our design satisfies the non-functional properties
+We believe that our approach and many of the lessons we learned
+can be applied in numerous similar situations,
+leading to a lightweight, structured, consistent, and maintainable
+web site building method. The proposed design satisfies the non-functional properties
 we listed in Section \ref{sec:req},
 and that our approach stands a higher chance to succeed where the
 two other approaches failed.
@@ -672,7 +686,7 @@ web site is a practical worthwhile approach.
 \label{sec:ack}
 
 We would like to thank Prof. Manolis Skordalakis for his very perceptive comments during the compilation of this paper.
-Special thanks to Damianos Chatziadoniou who reviewed early versions of this paper.
+Special thanks to Damianos Chatziadoniou and Marianthi Theocharidou who reviewed early versions of this paper.
 
 \bibliographystyle{unsrt}
 \bibliography{declweb}
