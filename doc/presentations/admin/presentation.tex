@@ -2,7 +2,7 @@
 
 \documentclass[a4,semcolor,slidesonly,12pt,landscape]{seminar}
 
-\def\printlandscape{\special{landscape}} 
+\def\printlandscape{\special{landscape}}
 
 \usepackage[greek,english]{babel}
 \usepackage[iso-8859-7]{inputenc}
@@ -13,7 +13,6 @@
 \usepackage[dvips]{color}
 
 \usepackage{kerkis}
-%\usepackage{npsfont}
 
 \definecolor{navy}{rgb}{0.3, 0.3, 0.6}
 
@@ -82,7 +81,7 @@
 \Title{\gr Ο καινούριος δικτυακός τόπος του \en ELTRUN}
 
 \begin{dinglist}{229}
-	\item \gr Πληροφορίες για:
+	\item \gr Διαχειρίζεται πληροφορίες για:
 	
 	\begin{dinglist}{51}
 	
@@ -149,7 +148,7 @@
 	
 	\item \gr Τις επόμενες φορές: \navy{\en cvs update eltrun-web}
 	
-	\item \gr Αρχικοποίηση πριν από κάθε ανανέωση:\\ \navy{\en make clean}
+	\item \gr Αρχικοποίηση:\\ \navy{\en make clean}
 \end{dinglist}
 
 \end{slide}
@@ -177,7 +176,6 @@
 \Title{\gr Πως ελέγχω αν τα δεδομένα είναι σωστά?}
 
 \begin{dinglist}{229}
-	
 	\item \gr Για τα δεδομένα \en XML:\\ \navy{make val}
 	
 	\item \gr Δεν γίνεται έλεγχος στις βιβλιογραφικές αναφορές!!
@@ -185,7 +183,6 @@
 	\item \gr Δημιουργία του δικτυακού τόπου τοπικά:\\ \en \navy{make html}
 	
 	\item \gr Οι καινούριες ιστοσελίδες βρίσκονται στο:\\ \en \navy{public\_html/index.html}
-	
 \end{dinglist}
 
 \end{slide}
@@ -197,13 +194,11 @@
 \Title{\gr Πως ανανεώνω την έκδοση στον κεντρικό εξυπηρετητή?}
 
 \begin{dinglist}{229}
-	
 	\item \gr Για την προσθήκη αρχείων κειμένου \en(*.xml,*.bib):\\\navy{cvs add \gr \{Όνομα αρχείου\}}
 	
 	\item \gr Για την προσθήκη δυαδικών αρχείων \en(*.jpg,*.gif):\\\navy{cvs add \textbf{-kb} \gr \{Όνομα αρχείου\}}
 	
 	\item \gr Για την ανανέωση της έκδοσης του δικτυακού τόπου:\\\en\navy{cvs commit -m '\{\gr Σχόλιο\}' \en eltrun-web}
-
 \end{dinglist}
 
 \end{slide}
@@ -227,20 +222,17 @@
 \Title{\gr Λίγα λόγια για την \en XML}
 
 \begin{dinglist}{229}
-
 	\item \gr Ιεραρχικό έγγραφο
 	
 	\item \gr Δομικό στοιχείο οι ετικέτες \en (tags):\\ \navy{<test\_tag>The Test Tag</test\_tag>}
 	
 	\item \gr Κάθε ετικέτα μπορεί να έχει και επιπλέον χαρακτηριστικά:\\ \en \navy{<test\_tag id="test\_attribute"/>}
-
 \end{dinglist}
 
 \end{slide}
 
 %Slide 10
 \begin{slide}
-
 \Title{\gr Παράδειγμα εγγράφου \en XML}
 \small{
 \navy{<?xml version="1.0"?>}\\
@@ -252,24 +244,44 @@
 \navy{<web\_site>}http://contessa.intranet.gr/\navy{</web\_site>}\\
 \navy{</project>}
 }
-
 \end{slide}
 
 %Slide 11
 \begin{slide}
 
-\Title{\gr Δομή \en XML \gr εγγράφου για τα μέλη}
+\Title{\gr Δομή \en XML \gr εγγράφου για τα μέλη του \en ELTRUN}
 
 \begin{dinglist}{229}
-
 	\item \gr Χρησιμοποιείται ένα έγγραφο \en XML \gr για κάθε μέλος
 	
 	\item \gr Χρησιμοποιείται συγκεκριμένη ονοματολογία για το χαρακτηριστικό \en Id \navy{m\_\{nickname\}}\\ \gr Παράδειγμα: \en \navy{m\_dds}
 	
 	\item \gr Παράδειγμα εγγράφου \en XML \gr βρίσκεται στο αρχείο \en \navy{doc/member-example.xml}
-
 \end{dinglist}
 
+\end{slide}
+
+\begin{slide}
+
+\Title{\gr Παράδειγμα εγγράφου \en XML \gr για τα μέλη του \en ELTRUN}
+
+\scriptsize{
+\navy{<member id="}Required\navy{" group="}Required: group-1 group-2\navy{">\\
+<givenname>}Required\navy{</givenname>\\
+<surname>}Required\navy{</surname>\\
+<memb\_title>}Optional\navy{</memb\_title>\\
+<email>}Required\navy{</email>\\
+<web\_site>}Optional\navy{</web\_site>\\
+<office\_phone>}Optional\navy{</office\_phone>\\
+<mobile\_phone>}Optional\navy{</mobile\_phone>\\
+<fax>}Optional\navy{</fax>\\
+<alumnus/><!-- Optional -->\\
+<office\_address>}Optional\navy{</office\_address>\\
+<postal\_address>}Optional\navy{</postal\_address>\\
+<photo>}Optional\navy{</photo>\\
+<shortcv>}Required\navy{<!-- HTML --></shortcv>\\
+</member>}
+}
 \end{slide}
 
 %Slide 12
@@ -278,13 +290,11 @@
 \Title{\gr Δομή \en XML \gr εγγράφου για τα έργα}
 
 \begin{dinglist}{229}
-
 	\item \gr Χρησιμοποιείται ένα έγγραφο \en XML \gr για κάθε έργο
 	
-	\item \gr Χρησιμοποιείται συγκεκριμένη ονοματολογία για το χαρακτηριστικό \en Id \navy{p\_\{project-name\}}\\ \gr Παράδειγμα \en \navy{\{m\_express\}}
+	\item \gr Χρησιμοποιείται συγκεκριμένη ονοματολογία για το χαρακτηριστικό \en Id \navy{p\_\{project-name\}}\\ \gr Παράδειγμα \en \navy{p\_m\_express}
 	
 	\item \gr Παράδειγμα εγγράφου \en XML \gr βρίσκεται στο αρχείο \en \navy{doc/project-example.xml}
-	
 \end{dinglist}
 
 \end{slide}
@@ -298,7 +308,9 @@
 
 	\item \gr Χρησιμοποιείται ένα έγγραφο \en XML \gr για κάθε ερευνητική ομάδα
 	
-	\item \gr 
+	\item \gr Χρησιμοποιείται συγκεκριμένη ονοματολογία για το χαρακτηριστικό \en Id \navy{g\_\{group-name\}}\\ \gr Παράδειγμα \en \navy{g\_eltrun}
+	
+	\item \gr Παράδειγμα εγγράφου \en XML \gr βρίσκεται στο αρχείο \en \navy{doc/group-example.xml}
 
 \end{dinglist}
 
@@ -307,7 +319,24 @@
 %Slide 14
 \begin{slide}
 
-\Title{\gr Λίγα λόγια για το \en bibtex}
+\Title{\gr Διαχείριση βιβλιογραφίας μέσω \en bibtex}
+\small{
+\begin{dinglist}{229}
+
+	\item \gr Αποτελεί μέρος της διανομής της \en latex
+	
+	\item \gr Χρησιμοποιείται για την διαχείριση βιβλιογραφίας και την αυτόματη δημιουργία βιβλιογραφικών αναφορών
+	
+	\item \gr Δεν είναι \en XML \gr οπότε δεν πραγματοποιείται έλεγχος ορθότητας των δεδομένων
+	
+	\item \gr Τα αρχεία είναι κοινά για όλες τις ομάδες/μέλη
+	
+	\item \gr Για το δικτυακό τόπο του \en ELTRUN \gr χρησιμοποιούνται επεκτάσεις του συντακτικού της \en bibtex
+	
+	\item \gr Παράδειγμα εγγράφου \en bibtex \gr βρίσκεται στο αρχείο \en \navy{doc/publication-schema.bib}
+
+\end{dinglist}
+}
 
 \end{slide}
 
@@ -315,7 +344,21 @@
 \begin{slide}
 
 \Title{\gr Παράδειγμα αρχείου \en bibtex}
-
+\footnotesize{
+\navy{@Article \{}\\
+\navy{Title="}Required\navy{",\\
+Author="}Required\navy{",\\
+Journal="}Required\navy{",\\
+Volume="}Optional\navy{",\\
+Number="}Optional\navy{",\\
+Pages="}Optional\navy{",\\
+Month="}Optional\navy{",\\
+Year="}Required\navy{",\\
+XEmember="}Required: m\_member1 m\_member2\navy{",\\
+XEgroup="}Required: g\_group1 g\_group2\navy{",\\
+URL="}Optional\navy{",\\
+Note="}Optional\navy{"\}}
+}
 \end{slide}
 
 %Slide 16
@@ -324,12 +367,11 @@
 \Title{\gr Μην ξεχνάμε ότι ...}
 
 \begin{dinglist}{47}
+	\item \gr Παραδείγματα αρχείων δεδομένων μπορούμε να βρούμε στον κατάλογο:\\ \en \navy{doc/}
 	
-	\item \gr Παραδείγματα αρχείων δεδομένων μπορούμε να βρούμε στον κατάλογο:\\ \en \navy{/doc}
+	\item \gr Η παρουσίαση και το εγχειρίδιο χρήσης υπάρχουν στον κατάλογο:\\ \en \navy{doc/tex/}
 	
-	\item \gr Η παρουσίαση και το εγχειρίδιο χρήσης υπάρχουν στον κατάλογο:\\ \en \navy{/doc/tex}
-	
-	\item \gr Τα εργαλεία που χρειαζόμαστε τοπικά βρίσκονται στον κατάλογο:\\ \en \navy{/bin}
+	\item \gr Τα εργαλεία που χρειαζόμαστε τοπικά βρίσκονται στον κατάλογο:\\ \en \navy{bin/}
 \end{dinglist}
 
 \end{slide}
@@ -340,11 +382,11 @@
 \Title{\gr Μην ξεχνάμε ότι ... (2)}
 
 \begin{dinglist}{47}
-	\item \gr Πρέπει να είμαστε πολύ προσεκτικοί όταν προσθέτουμε αρχεία (\en \navy{cvs add ...})
+	\item \gr Πρέπει να είμαστε πολύ προσεκτικοί όταν προσθέτουμε αρχεία \en{} \navy{cvs add}
 	
-	\item \gr Πρέπει να είμαστε πολύ προσεκτικοί όταν ανανέωνουμε την έκδοση στον κεντρικό εξυπηρετητή (\en \navy{cvs commit ...})
+	\item \gr Πρέπει να είμαστε πολύ προσεκτικοί όταν ανανέωνουμε την έκδοση στον κεντρικό εξυπηρετητή \en{} \navy{cvs commit}
 	
-	\item \gr Πρέπει να είμαστε πολύ προσεκτικοί όταν ανανεώνουμε τον δικτυακό τόπο (\en \navy{make dist})
+	\item \gr Πρέπει να είμαστε πολύ προσεκτικοί όταν ανανεώνουμε τον δικτυακό τόπο \en{} \navy{make dist}
 \end{dinglist}
 
 \end{slide}

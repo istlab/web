@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<member id="Required" group="Required">
+<member id="Required" group="Required: group-1 group-2">
 	<givenname>Required</givenname>
 	<surname>Required</surname>
 	<memb_title>Optional</memb_title>

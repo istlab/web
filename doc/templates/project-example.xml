@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project id="Required" 
-	 group="Required" 
+	 group="Required: group1 group2" 
 	 scientific_coordinator="Optional" 
 	 contact="Optional" 
 	 international="Required" <!-- possible values: "yes" or "no" -->
