@@ -194,18 +194,33 @@ In our case we based our semantics on {\sc xml} to provide a common data hierarh
 
 Some of the characteristics of our approach have also been implemented by
 Jenkins \cite{Jen04} in what he terms
-offline programmatic generation of web pages.
-Our approach however differs in that we use a declarative specification,
+offline programmatic generation of web page, and in the design
+of the system S \cite{SCK02}, which uses a
+declarative approach for managing data intensive web sites.
+Our approach however differs from that of Jenkins
+in that we use a declarative specification
 rather than imperative code for creating the static content.
+Our approach also differs from that of the system S in that
+we use standardized and open data formats and tools for the
+declarative specification.
+On a different front, while Nguyen and his collegues \cite{NMT04}
+suggested the use of software engineering configuration management technologies
+in the implementation of web projects, they stopped shy of adopting
+the corresponding software development toolbench approach we use,
+proposing instead a---common in web development---integrated
+development environment solution.
 
-Similarities also exist in the context of content management systems ({\sc cms}) and enterprise content management ({\sc ecm}).
+Similarities also exist in the context of content management systems ({\sc cms}) \cite{SET02,MT04}
+and enterprise content management ({\sc ecm}) \cite{NP04}.
 {\sc cms} support the creation, management, distribution, publishing, and discovery of corporate information, where {\sc ecm} 
 involves a broader range of organizational information. Leading {\sc ecm} providers include Interwoven, 
 Vignette (www.vignette.com), Documentum and others. In those systems, similar motivation to ours 
 leads the research and analogous goals are set \cite{KW05,DOC05}. For example, the infeasibility of static HTML pages for modern 
-web sites and the problems of database-driven approach are also mentioned in \cite{KW05}. Quite recently, {\sc cms}'s based solely on 
-open standards architecture have been developed, utilizing methodologies similar to those described here \cite{OS05}. However,
- we do not propose a content management system but an approach for managing content based on established, widely deployed 
+web sites and the problems of database-driven approach are also mentioned in \cite{KW05}. 
+{\sc cms}s based solely on open standards architectures and
+{\sc xml} have also been developed,
+utilizing methodologies similar to those described here \cite{XYW02,OS05}.
+However, we do not propose a content management system but an approach for managing content based on established, widely deployed 
 and tested software configuration management tools. Our approach can be readily adopted by teams already using {\sc cms}. 
 Our use of industry-standard data formats and tools provides us with proven scalability (the same tools have been used 
 to manage multi-million line software projects) and flexibility (the tools are used as building blocks and a freely 
@@ -236,13 +251,15 @@ not a typical lightweight operation.
 Changes to the data schema are even more intrusive
 requiring a synchronized modification of the data,
 the front end, and the back end.
+The tension between content and data management is lucidly
+detailed in an article by Somani {\em et al} \cite{SCK02}.
 
 Continuous multi-person based projects are quite
 common in software development.
 Numerous programmers and engineers contribute and coordinate their work
 through a version control system, like {\sc cvs} \cite{BF01} that
 maintains a master repository of the source code.
-Concepts like the \textit{daily build} \cite{CS95b} or the
+Concepts like the \textit{daily build} \cite{KAL00} or the
 \textit{current} and \textit{stable} branches, as practiced by
 numerous open source projects, allow the maintenance
 of a known-good product.
@@ -256,7 +273,7 @@ generation process.
 Our proposed methodology for developing semi-dynamic web sites uses as
 its metaphor the distributed software development activity, as popularized
 by many high-visibility distributed open-source development projects,
-such as Eclipse \cite{GB04}, Mozilla, and Free{\sc bsd}.
+such as Eclipse \cite{GB04}, Mozilla, and Free{\sc bsd} \cite{Jor01}.
 Using a metaphor as a guiding principle for a development activity
 is a practice we adopted from extreme programming \cite{Bec00}.
 The methodology can be summarized in a few key points.
