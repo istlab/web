@@ -5,7 +5,8 @@
     <sem_duration>REQUIRED</sem_duration>
         <presentation by="OPTIONAL: m_a m_b ...">
                   <pres_title>REQUIRED</pres_title>
-                  <pres_url>REQUIRED</pres_url>
-		  <pres_name>OPTIONAL</pres_name>
+                  <pres_url>OPTIONAL</pres_url>
+		  <pres_name>OPTIONAL (prsenter's name; if not an eltrun member</pres_name>
+		  <pres_summary>OPTIONAL</pres_summary>
         </presentation>
 </seminar>
