@@ -13,9 +13,9 @@ digraph G{
 	organisation [label="Organisation"];
 	
 	content_provider->public_data [label="submit"];
-	system_administrator->content_provider [label="support"];
-	content_provider->organisation [label="is member"];
-	public_data->organisation [label="describe"];
+	system_administrator->content_provider [label="supports"];
+	content_provider->organisation [label="is a member"];
+	public_data->organisation [label="describes"];
 	end_user->organisation [label="interested"];
 	organisation->public_data [label="has"];
 	end_user->public_data [label="consumes"];

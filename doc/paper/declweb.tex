@@ -161,27 +161,19 @@ simple, but not trivial, and had already been satisfied
 twice in two different forms.
 The site's pages should represent the content and the relationships
 we illustrate in Figure \ref{fig:diag}.
-The center consists of multiple research groups.
-Members of our center and our research projects are
-associated with the center as a whole, and, typically, also
-with one or more research groups.
-Publications, such as journal articles and books,
-are also associated with the center, individual members (the authors),
-projects that funded the corresponding work,
-and groups that performed the work.
-Note that members, publications, and projects associated
-with one or more groups are aggregated and are typically associated
-again with the research center as a whole.
+The center is also an "umbrella" group that consists of multiple subgroups.
+Members of our center and our research projects are associated
+with one or more groups.
+Publications are associated
+with one or more members and groups.
 For the sake of simplicity,
 we have omitted from our description and the diagram
 a number of additional relationships,
 such as the member directing a group or managing a project.
-As an example of the type of content we were looking for,
-the research center, 
+As an example of the type of content we were looking for, 
 each member, group, or project should have a web page with a list
 of the corresponding publications;
-the research center and each group should have pages listing
-their projects and members. 
+each group should have pages listing their projects and members. 
 In order to add in our web site data that is not part of the aforementioned categories,
 each group can have additional pages of unstructured center's content.
 Finally, each member of our groups could be performing a presentation in our group weekly seminar.
@@ -573,11 +565,11 @@ and confidentiality.
 Presenter: 
 <a href="../members/m_bkarak.html">
 Mr. Vassilios Karakoidas
-</a><br>
-Date: 14 March 2004<br>
-Time: 19:00<br>
-Duration: 3 hrs<br>
-Location: 906<br><br>
+</a><br />
+Date: 14 March 2004<br />
+Time: 19:00<br />
+Duration: 3 hrs<br />
+Location: 906<br><br />
 <a href="http://www.eltrun.gr/seminar/presentations.ppt">
 Download the presentation
 </a>
@@ -600,19 +592,28 @@ and {\sc HTML} result in figure \ref{fig:project-html}.
 
 Our system has a distribution that works in both {\sc windows} and 
 {\sc UNIX} Environments (both Linux and Free BSD). The directory structure of a typical 
-local repository is depicted in Figure \ref{fig:eltrun-web-distro}.
+local repository is illustrated in Figure \ref{fig:eltrun-web-distro}.
 Most of our users are working in {\sc windows} environments and as 
 a result we decided to upload a {\sc windows} version of the needed tools 
-in the main repository under the directory \textit{bin}. The installation procedure is very simple,
+in the main repository under the directory \textit{bin}.
+The directory \textit{data} contains the {\sc XML} and {\sc bibtex} files and \textit{schema}
+includes all the available \textit{DTD/XSD} and the modular {\sc XHTML} specifications.
+The \textit{public\_html} and \textit{build} directory are used for the creation of the 
+web site locally, while \textit{doc} contains the available documentation for the Content Developers
+and Content Administrators. Finally, directory \textit{tools} has a small selection 
+of utilities (Shell scripts and {\sc Perl}) that provide statistical informations
+for our web site.
+
+The installation procedure is very simple,
 and the bootstrap tools that requires are only {\sc CVS} for 
 the initial check out and a ssh client. The needed keys 
 for the secure shell session are provided once in each user by the Content Administrator. 
-A full version of the system now demands 8 megabytes of space 
-in local machine, plus some extra for the local content store and generation.
+A full version of the system demands 8 megabytes of space 
+in the local machine, plus some extra for the local content store and generation.
 
 \begin{figure}
 \includegraphics[scale=0.6]{dep-graph.eps}
-\caption{Dependency graph of web site}
+\caption{Web graph of the generated site}
 \label{fig:eltrun-web-m-dds-snapshot}
 \end{figure}
 
