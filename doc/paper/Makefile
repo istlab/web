@@ -1,11 +1,12 @@
 %.dot: %.java
-	javadoc -docletpath /dds/src/Research/umlgraph/build/UmlGraph.jar -doclet UmlGraph -private $<
+	javadoc -docletpath UmlGraph.jar -doclet UmlGraph -private $<
 	mv graph.dot $@
 
 %.eps: %.dot
 	dot -Tps -o$@ $<
 
 all: Diag.eps rankyear.eps
+	latex declweb.tex
 
 clean:
-	rm *.eps *.aux *.blg *.dvi *.log *.ps *.eps
+	-rm *.eps *.aux *.blg *.dvi *.log *.ps *.eps *.bbl
