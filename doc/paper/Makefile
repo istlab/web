@@ -12,5 +12,10 @@ all: Diag.eps rankyear.eps
 	latex declweb.tex
 
 clean:
-	-rm -f *.aux *.blg *.dvi *.log *~ *.bbl
+	-rm -f *.aux
+	-rm -f *.blg
+	-rm -f *.dvi
+	-rm -f *.log
+	-rm -f *~
+	-rm -f *.bbl
 	-rm -f Diag.eps rankyear.eps distro.eps
