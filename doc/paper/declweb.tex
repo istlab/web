@@ -4,22 +4,7 @@
 \documentclass[10pt]{article}
 \usepackage{mathptmx}
 \usepackage{courier}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-
-\usepackage{epsfig}
-\usepackage{listings}
-
-\lstdefinelanguage{MYLANG}
-{morekeywords={},
-sensitive=false
-}
-
-% See the dvips documentation
-% Shrink figures larger than the text width to the text width
-\def\epsfsize#1#2{\ifdim#1>\columnwidth\columnwidth\else#1\fi}
-%\def\epsfsize#1#2{\textwidth}
-\epsfverbosetrue
+\usepackage{graphicx}
 
 \title{A Software Development Metaphor for Developing Semi-dynamic Web Sites through Declarative Specifications}
 
@@ -160,7 +145,7 @@ web development. He pointed out, that the development process has
 five distinct perspectives: (1) {\em process}, (2) {\em models, languages and notation}, (3) {\em reuse}, (4) {\em architecture} and (5) {\em usability}.
 These include elements like {\em requirements}, {\em  prototyping and validation}, {\em evolution and maintenance}, that apply in
 software engineering scientific areas, and other aesthetic elements like {\em visual quality} and {\em degree of proactivity}.
-As we will see in section \ref{sec:req}, in our work we took into consideration all the above perspectives and we introduced a few more, like {\em openness}
+As we will see in section \ref{sec:requirements}, in our work we took into consideration all the above perspectives and we introduced a few more, like {\em openness}
 and {\em observability}.
 As a plus, in our methodology we implement the system taking into account the organizational aspect of maintainability of content and the underlying application.
 
@@ -249,7 +234,7 @@ As we will see in later secion, in our case the developers work with {\sc xml} a
 files, instead of programming language source code files, and the {\sc build} process can be called excsulsivelt as a part of
 the self-reviewing process.
 
-\section{Designing a prototype}
+\section{Designing a Prototype}
 
 To illustrate our methodology in concrete terms
 the following sections contain as a case-study the design and implementation
@@ -263,12 +248,10 @@ and present the lessons we learned.
 
 \begin{figure}
 \begin{center}
-\leavevmode
-\epsfbox{Diag.eps}
+\includegraphics[scale=0.7]{Diag.eps}
 \end{center}
-\caption{
+\caption{Overview of data element relationships.}
 \label{fig:diag}
-Overview of data element relationships.}
 \end{figure}
 
 The functional requirements for our center's web site were
@@ -376,6 +359,7 @@ and inspecting the submitted {\em Public Data}.
 \end{figure}
 
 \subsection{Motivation and Design Paradigm}
+\label{sec:design}
 
 Our main guiding principle was to create a continuous, multi-person 
 development activity.
@@ -384,13 +368,11 @@ adopting the content authoring paradigm implied
 by our first approach was a mistake. The content of our web site resulted often stale and inconsistent, as a result 
 of a single person update process.
 Empirical evidence supports this observation.
-Figure \ref{fig:rankyear} illustrates the changes
-in usability rankings given to 21 Greek government department
-web sites between the years 2002 and 2003 \cite{G03}.
-The X shape in the rank changes between the one year and the next
-is, we believe, the result of statically authored web pages
-degrading to a point of irrelevance, and then being overhauled
-from scratch. The change of ranking can be explained as decay of the web site when dropping,
+Yanakoudakis \cite{G03} researched the usability rankings given from 21 Greek government department
+web sites between the years 2002 and 2003. He concluded that 
+the there is a statically authored pages web sites are degrading to
+a point of irrelevance, and then being overhauled from scratch.
+The change of ranking can be explained as decay of the web site when dropping,
 and re-engineering when rising.
 
 A database-driven approach also hinders evolution.
@@ -400,18 +382,6 @@ not a typical lightweight operation.
 Changes to the data schema are even more intrusive
 requiring a synchronized modification of the data,
 the front end, and the back end.
-
-\label{sec:design}
-\begin{figure}[h!]
-\begin{center}
-\leavevmode
-\def\epsfsize#1#2{\epsfxsize}
-\epsfysize.8\vsize
-\epsfbox{rankyear.eps}
-\end{center}
-\caption{Yearly changes in web site rankings}
-\label{fig:rankyear}
-\end{figure}
 
 Continuous multi-person based projects are quite
 common in software development.
@@ -506,7 +476,7 @@ repository is valid, then local web site generation must be performed to validat
 presentation. After that, the data is ready to be submitted to the main 
 data repository. After the update of the data repository the process terminates.
 
-\section{Implementation}
+\section{Prototype Implementation}
 
 \subsection{Key Technologies}
 \label{subsec:key-tech}
@@ -601,37 +571,7 @@ shell ({\sc ssh}) as the transport protocol guaranteeing the data's integrity
 and confidentiality.
 
 \begin{figure}
-\lstset{language=MYLANG,basicstyle=\ttfamily}
-{\begin{lstlisting}
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
- <xs:element name="seminar">
-  <xs:complexType>
-   <xs:sequence>
-    <xs:element name="sem_date">
-     <xs:simpleType>
-      <xs:restriction base="xs:string">
-       <xs:pattern value="[0-9]{8}" />
-      </xs:restriction>
-     </xs:simpleType>
-    </xs:element>
-    <xs:element name="sem_time" type="xs:string" />
-    <xs:element name="sem_title" type="xs:string" />
-    <xs:element name="sem_room" type="xs:string" />
-    <xs:element name="sem_url" type="xs:string" minOccurs="0" />
-    <xs:element name="sem_duration" type="xs:string" />
-   </xs:sequence>
-   <xs:attribute name="by" type="xs:string" />
-  </xs:complexType>
- </xs:element>
-</xs:schema>
-\end{lstlisting}}
-\caption{Seminars X-Schema file}
-\label{fig:project-dtd}
-\end{figure}
-
-\begin{figure}
-\lstset{language=MYLANG,basicstyle=\ttfamily}
-{\begin{lstlisting}
+\begin{verbatim}
 <?xml version="1.0"?>
 <seminar by="m_bkarak">
  <sem_date>20040314</sem_date>
@@ -641,14 +581,13 @@ and confidentiality.
  <sem_url>http://www.eltrun.gr/seminar/presentations.ppt</sem_url>
  <sem_duration>3 hrs</sem_duration>
 </seminar>
-\end{lstlisting}}
+\end{verbatim}
 \caption{A typical seminar XML file}
 \label{fig:project-xml}
 \end{figure}
 
 \begin{figure}
-\lstset{language=MYLANG,basicstyle=\ttfamily}
-{\begin{lstlisting}
+\begin{verbatim}
 <xsl:template match="seminar" mode="full">
  <h3><xsl:value-of select="sem_title" /></h3>
   <xsl:element name="a">
@@ -672,14 +611,13 @@ and confidentiality.
   Download the presentation
  </xsl:element>
 </xsl:template>
-\end{lstlisting}}
+\end{verbatim}
 \caption{The XSLT transformation file for seminars}
 \label{fig:project-xslt}
 \end{figure}
 
 \begin{figure}
-\lstset{language=MYLANG,basicstyle=\ttfamily}
-{\begin{lstlisting}
+\begin{verbatim}
 <tbody valign="top">
 <tr>
 <td align="left" width="82%">
@@ -699,13 +637,12 @@ Location: 906<br><br />
 <a href="http://www.eltrun.gr/seminar/presentations.ppt">
 Download the presentation
 </a>
-\end{lstlisting}}
+\end{verbatim}
 \caption{A generated HTML seminar file}
 \label{fig:project-html}
 \end{figure}
 
 You can see representative samples of a seminar's
-{\sc xsd} schema description in Figure \ref{fig:project-dtd},
 {\sc xml} data in Figure \ref{fig:project-xml},
 {\sc xslt} transformation in Figure \ref{fig:project-xslt},
 and {\sc xhtml} result in Figure \ref{fig:project-html}.
@@ -810,7 +747,7 @@ We believe that our approach and many of the lessons we learned
 can be applied in numerous similar situations,
 leading to a lightweight, structured, consistent, and maintainable
 web site building method. The proposed design satisfies the non-functional properties
-we listed in Section \ref{sec:req},
+we listed in Section \ref{sec:requirements},
 and that our approach stands a higher chance to succeed where the
 two other approaches failed.
 The initial user reaction was not favorable, but this can
