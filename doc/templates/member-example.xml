@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<member id="Required" group="Required">
+	<givenname>Required</givenname>
+	<surname>Required</surname>
+	<memb_title>Optional</memb_title>
+	<email>Required</email>
+	<web_site>Optional</web_site>
+	<office_phone>Optional</office_phone>
+	<mobile_phone>Optional</mobile_phone>
+	<fax>Optional</fax>
+	<alumnus/><!-- Optional -->
+	<office_address>Optional</office_address>
+	<postal_address>Optional</postal_address>
+	<photo>Optional</photo>
+	<shortcv>
+	    Required
+	    <!-- HTML -->
+	</shortcv>
+</member>
