@@ -1,27 +1,23 @@
 % $Id$
-%
 
-\documentclass[10pt]{article}
+\documentclass{elsart}
 \usepackage{mathptmx}
-\usepackage{courier}
+%\usepackage{courier}
 \usepackage{graphicx}
+
+\begin{document}
+
+\begin{frontmatter}
 
 \title{A Software Development Metaphor for Developing Semi-dynamic Web Sites through Declarative Specifications}
 
-\author{Diomidis Spinellis, Vassilios Karakoidas and Damianos Chatziantoniou\\
-Department Management Science and Technology\\
-Athens University of Economics and Business\\
-Greece\\
-email: \{dds, bkarak, damianos\}@aueb.gr}
+\author{Diomidis Spinellis, Vassilios Karakoidas and Damianos Chatziantoniou}
 
-\date{}
-
-\begin{document}
+\address{Department of Management Science and Technology, Athens University of Economics and Business, Greece email:\{dds, bkarak, damianos\}@aueb.gr}
 
 \maketitle
 
 \begin{abstract}
-\noindent
 Traditionally, the realization of Web sites involves either
 static content developed using web authoring tools or dynamic
 content delivered by a database driven front-end,
@@ -40,6 +36,8 @@ is also demonstrated, along with interesting conclusions from our framework acce
 
 \subsection*{Keywords}
 Web site development, semi-dynamic web sites, {\sc xml}, make, {\sc BibTeX}, {\sc xslt}, {\sc X-Schema (xsd)}, {\sc html}.
+
+\end{frontmatter}
 
 \section{Introduction}
 \label{sec:intro}
@@ -116,7 +114,9 @@ of the (meticulously structured) content \cite{DEEP_WEB, JP04}.
 
 All in all, a database-driven approach appears to be suitable
 only for those with ample resources to justify the full
-development and appropriate maintenance of a sophisticated infrastructure.
+development and appropriate maintenance of a sophisticated infrastructure \cite{EN00}.
+
+{\Huge EXPLAIN HERE}
 
 Having faced the problems we described above within our organization,
 we reasoned that a fresh approach was needed to tackle them.
@@ -233,6 +233,20 @@ of the product, through a -usually- {\em daily build} process.
 As we will see in later secion, in our case the developers work with {\sc xml} and {\sc xslt}
 files, instead of programming language source code files, and the {\sc build} process can be called excsulsivelt as a part of
 the self-reviewing process.
+
+We do not propose a Content Management System, but an approach for managing content based on mature widely 
+deployed and tested software configuration management tools.  Our approach can be readily adopted by teams already using SCM.  Our use of industry-standard data formats and tools provides us with
+
+\begin{itemize}
+	\item proven scalability (the same tools have been used to manage multi-million line software projects)
+
+	\item flexibility (the tools are used as building blocks and a freely configurable environment)
+\end{itemize}
+
+The downside of our approach is many features that come out of the box in CMSs need to be explicitly tailored in our approach.
+
+
+
 
 \section{Designing a Prototype}
 
@@ -571,6 +585,7 @@ shell ({\sc ssh}) as the transport protocol guaranteeing the data's integrity
 and confidentiality.
 
 \begin{figure}
+{\small \tt%
 \begin{verbatim}
 <?xml version="1.0"?>
 <seminar by="m_bkarak">
@@ -582,11 +597,13 @@ and confidentiality.
  <sem_duration>3 hrs</sem_duration>
 </seminar>
 \end{verbatim}
+}
 \caption{A typical seminar XML file}
 \label{fig:project-xml}
 \end{figure}
 
 \begin{figure}
+{\small \tt%
 \begin{verbatim}
 <xsl:template match="seminar" mode="full">
  <h3><xsl:value-of select="sem_title" /></h3>
@@ -612,11 +629,13 @@ and confidentiality.
  </xsl:element>
 </xsl:template>
 \end{verbatim}
+}
 \caption{The XSLT transformation file for seminars}
 \label{fig:project-xslt}
 \end{figure}
 
 \begin{figure}
+{\small \tt%
 \begin{verbatim}
 <tbody valign="top">
 <tr>
@@ -638,6 +657,7 @@ Location: 906<br><br />
 Download the presentation
 </a>
 \end{verbatim}
+}
 \caption{A generated HTML seminar file}
 \label{fig:project-html}
 \end{figure}
@@ -794,38 +814,7 @@ We would like to thank Prof. Manolis Skordalakis for his very perceptive comment
 The authors would also like to thank George Oikonomou and Marianthi Theocharidou who reviewed versions 
 of this paper and provided many corrections and observations.
 
-\bibliographystyle{unsrt}
+\bibliographystyle{elsart-num}
 \bibliography{declweb}
-
-\section*{Biographies}
-\noindent
-{\em Diomidis Spinellis} is an Associate Professor at the Department of Management Science and Technology at the Athens University of Economics and Business, 
-Greece.  His research interests include software engineering tools, programming languages, and computer security.  He holds an MEng in Software Engineering 
-and a PhD in Computer Science both from Imperial College (University of London, UK).  He has written more than 70  technical papers in the areas of 
-software engineering, information security, and ubiquitous computing. 
-His book {\em Code Reading: The Open Source Perspective}
-received a ``Software Development Productivity Award'' in 2004.  He has contributed software to the BSD Unix distribution, the X Window System, 
-and is the author of a number of open-source software packages, libraries, and tools.
-
-{\em Dr. Spinellis} is a member of the ACM, the IEEE, the Greek Computer Society, the Technical Chamber of Greece, and a founding member of the Greek 
-Internet User's Society.  He is a co-recipient of the Usenix Association 1993 Lifetime Achievement Award.
-\\
-\\
-{\em Vassilios Karakoidas} is a PhD candidate in Athens University of Economics and Business at the Department of Management Science and 
-Technology. He holds an BSc in Computer Science (University of Piraeus) and an MSc in Information Systems (Athens University of 
-Economics and Business). He is former member of the Health Informatics laboratory at University of Piraeus. He is now a member of 
-ELTRUN/SENSE and has been involved in various research projects. The most recent are GEMINI and PRAXIS. His research interests include
-Software Engineering, Programming Languages, Operating Systems and Networking.
-\\
-\\
-{\em Dr Damianos Chatziantoniou} is visiting Assistant Professor in Athens University of Economics and Business and scientific consultant to 
-ELTRUN. He has received his B.Sc. in Applied Mathematics from the University of Athens in Greece and continued his studies in Computer 
-Science at New York University (M.Sc., 1993) and Columbia University (Ph.D., 1997), working with Ken Ross on data warehousing and decision
-support systems. During his studies he was teaching and consulting regularly. Since 1997, Damianos is an assistant professor at Stevens 
-Institute of Technology, an adjunct professor at Columbia University and president and co-founder of Panakea Software Inc. Panakea owns 
-patent-pending algorithms for OLAP applications and developed a state-of-the-art decision support querying tool. Reference sites include AT\&T, 
-New York Hospital and Dun-Bradstreet. Damianos is collaborating with AT\&T Labs-Research, Columbia University Medical Informatics Center, and 
-National Technical University of Athens. His interests lie in the areas of data warehousing, decision support systems, OLAP and data mining. 
-He has published papers and journals in VLDB, ICDE, EDBT and elsewhere.
 
 \end{document}
