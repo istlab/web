@@ -166,7 +166,7 @@ In addition, Fraternali categorizes relevant software tools into six individual 
  (2) {\em web-enabled hypermedia authoring tools}, (3) {\em web-DBPL (database programming languages) integrators}, (4) {\em web form editors, report writers,
  and database publishing wizards},
  (5) {\em multiparadigm tools} and (6) {\em model-driven application generators} \cite{FRA99}. These tools are both commercial and open-source and they are widely used.
- In section \ref{subsec:key-tech}, we will see that in our case we chose open source tools were chosen in order to satisfy the {\em openness} functional requirement.
+ In section \ref{subsec:key-tech}, we will see that in our case we chose open source tools to satisfy the {\em openness} functional requirement.
  
 Many research groups also designed and implemented frameworks to organize the web development process. These frameworks addressed issues
 such as {\em lifecycle coverage}, {\em process automation}, {\em modeling abstractions}, {\em reuse and components}. The most popular implementations are 
@@ -234,7 +234,7 @@ developers in their current form, and a building tool, such as {\em make}
 or {\em ant} guides the building process.
 Developers edit and build their work locally, and commit it to a central server when ready.
 The repository on the central server is the source for creating the end-result
-result of the product, through a {\em daily build} process.
+of the product, through a {\em daily build} process.
 In our case however, the developers work with {\sc xml} and {\sc xslt}
 files, instead of programming language source code files.
 
@@ -475,7 +475,7 @@ for possible presentation problems.
 
 \item[Validate data] Content developers can validate the data in the local 
 repository before the final commit. For the validation process
-the system use appropriate data schemas.
+they use appropriate data schemas.
 
 \item[Manage user accounts] Content Administrators perform user management in the 
 system. User management consists of two main processes: 
@@ -524,7 +524,7 @@ implemented a system based on {\sc xslt} \cite{W3C_XSLT}, a language for transfo
 Finally, {\sc gnu} {\em make} \cite{gnu_make} and a couple of shell script
 constructs were used for handling the project's makefile.
 The complete setup including all tools proved to be portable
-between Unix and Microsoft Windows, with team members working
+between {\sc unix} and {\sc microsoft windows}, with team members working
 on machines running different versions of {\sc microsoft windows}, {\sc gnu/linux},
 and Free{\sc bsd}.
 
@@ -730,7 +730,7 @@ on the local machine, plus some extra for the local content store and generation
 
 In Figure \ref{fig:eltrun-web-m-dds-snapshot} we illustrate a web graph \cite{KRRSTU00} 
 that shows references between the {\sc xhtml} pages.
-The above Figure shows the references  of a member ("m\_dds" is the ID for 
+The above Figure shows the references  of a member ("m\_dds" is the {\sc id} for 
 Diomidis Spinellis), with other pages in the web site.
 The pages starting with "p\_" are projects, with "m\_" members, and "g\_" groups.
 At the time of writing the site generated 215 {\sc xhtml} pages with 2432 hyperlinks. 

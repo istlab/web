@@ -10,7 +10,7 @@ digraph G{
 	public_data [label="Public Data"];
 	system_administrator [label="Content Administrator"];
 	end_user [label="Content Consumer"];
-	organisation [label="Organisation"];
+	organisation [label="Organization"];
 	
 	content_provider->public_data [label="submit"];
 	system_administrator->content_provider [label="supports"];

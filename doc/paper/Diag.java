@@ -41,4 +41,4 @@ class Seminar {}
 /**
  * @assoc 0..* has "1" Group
  */
-class additional_pages {}
+class AdditionalPages {}
