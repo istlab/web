@@ -23,13 +23,13 @@ sensitive=false
 \epsfverbosetrue
 
 %\title{Declarative Implementation of Semi-dynamic Web Sites}
-\title{Automatic Development and Maintenance of Semi-dynamic Web Sites through Declarative Specifications}
+\title{Automated Development and Maintenance of Semi-dynamic Web Sites through Declarative Specifications}
 
 \author{Diomidis Spinellis, Vassilios Karakoidas and Damianos Chatziadoniou\\
 Department Management Science and Technology \\
 Athens University of Economics and Business \\
 Greece\\
-email: \{dds,bkarak\}@aueb.gr}
+email: \{dds, bkarak, damianos\}@aueb.gr}
 
 \date{}
 
@@ -125,7 +125,7 @@ query-style interface.
 Such an interface is typically less usable than browsable web pages,
 and the served content is often ignored by search engines,
 leading to reduced visibility
-of the (meticulously structured) content \cite{DEEP_WEB}.
+of the (meticulously structured) content \cite{DEEP_WEB} \cite{JP04}.
 All in all, a database-driven approach appears to be suitable
 only for those with ample resources to justify the full
 development and appropriate maintenance of a sophisticated infrastructure.
@@ -355,34 +355,51 @@ The use cases that comprise our system are (Figure \ref{fig:use-case-diagram}):
 \end{figure}
 
 \begin{description}
-\item[Maintain schemas, transformations and users] This use case describes the maintenance and development
- procedures of the system. Each Content Developer can update the Data schemas, the transformation scripts 
- in order to correct errors or add new features.
+\item[Maintain schemas, transformations and users] This use case describes the 
+maintenance and development procedures of the system. Each Content Developer can
+update the Data schemas, the transformation scripts in order to correct errors 
+or add new features.
 
-\item[Update local repository] Each user in the system must update the local repository each time he uses the system. 
-To do so, they must execute a  update repository command. If there is a conflict, the users must correct the problem and rerun the
-update command.
+\item[Update local repository] Each user in the system must update the local 
+repository each time he uses the system. To do so, they must execute a  update 
+repository command. If there is a conflict, the users must correct the problem 
+and rerun the update command.
 
-\item[Commit changes] Content developers and Content administrators must commit the changes from their local repository 
-to the CVS repository in the web site server.
+\item[Commit changes] Content developers and Content administrators must commit 
+the changes from their local repository to the CVS repository in the web site server.
 
-\item[Maintain content] This is the overall use case that allows Content Developers to maintain the content of the web site. 
-Content consists of  group, member, project and seminar data or bibliography collection entries.
+\item[Maintain content] This is the overall use case that allows Content 
+Developers to maintain the content of the web site. 
+Content consists of  group, member, project and seminar data or bibliography 
+collection entries.
 
-\item[Generate web site] Content administrators and developers can generate the web site locally for preview. This procedure is 
-performed with the execution of a make file command. Upon completion, the user can review the newly integrated content and inspect 
+\item[Generate web site] Content administrators and developers can generate the 
+web site locally for preview. This procedure is 
+performed with the execution of a make file command. Upon completion, 
+the user can review the newly integrated content and inspect 
 for possible presentation problems.
 
-\item[Validate data] Content developers can validate the data in the local repository before the final commit. For the validation procedure
+\item[Validate data] Content developers can validate the data in the local 
+repository before the final commit. For the validation procedure
 the system use the appropriate data schemas.
 
-\item[Manage user accounts] Content Administrators perform user management in the system. User management consists mainly of two main processes: (1) Authentication , (2) Ownership \& Policy
+\item[Manage user accounts] Content Administrators perform user management in the 
+system. User management consists mainly of two main processes: 
+(1) Authentication , (2) Ownership \& Policy
 
-\item[Browse web site] This one describes the we site browsing process. Only Content Consumer can access the generated HTML pages.
+\item[Browse web site] This one describes the we site browsing process. Only 
+Content Consumer can access the generated HTML pages.
 
 \end{description} 
 
-In figure \ref{fig:maintain-content-diagram} we show the activity diagram of the most complex use case in the system. The Content Developer first updates the local repository and then begins the initiation of data maintenance by adding, removing or modifying data files and bibliography entries. Upon completion data validation must be performed before the commit to the data repository. If data are valid, then local web site generation must be performed to correct possible presentation problems. After that, the data are ready to be submitted to the main data repository. After the update of the data repository the process terminates.
+In figure \ref{fig:maintain-content-diagram} we show the activity diagram of the 
+most complex use case in the system. The Content Developer first updates the 
+local repository and then begins the initiation of data maintenance by adding, 
+removing or modifying data files and bibliography entries. Upon completion data 
+validation must be performed before the commit to the data repository. If data 
+are valid, then local web site generation must be performed to correct possible 
+presentation problems. After that, the data are ready to be submitted to the main 
+data repository. After the update of the data repository the process terminates.
 
 \section{Implementation}
 
@@ -585,7 +602,8 @@ and HTML result in figure \ref{fig:project-html}.
 \end{figure}
 
 Our system has a distribution that works in both win32 and 
-Unix Environments (Linux and Free BSD). The directory structure of a typical local repository is depicted in
+Unix Environments (Linux and Free BSD). The directory structure of a typical 
+local repository is depicted in
 figure \ref{fig:eltrun-web-distro}.
 Most of our users are working in win32 environments and as 
 a result we decided to upload a win32 version of the needed tools 
@@ -602,8 +620,10 @@ in local machine, plus some extra for the local content store and generation.
 \label{fig:eltrun-web-m-dds-snapshot}
 \end{figure}
 
-In Figure \ref{fig:eltrun-web-m-dds-snapshot} we depicts a graph that shows references between the HTML pages.
-The above figure shows the references  of a member ("m\_dds" is the ID for Diomidis Spinellis), with other pages in the web site.
+In Figure \ref{fig:eltrun-web-m-dds-snapshot} we depicts a web graph \cite{KRRSTU00} 
+that shows references between the HTML pages.
+The above figure shows the references  of a member ("m\_dds" is the ID for 
+Diomidis Spinellis), with other pages in the web site.
 The pages starting with "p\_" are projects, with "m\_" members, and "g\_" groups.
 By the time we write this the site has 209 generated HTML pages with 1368 hyperlinks. 
 
@@ -648,8 +668,10 @@ were becoming confident in their work, even proud of sharing
 sophisticated tools and processes with software engineers.
 Our technical persons experienced more problems than the inexperienced ones 
 and that came as a surprise for us. Some of them were already familiar 
-with the key technologies and they tried to change the tools proposed with others more user-friendly. 
-These initiatives resulted in corruption of the local repositories, malformed XML data and wrong bibliography entries.
+with the key technologies and they tried to change the tools proposed with others 
+more user-friendly. 
+These initiatives resulted in corruption of the local repositories, malformed 
+XML data and wrong bibliography entries.
 After a few false attempts they decided to follow the proposed system.
 
 Two weeks after the initial system presentation all users where able to upload 
