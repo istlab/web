@@ -27,3 +27,5 @@ clean:
 	-rm -f *~
 	-rm -f *.bbl
 	-rm -f Diag.eps rankyear.eps distro.eps dep-graph.eps conc-model.eps
+	-rm -f declweb.ps
+	-rm -f *.backup
