@@ -654,7 +654,7 @@ After a few false attempts they decided to follow the proposed system.
 
 Two weeks after the initial system presentation all users where able to upload 
 and maintain their data. The inexperienced users learned to edit XML files,
-importing bibtex entries into the system and committing to the CVS repository. 
+importing BibTeX entries into the system and committing to the CVS repository. 
 They just followed steps in a procedure that they see as a black box. 
 
 \section{Lessons Learned}
@@ -682,11 +682,28 @@ Summarizing, we believe that adopting a software development
 metaphor and tools for developing and maintaining semi-dynamic
 web site is a practical worthwhile approach.
 
-\section{Acknoledgements}
+\begin{figure}[h!]
+\includegraphics[scale=0.6]{cvs-log.eps}
+\caption{Commit progress graph}
+\label{fig:cvs-log}
+\end{figure}
+
+In Figure \ref{fig:cvs-log} we can see the commit procedures that have been performed by
+the Content Developers and Administrators. Each swimlane in the figure is represents a committing
+member of our system. Each horizontal line represents a single commit procedure. Content Administrators
+are dds (Diomidis Spinellis) and bkarak (Vassilios Karakoidas). Initially we can see that only the two commit 
+changes to the system. It was the period of development of the system. After the initial development, a few 
+pioneer content developers started to use the system and commit XML and bibliography data. In this period 
+we also tested the system thoroughly and developed the finalized the presentation of the web site. After the end of
+the test period all users became active and began to commit data in a parallel manner. This proves that we achieved 
+one of our primary goals, make the web site procedure a multi-continuous development activity.
+
+\section{Acknowledgments}
 \label{sec:ack}
 
 We would like to thank Prof. Manolis Skordalakis for his very perceptive comments during the compilation of this paper.
-Special thanks to Damianos Chatziadoniou and Marianthi Theocharidou who reviewed early versions of this paper.
+The authors would also like to thank to Damianos Chatziadoniou and Marianthi Theocharidou who reviewed early versions 
+of this paper.
 
 \bibliographystyle{unsrt}
 \bibliography{declweb}
