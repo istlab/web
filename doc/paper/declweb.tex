@@ -9,7 +9,7 @@
 
 \begin{frontmatter}
 
-\title{A Software Development Metaphor for Developing Semi-dynamic Web Sites through Declarative Specifications}
+\title{A Software Development Metaphor for Implementing Semi-dynamic Web Sites through Declarative Specifications}
 
 \author{Diomidis Spinellis, Vassilios Karakoidas and Damianos Chatziantoniou}
 
@@ -20,10 +20,10 @@
 \begin{abstract}
 Traditionally, the realization of Web sites involves either
 static content developed using web authoring tools or dynamic
-content delivered by a database driven front-end,
+content delivered by a database-driven front-end,
 where the structured content is organized
 in a relational schema and dynamically generated.
-The limitations of statically-authored web pages are easy to discern and
+The limitations of statically-authored web pages are easy to discern, and
 for a number of applications, the use of a database
 introduces a level of additional complexity that
 makes the choice a part of the problem space rather than the solution space.
@@ -31,11 +31,11 @@ Based on the distributed software development approach, we present a methodology
 middle-sized semi-dynamic web sites. The technological dimensions of this
 approach are well-known open source technologies, such as version control systems
 and {\sc xml} transformation tools. The prototype framework we developed for the testing of the proposed methodology
-is also demonstrated, along with interesting conclusions from our framework acceptance.
+is also demonstrated, along with an overview of our framework acceptance.
 \end{abstract}
 
 \subsection*{Keywords}
-Web site development, semi-dynamic web sites, {\sc xml}, make, {\sc BibTeX}, {\sc xslt}, {\sc X-Schema (xsd)}, {\sc html}.
+Web site development, {\sc xml}, make,, {\sc xslt}, {\sc X-Schema (xsd)}, {\sc dtd}, {\sc html}.
 
 \end{frontmatter}
 
@@ -43,7 +43,7 @@ Web site development, semi-dynamic web sites, {\sc xml}, make, {\sc BibTeX}, {\s
 \label{sec:intro}
 Traditionally, the realization of Web sites involves either
 static content developed using web authoring tools like
-icrosoft's Front Page and DreamWeaver, or dynamic
+Microsoft's Front Page and DreamWeaver, or dynamic
 content delivered by a data-oriented front-end,
 where the structured content is stored in a relational database 
 and dynamically generated on the fly.
@@ -55,7 +55,7 @@ of all the site's elements.
 The limitations of statically-authored web pages are easy to discern.
 The content is authored in a loosely organized manner, manually updated web pages, and, as a result,
 can be inconsistent in both structure and presentation.
-While the use of cascading style sheets can help one obtain a
+While the use of cascading style sheets ({\sc css}) can help one obtain a
 consistent look, their use still requires discipline.
 Moreover, the authored pages remain loosely structured and the resulting
 site can be difficult to modify and reorganize. In addition, the information is often duplicated
@@ -70,7 +70,7 @@ the aforementioned problems.
 Separating the source data from its (dynamically generated)
 marked-up version ({\sc html} code) leads to a consistent
 yet flexible generation of web pages.
-In addition, the database's relational model imposes
+In addition, the database's relational model ({\sc erd}) imposes
 its structure on the data being stored.
 Finally, a database back-end allows concurrent updates by
 different users.
@@ -99,11 +99,11 @@ The front-end, being an executable program working on
 untrusted data (the web page requests) can become the target of
 malicious attacks,
 and must therefore be inspected and audited to ensure its robustness \cite{YHDM04}.
-
 To minimize the risk of an attack against the database
 (that would jeopardize the organization's data)
 the database server has to be installed on a machine separate
 from the web server, behind a properly configured firewall.
+
 Finally, the extraction of content from a database often
 induces the web site's designers and stakeholders to adopt a
 query-style interface.
@@ -127,10 +127,10 @@ using a database system, if they cannot afford the overhead cost for:
 	\item Provision of security, concurrency control, recovery, integrity functions
 \end{itemize}
 
-In addition, they note that it is desirable to use a straight-forward regular file solution when the following criteria are met.
+In addition, they note that it is desirable to use a straight-forward regular file solution when the following criteria are met:
 
 \begin{itemize}
-	\item The database and applications are simple, well defined and not expected to change
+	\item The database and the related applications are simple, well defined and not expected to change
 
 	\item Multiple user access to data is not required
 \end{itemize}
@@ -139,7 +139,7 @@ Having faced the problems we described above within our organization,
 we reasoned that a fresh approach was needed to tackle them.
 Specifically,
 in an internal effort to develop and maintain our group's web site
-we had already abandoned the ad-hoc authoring tool--based approach
+we had already abandoned the ad-hoc authoring tool--based approach,
 because it led to an inconsistent look and stale content,
 while the maintenance of a subsequent database-driven
 design approach was proving intractable for the resources that
@@ -154,7 +154,7 @@ and discuss the lessons we learned.
 \label{sec:related}
 
 During the last decade, the World Wide Web became a popular platform for many {\sc it} applications.
-Researchers and companies, in their attempt to make robust and easily maintainable web applications,
+Researchers and companies, in their attempt to make robust web applications,
 developed many frameworks and tools to formalize and make efficient the creation and maintenance process.
 
 Fraternali \cite{FRA99} analyzed and studied the perspectives of
@@ -187,10 +187,10 @@ For a successful high-level design of a web application,
 a visual notation is often introduced to specify composition and navigation features in
 hypertext applications.
 As an example, {\sc WebML} \cite{CFB00,WEBML} is a language based on standards like Entity-Relationship model {\sc (erd)} and {\sc uml} \cite{UML}.
-{\sc WebML} has been proposed in the context of {\sc W3I3} Esprit project.
+{\sc WebML} has been proposed in the context of {\sc w3i3} Esprit project.
 Araneus also defined a logical model known as the Araneus Logical Model \cite{MAM03}.
 These higher level abstractions are well defined and very useful for the overall design of a web site, but are based on custom technologies.
-In our case we based our semantics on {\sc xml} to provide a common data abstraction layer.
+In our case we based our semantics on {\sc xml} to provide a common data hierarhical organization layer.
 
 Some of the characteristics of our approach have also been implemented by
 Jenkins \cite{Jen04} in what he terms
@@ -203,14 +203,53 @@ Similarities also exist in the context of content management systems ({\sc cms})
 involves a broader range of organizational information. Leading {\sc ecm} providers include Interwoven, 
 Vignette (www.vignette.com), Documentum and others. In those systems, similar motivation to ours 
 leads the research and analogous goals are set \cite{KW05,DOC05}. For example, the infeasibility of static HTML pages for modern 
-web sites and the problems of database-driven approach are also mentioned in \cite{KW05}. Quite recently, {\sc cms}s based solely on 
+web sites and the problems of database-driven approach are also mentioned in \cite{KW05}. Quite recently, {\sc cms}'s based solely on 
 open standards architecture have been developed, utilizing methodologies similar to those described here \cite{OS05}. However,
  we do not propose a content management system but an approach for managing content based on established, widely deployed 
 and tested software configuration management tools. Our approach can be readily adopted by teams already using {\sc cms}. 
 Our use of industry-standard data formats and tools provides us with proven scalability (the same tools have been used 
 to manage multi-million line software projects) and flexibility (the tools are used as building blocks and a freely 
-configurable environment). The downside of our approach is that many features that come out of the box in {\sc cms}s need 
+configurable environment). The downside of our approach is that many features that come out of the box in {\sc cms}'s need 
 to be explicitly tailored.
+
+\section{Motivation and Design Paradigm}
+\label{sec:design}
+
+Our main guiding principle was to create a continuous, multi-person 
+development activity.
+Live web sites continuously evolve;
+adopting the content authoring paradigm implied
+by our first approach was a mistake. The content of our web site resulted often stale and inconsistent, as a result 
+of a single person update process.
+Empirical evidence supports this observation.
+Yanakoudakis \cite{G03} researched the usability rankings given from 21 Greek government department
+web sites between the years 2002 and 2003. He concluded that 
+the statically authored pages web sites are degrading to
+a point of irrelevance, and then being overhauled from scratch.
+The change of ranking can be explained as decay of the web site when dropping,
+and re-engineering when rising.
+
+A database-driven approach also hinders evolution.
+Changes to the content's presentation require the modification
+and installation of the front end page generator;
+not a typical lightweight operation.
+Changes to the data schema are even more intrusive
+requiring a synchronized modification of the data,
+the front end, and the back end.
+
+Continuous multi-person based projects are quite
+common in software development.
+Numerous programmers and engineers contribute and coordinate their work
+through a version control system, like {\sc cvs} \cite{BF01} that
+maintains a master repository of the source code.
+Concepts like the \textit{daily build} \cite{CS95b} or the
+\textit{current} and \textit{stable} branches, as practiced by
+numerous open source projects, allow the maintenance
+of a known-good product.
+What we needed for our approach were appropriate,
+declarative language-based formalisms for expressing our data,
+its transformation into web pages, and an efficient
+generation process.
 
 \section{Methodology}
 \label{sec:meth}
@@ -225,7 +264,6 @@ The methodology can be summarized in a few key points.
 \begin{itemize}
 \item Structure the site's data as {\sc xml} files,
 or another declarative formalism.
-Content developers create and edit these to modify the site's contents.
 \item Use {\sc xml} schemas and corresponding tools to validate the content.
 \item Exploit modular {\sc xhtml} \cite{W3C_MODULAR_XHTML} to create schemas for rich
 data elements.
@@ -237,8 +275,7 @@ templates, transformation, and schemas across content developers and
 administrators, synchronizing updates, and keeping a record of the project's history.
 (Thomas and Hunt \cite{HT00} aptly compare a version control system
 with a global undo command with unlimited undo levels.)
-\item Create the site's look and feel in {\sc xhtml} format
-through {\sc xslt}  transformations \cite{HM01}.
+\item Create the site's look and feel in {\sc xhtml} thourgh transformation the data in a declarative way, using languages such as {\sc xslt} and {\sc xquery} \cite{HM01,NOV03}.
 \item Express verification and building dependencies among
 data elements and schemas through {\em make} \cite{MAKE} or {\em ant}
 \cite{JAKARTA_ANT} rules.
@@ -280,7 +317,7 @@ Application Server & None & Audit Trail & Yes\\
 Database & None & Content Approval & Yes\\
 License & Free/Open Source & Login History & Yes\\
 Operating System & {\sc unix}, Win32 & Versioning & Yes\\
-Pro/ing Language & {\sc xml, xslt}, make & Problem notification & Yes\\
+Prog/ing Language & {\sc xml, xslt}, make & Problem notification & Yes\\
 Web Server & Any & {\sc ssl} Pages & Yes\\
 \hline
 \multicolumn{2}{c|}{Ease of use} & \multicolumn{2}{c}{Management}\\
@@ -337,8 +374,7 @@ and present the lessons we learned.
 \end{figure}
 
 The functional requirements for our center's web site were
-simple, but not trivial, and had already been satisfied
-twice in two different forms.
+simple, but not trivial.
 The site should present our research center's members, groups, publications,
 and projects in an organized fashion.
 Our center is divided into five groups.
@@ -439,45 +475,6 @@ and inspecting the submitted {\em Public Data}.
 \label{fig:conc-model}
 \end{figure}
 
-\subsection{Motivation and Design Paradigm}
-\label{sec:design}
-
-Our main guiding principle was to create a continuous, multi-person 
-development activity.
-Live web sites continuously evolve;
-adopting the content authoring paradigm implied
-by our first approach was a mistake. The content of our web site resulted often stale and inconsistent, as a result 
-of a single person update process.
-Empirical evidence supports this observation.
-Yanakoudakis \cite{G03} researched the usability rankings given from 21 Greek government department
-web sites between the years 2002 and 2003. He concluded that 
-the statically authored pages web sites are degrading to
-a point of irrelevance, and then being overhauled from scratch.
-The change of ranking can be explained as decay of the web site when dropping,
-and re-engineering when rising.
-
-A database-driven approach also hinders evolution.
-Changes to the content's presentation require the modification
-and installation of the front end page generator;
-not a typical lightweight operation.
-Changes to the data schema are even more intrusive
-requiring a synchronized modification of the data,
-the front end, and the back end.
-
-Continuous multi-person based projects are quite
-common in software development.
-Numerous programmers and engineers contribute and coordinate their work
-through a version control system, like {\sc cvs} \cite{BF01} that
-maintains a master repository of the source code.
-Concepts like the \textit{daily build} \cite{CS95b} or the
-\textit{current} and \textit{stable} branches, as practiced by
-numerous open source projects, allow the maintenance
-of a known-good product.
-What we needed for our approach were appropriate,
-declarative language-based formalisms for expressing our data,
-its transformation into web pages, and an efficient
-generation process.
-
 \subsection{Processes}
 
 \begin{figure}[h!]
@@ -543,7 +540,7 @@ they use appropriate data schemas.
 
 \item[Manage user accounts] Content Administrators perform user management in the 
 system. User management consists of two main processes: 
-(1) Authentication , (2) Ownership \& Policy.
+(1) Authentication, (2) Ownership \& Policy.
 
 \item[Browse web site] This one describes the web site browsing process.
 
@@ -586,7 +583,7 @@ all other {\sc xml}-based data \cite{W3C_XML}.
 For data transformations we 
 implemented a system based on {\sc xslt} \cite{W3C_XSLT}, a language for transforming {\sc xml} documents.
 we chose {\sc xslt} as the transformation language, because it is based on {\sc xml} ({\sc xslt} documents are 100\% valid {\sc xml}), so the
-developers can easily learn xslt, if they understand the basics of {\sc xml} technology.
+developers can easily learn {\sc xslt}, if they understand the basics of {\sc xml} technology.
 Finally, {\sc gnu} {\em make} \cite{gnu_make} and a couple of shell script
 constructs were used for handling the project's makefile.
 The complete setup including all tools proved to be portable
@@ -759,10 +756,10 @@ on the local machine, plus some extra for the local content store and generation
 
 In Figure \ref{fig:eltrun-web-m-dds-snapshot} we illustrate a web graph \cite{KRRSTU00} 
 that shows references between the {\sc xhtml} pages.
-The above Figure shows the references  of a member ("m\_dds" is the {\sc id} for 
+The above Figure shows the references  of a member (``\textit{m\_dds}'' is the {\sc id} for 
 Diomidis Spinellis), with other pages in the web site.
-The pages starting with "p\_" are projects, with "m\_" members, and "g\_" groups.
-At the time of writing the site generated 215 {\sc xhtml} pages with 2432 hyperlinks. 
+The pages starting with ``p\_'' are projects, with ``m\_'' members, and ``g\_'' groups.
+At the time of writing the site generated 249 {\sc xhtml} pages with 3126 hyperlinks. 
 
 \section{System Adoption}
 \label{sec:adopt}
@@ -771,7 +768,7 @@ Our research center is multidisciplinary: under its roof
 are both specialized software engineers using the same tools
 we adopted in their everyday work, and researchers whose
 background is management science, marketing, or finance
-who are comfortable with {\sc gui} interfaces.
+who are comfortable with graphical user interfaces ({\sc gui}).
 Upon completion of the development, we were somewhat concerned by the way our group
 would receive the new way of work we proposed, in order to maintain the web content.
 
@@ -811,15 +808,15 @@ with the key technologies, and they tried to change the tools proposed with othe
 more user-friendly. 
 These initiatives resulted in corruption of the local repositories, malformed 
 {\sc xml} data and wrong bibliography entries.
-After a few false attempts they decided to stay with the procedures of the system.
+After a few false attempts they decided to stay within the guidelines proposed by the system.
 
 Two weeks after the initial system presentation all users where able to upload 
 and maintain their data. The inexperienced users learned how to edit {\sc xml} files,
 importing {\sc BibTeX} entries into the system and committing to the {\sc cvs} repository. 
-They just followed steps in a procedure that they see as a black box.
+They just followed steps in a a black box procedure.
 
 A few months from our initial system presentation to our departments technical staff, they decided to adopt our 
-methodology, and develop a similar framework to provide technical on-line documentation for our department's students. This development effort started without our involvement, and we think that it's adoption points out the practical value of our approach. We have to note that our technical staff consists of programmers and network administrator, whose experience is limited to technical aspects of computer science.
+methodology, and develop a similar framework to provide technical on-line documentation for our department's students. This development effort started without our involvement, and we think that it's adoption points out the practical value of our approach. We have to note that our technical staff consists of programmers and network administrators, whose experience is limited to technical aspects of computer science.
 
 \section{Lessons Learned}
 \label{sec:concl}
@@ -835,7 +832,7 @@ The initial user reaction was not favorable, but this can
 be explained by the significantly higher requirements we
 placed on our users. Typical users are not well acquainted
 with command line tools, and often see them as a threat to their productivity.
-Instead of giving instructions by email to an unfortunate
+Instead of giving instructions by e-mail to an unfortunate
 web site maintainer, they now had to become active members
 of an evolving web site maintenance effort.
 Not all members of our research center proved ready to take
@@ -860,7 +857,7 @@ In Figure \ref{fig:cvs-log} we illustrate the {\sc cvs} \textit{commit} commands
 the Content Developers and Administrators. Each swimlane in the Figure represents a committing
 member of our system. Each horizontal tick represents a single commit instance.
 
-Content Administrators are \textit{dds} (Diomidis Spinellis) and \textit{bkarak} (Vassilios Karakoidas). 
+Content Administrators are \textit{dds} and \textit{bkarak}. 
 During the initial lit we can see that only the two committed 
 changes. It was the development period of the system. After the initial development, a few 
 pioneer content developers started to use the system and commit {\sc xml} and bibliography data. In this period 
@@ -873,7 +870,7 @@ into a distributed over time and multiple user development activity.
 \label{sec:ack}
 
 We would like to thank Prof. Manolis Skordalakis for his very perceptive comments during the compilation of this paper.
-The authors would also like to thank George Oikonomou and Marianthi Theocharidou who reviewed versions 
+The authors would also like to thank Mr. George Oikonomou and Mrs. Marianthi Theocharidou who reviewed versions 
 of this paper and provided many corrections and observations.
 
 \bibliographystyle{elsart-num}
