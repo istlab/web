@@ -1,90 +1,42 @@
 #!/usr/bin/dot
 
 digraph G{
-	nodesep=.1;
 	rankdir=LR;
 	node [height=.15,shape=box,fontname="Helvetica",fontsize=8];
 	edge [arrowhead=normal,arrowtail=none];
 
 	g_sense_details_html [label="g_sense-details.html"];
 	g_sense_members_html [label="g_sense-members.html"];
-	g_sense_current_projects_html [label="g_sense-current-projects.html"];
-	g_sense_completed_projects_html [label="g_sense-completed-project.html"];
-	g_sense_publications_html [label="g_sense-publications.html"];
-	g_sense_collab_html [label="g_sense-collab-page.html"];
-	g_sense_newsletter_html [label="g_sense-newsletter-page.html"];
-	g_sense_software_html [label="g_sense-software-page.html"];
 	m_dds_html [label="m_dds.html"];
-	m_androutsellis_html [label="m_androutellis.html"];
-	m_bkarak_html [label="m_bkarak.html"];
-	m_chk_html [label="m_chr.html"];
-	m_gzervas_html [label="m_gzervas.html"];
-	m_vlachos_html [label="m_vlachos.html"];
-	m_pateli_html [label="m_pateli.html"];
-	m_skoularidou_html [label="m_skoularidou.html"];
 	p_praxis_html [label="p_praxis.html"];
 	p_contessa_html [label="p_contessa.html"];
-	p_gemini_html [label="p_gemini.html"];
 	p_tempo_html [label="p_tempo.html"];
-	p_trainsee_html [label="p_trainsee.html"];
 	p_web_html [label="p_web.html"];
 	p_eaware_html [label="p_eaware.html"];
-	p_mexpress_html [label="p_mexpress.html"];
-	p_mygrocer_html [label="p_mygroced.html"];
-	index_html [label="index.html"];
 	m_dds_publications_html [label="m_dds-publications.html"];
-	m_androutsellis_publications_html [label="m_androutsellis-publications.html"];
-	m_bkarak_publications_html [label="m_bkarak-publications.html"];
-	m_chk_publications_html [label="m_chk-publications.html"];
-	g_imes_details_html [label="g_imes-details.html"];
-	m_gzervas_publications_html [label="m_gzervas-publications.html"];
-	m_vlachos_publications_html [label="m_vlachos-publications.html"];
-	g_wrc_details_html [label="g_wrc_details_html"];
-	m_pateli_publications_html [label="m_pateli-publications.html"];
-	m_vsko_publications_html [label="m_vsko-publications.html"];
+	dds_site [label="http://www.dmst.aueb.gr/dds"];
+	g_sense_completed_projects_html [label="g_sense-completed-projects.html"];
+	g_sense_current_projects_html [label="g_sense-current-projects.html"];
 
-	index_html->g_sense_details_html
-	g_sense_details_html->g_sense_members_html
-	g_sense_details_html->g_sense_current_projects_html
-	g_sense_details_html->g_sense_completed_projects_html
-	g_sense_details_html->g_sense_publications_html
-	g_sense_details_html->g_sense_collab_html
-	g_sense_details_html->g_sense_newsletter_html
-	g_sense_details_html->g_sense_software_html
-	g_sense_details_html->m_dds_html
-	g_sense_members_html->m_dds_html
-	g_sense_members_html->m_androutsellis_html
-	g_sense_members_html->m_bkarak_html
-	g_sense_members_html->m_chk_html
-	g_sense_members_html->m_gzervas_html
-	g_sense_members_html->m_vlachos_html
-	g_sense_members_html->m_pateli_html
-	g_sense_members_html->m_skoularidou_html
-	g_sense_current_projects_html->p_praxis_html
-	g_sense_completed_projects_html->p_contessa_html
-	g_sense_completed_projects_html->p_gemini_html
-	g_sense_completed_projects_html->p_tempo_html
-	g_sense_completed_projects_html->p_trainsee_html
-	g_sense_completed_projects_html->p_web_html
-	g_sense_completed_projects_html->p_eaware_html
-	g_sense_completed_projects_html->p_mexpress_html
-	g_sense_completed_projects_html->p_mygrocer_html
 	m_dds_html->g_sense_details_html
 	m_dds_html->m_dds_publications_html
-	m_androutsellis_html->g_sense_details_html
-	m_androutsellis_html->m_androutsellis_publications_html
-	m_bkarak_html->g_sense_details_html
-	m_bkarak_html->m_bkarak_publications_html
-	m_chk_html->g_sense_details_html
-	m_chk_html->g_imes_details_html
-	m_chk_html->m_chk_publications_html
-	m_gzervas_html->g_sense_details_html
-	m_gzervas_html->m_gzervas_publications_html
-	m_vlachos_html->m_vlachos_publications_html
-	m_vlachos_html->g_sense_details_html
-	m_pateli_html->g_sense_details_html
-	m_pateli_html->g_wrc_details_html
-	m_pateli_html->m_pateli_publications_html
-	m_vsko_html->g_sense_details_html
-	m_vsko_html->m_vsko_publications_html
+	g_sense_details_html->m_dds_html
+	g_sense_details_html->g_sense_members_html
+	g_sense_members_html->m_dds_html
+	p_praxis_html->m_dds_html
+	p_contessa_html->m_dds_html
+	p_tempo_html->m_dds_html
+	p_web_html->m_dds_html
+	p_eaware_html->m_dds_html
+	p_mexpress_html->m_dds_html
+	m_dds_html->dds_site
+	g_sense_completed_projects_html->p_tempo_html
+	g_sense_completed_projects_html->p_web_html
+	g_sense_completed_projects_html->p_eaware_html
+	g_sense_completed_projects_html->p_contessa_html
+	g_sense_completed_projects_html->p_mexpress_html
+	g_sense_details_html->g_sense_completed_projects_html
+	g_sense_details_html->g_sense_current_projects_html
+	g_sense_current_projects_html->p_praxis_html
+	
 }
