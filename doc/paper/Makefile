@@ -17,7 +17,6 @@ all: Diag.eps rankyear.eps
 
 show: all
 	dvips declweb.dvi
-	gv declweb.ps
 
 clean:
 	-rm -f *.aux
