@@ -6,7 +6,6 @@
 \usepackage[iso-8859-7]{inputenc}
 \usepackage{url}
 \usepackage{fancyhdr}
-\usepackage{rotating}
 \usepackage{pifont}
 \usepackage{graphicx}
 \usepackage[dvips]{color}
@@ -22,7 +21,6 @@
 \renewcommand{\slideleftmargin}{\sliderightmargin}
 
 \newcommand{\Title}[1]{%
-    	\includegraphics{eltrun.eps}
 	\textcolor{navy}{%
 	    \Large{#1}
 	    \vskip 0.5ex
@@ -35,29 +33,10 @@
     \textcolor{navy}{#1}
 }
 
-\newcommand{\head}[1]{
-    \navy{\textbf{#1}}
-}
-
 \newcommand{\en}{\latintext}
 \newcommand{\gr}{\greektext}
 
-%create a watermark
-\newsavebox{\watermark}
-\sbox{\watermark}{%
-\includegraphics[width=0.3\textwidth]{eltrun.eps}
-}
-
-%include the watermark in the title slide
-\fancyhead{}
-\fancyhead[C]{%
-    \setlength{\unitlength}{1in}
-    \begin{picture}(0,0)
-        \put(-1.8,-2.8){\usebox{\watermark}}
-    \end{picture}}
-\fancyfoot{}
-
-\pagestyle{plain}
+\pagestyle{fancy}
 
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
@@ -86,24 +65,160 @@
 
 \begin{document}
 
+% Title Slide
 \begin{slide}
 \maketitle
 \end{slide}
 
+% Slide 1
 \begin{slide}
 
-\Title{\gr Ο καινούριος ηλεκτρονικός τόπος του \en ELTRUN}
+\Title{\gr Ο καινούριος δικτυακός τόπος του \en ELTRUN}
 
-\vskip 1ex
-\begin{dinglist}{56}
+\begin{dinglist}{229}
 
 	\item \gr Πληροφορίες για ομάδες, μέλη, έργα και δημοσιεύσεις
 	
 	\item \gr Ημιδυναμικό περιεχόμενο
 	
-	\item \en XML, XSLT, make, grep, bibtex, bib2html
+	\item \gr Εργαλεία: \en cvs, XML, XSLT, make, grep, bibtex, bib2html
+
+\end{dinglist}
+
+\end{slide}
+
+% Slide 2
+\begin{slide}
+
+\Title{\gr Ο καινούριος δικτυακός τόπος του \en ELTRUN (2)}
+
+\begin{dinglist}{229}
+
+	\item \gr Δεδομένα σε μορφή \en XML \gr (μέλη, ομάδες, έργα)
 	
-	\item \gr 
+	\item \gr Γλώσσα μετασχηματισμού των δεδομένων η \en XSLT
+	
+	\item \gr Διαχείριση βιβλιογραφίας με \en bibtex \gr και \en bib2html
+	
+	\item \gr Έλεγχος ορθότητας δεδομένων με την χρήση \en XML validation
+	
+\end{dinglist}
+
+\end{slide}
+
+%slide 3
+\begin{slide}
+
+\Title{\gr Τρόπος διαχείρισης του δικτυακού τόπου}
+
+\begin{enumerate}
+
+	\item \gr Ανάκτηση της τελευταίας έκδοσης
+	
+	\item \gr Ανανέωση των \en XML \gr δεδομένων
+	
+	\item \gr Έλεγχος ορθότητας δεδομένων
+	
+	\item \gr Δημιουργία των \en HTML
+	
+	\item \gr Ανανέωση του δικτυακού τόπου
+
+\end{enumerate}
+
+\end{slide}
+
+%slide 4
+\begin{slide}
+
+\Title{\gr Ανάκτηση της τελευταίας έκδοσης}
+
+\begin{dinglist}{229}
+
+	\item \gr Την πρώτη φορά: \navy{\en cvs co eltrun-web}
+	
+	\item \gr Τις επόμενες φορές: \navy{\en cvs update eltrun-web}
+
+\end{dinglist}
+
+\end{slide}
+
+% Slide 5
+\begin{slide}
+
+\Title{\gr Που είναι τα αρχεία δεδομένων?}
+
+\begin{dinglist}{229}
+
+	\item \gr Δεδομένα για τα μέλη \navy{\en \{install-dir\}/eltrun-web/data/members/*.xml}
+	
+	\item \gr Δεδομένα για τα έργα \navy{\en \{install-dir\}/eltrun-web/data/projects/*.xml}
+	
+	\item \gr Δεδομένα για τις ερευνητικές \navy{\en \{install-dir\}/eltrun-web/data/groups/*.xml}
+	
+	\item \gr Δεδομένα για την βιβλιογραφία \navy{\en \{install-dir\}/eltrun-web/data/publications/*.bib}
+
+\end{dinglist}
+
+\end{slide}
+
+%Slide 6
+\begin{slide}
+
+\Title{\gr Πως ελέγχω αν τα δεδομένα είναι σωστά?}
+
+\begin{dinglist}{229}
+	
+	\item \gr Για τα δεδομένα \en XML:\\ \navy{\{install-dir\}/eltrun-web/make val}
+	
+	\item \gr Δεν γίνεται έλεγχος στις βιβλιογραφικές αναφορές!!
+	
+\end{dinglist}
+
+\end{slide}
+
+%slide 7
+
+\begin{slide}
+
+\Title{\gr Πως ανανεώνω την έκδοση στον κεντρικό εξυπηρετητή?}
+
+\begin{dinglist}{229}
+	
+	\item \gr Για την προσθήκη αρχείων κειμένου \en(*.xml,*.bib):\\\navy{cvs add \gr \{Όνομα αρχείου\}}
+	
+	\item \gr Για την προσθήκη δυαδικών αρχείων \en(*.jpg,*.gif):\\\navy{cvs add \textbf{-kb} \gr \{Όνομα αρχείου\}}
+	
+	\item \gr Για την ανανέωση της έκδοσης του δικτυακού τόπου:\\\en\navy{cvs commit -m '\{\gr Σχόλιο\}' \en \{install-dir\}/eltrun-web/}
+
+\end{dinglist}
+
+\end{slide}
+
+%Slide 8
+\begin{slide}
+
+\Title{\gr Ανανέωση του δικτυακού τόπου}
+
+\begin{dinglist}{229}
+
+	\item \gr Εκτελούμε την εντολή (αφού πρώτα έχουν προηγηθεί τα προηγόυμενα βήματα!!!):\\ \en \navy{\{install-dir\}/eltrun-web/make dist}
+
+\end{dinglist}
+
+\end{slide}
+
+%Slide 9
+\begin{slide}
+
+\Title{\gr Λίγα λόγια για την \en XML}
+
+\begin{dinglist}{229}
+
+	\item \gr Ιεραρχικό έγγραφο
+	
+	\item \gr Δομικό στοιχείο η ετικέτες \en (tags):\\ \navy{<test\_tag>The Test Tag</test\_tag>}
+	
+	\item \gr Κάθε ετικέτα μπορεί να έχει και επιπλέον χαρακτηριστικά:\\ \en \navy{<test\_tag id="test\_attribute"/>}
 
 \end{dinglist}
 
