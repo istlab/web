@@ -14,7 +14,7 @@ import java.util.Date;
 class UMLOptions {}
 
 /**
- * @composed - - - Group
+ * @composed 1 has * Group
  * @has - - - Member
  * @has - - - Publication
  * @has - - - Project
