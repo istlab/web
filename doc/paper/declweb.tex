@@ -114,9 +114,26 @@ of the (meticulously structured) content \cite{DEEP_WEB, JP04}.
 
 All in all, a database-driven approach appears to be suitable
 only for those with ample resources to justify the full
-development and appropriate maintenance of a sophisticated infrastructure \cite{EN00}.
+development and appropriate maintenance of a sophisticated infrastructure.
+Elmasri and Navathe have identified the implications that are created when an organization
+adopts such an approach \cite[p.19]{EN00}. They clarify that an organization should avoid
+using a database system, if they cannot aford the overhead cost for:
 
-{\Huge EXPLAIN HERE}
+\begin{itemize}
+	\item High initial investment in hardware, software and training
+
+	\item Generality of the {\sc dbms} for the definition and processing of data
+
+	\item Provision of security, concurency control, recovery, integrity functions
+\end{itemize}
+
+In addition, they note that it is desirable to use a straight-forward regular file solution when the following criteria are met.
+
+\begin{itemize}
+	\item The database and applications are simple, well defined and not expected to change
+
+	\item Multiple user access to data is not required
+\end{itemize}
 
 Having faced the problems we described above within our organization,
 we reasoned that a fresh approach was needed to tackle them.
@@ -246,7 +263,56 @@ and tested software configuration management tools. Our approach can be readily 
 Our use of industry-standard data formats and tools provides us with proven scalability (the same tools have been used 
 to manage multi-million line software projects) and flexibility (the tools are used as building blocks and a freely 
 configurable environment). The downside of our approach is that many features that come out of the box in {\sc cms}s need 
-to be explicitly tailored in our approach.
+to be explicitly tailored.
+
+In order to provide a more detailed comparison between our proposed approach and other commercial or open source {\sc cms's} we 
+created a comparison table based on criteria found in CMSMatrix web site \cite{PBC05}. The feature matrix is illustrated in Table \ref{tbl:cms-matrix}.
+
+\begin{figure}
+\begin{center}
+\begin{tabular}{c c | c c}
+\hline
+\multicolumn{2}{c|}{System Requirements} & \multicolumn{2}{c}{Security}\\
+\hline
+Application Server & None & Audit Trail & Yes\\
+Database & None & Content Approval & Yes\\
+License & Free/Open Source & Login History & Yes\\
+Operating System & {\sc unix}, Win32 & Versioning & Yes\\
+Pro/ing Language & {\sc xml, xslt}, make & Problem notification & Yes\\
+Web Server & Any & {\sc ssl} Pages & Yes\\
+\hline
+\multicolumn{2}{c|}{Ease of use} & \multicolumn{2}{c}{Management}\\
+\hline
+Drag-N-Drop Content & No & Web Statistics & Yes\\
+Email To Discussion & Yes & Content Scheduling & No\\
+Friendly {\sc url}s & No & Sub-Sites / Roots & Yes\\
+Template Language & Yes & Themes / Skins & No\\
+Undo & Yes & Workflow Engine & No\\
+{\sc wysiwyg} editor & No & &\\
+Macro Language & No & &\\
+Server Page Language & No & &\\
+\hline
+\multicolumn{2}{c|}{Performance} & \multicolumn{2}{c}{Support}\\
+\hline
+Advanced Caching & No & Online Help & No\\
+Database Replication & No & Public Mailing List & Yes\\
+Load balancing & No & Pluggable {\sc api} & No\\
+Page Caching & Yes & &\\
+Static Content Export & Yes & &\\
+\hline
+\multicolumn{2}{c|}{Interoperability} & \multicolumn{2}{c}{Flexibility}\\
+\hline
+{\sc rss} Feeds & No & {\sc cgi}-Mode Support & No\\
+{\sc ftp} support & No & Content Reuse & Yes\\
+{\sc utf-8} support & Yes & Multi-lingual Content & No\\
+{\sc xhtml} compliant & Yes & Wiki Aware & No\\
+{\sc wai} compliant & Yes & {\sc url} Rewriting & No\\
+\hline
+\end{tabular}
+\caption{Our Methodology features in a glance}
+\label{tbl:cms-matrix}
+\end{center}
+\end{figure}
 
 \section{Designing a Prototype}
 
@@ -325,7 +391,7 @@ If possible, the site's maintainer should not be required to
 learn a scripting language like {\sc php}, or {\sc perl}, or
 a framework like {\sc j2ee} or {\sc .net}.
 An approach based on declarative specifications \cite{FFLS00} and
-domain-specific languages \cite{DKV00, Spi00b} would allow end-users, or members
+Domain-Specific Languages ({\sc dsl}) \cite{DKV00,Spi00b} would allow end-users, or members
 close to end-users to be involved in maintaining the site,
 without risking the bottleneck of going through
 multiple intermediaries.
@@ -341,7 +407,8 @@ to work on a platform of their choice ({\sc unix}, {\sc microsoft windows} and {
 using only a text editor of their choice.
 Minimizing the dependencies on additional servers (such as a
 database or an application server) and on the network
-should result in a more robust and easier to maintain system.   
+should result in a more robust and easier to maintain system. 
+\textbf{!!!!Efficient replication management (add here)!!!} \cite{SSPS04}.
 
 \item[Parsimony] The implementation effort for
 the system should be minimal.
@@ -587,18 +654,18 @@ and confidentiality.
 \begin{figure}
 {\small \tt%
 \begin{verbatim}
-<?xml version="1.0"?>
-<seminar by="m_bkarak">
- <sem_date>20040314</sem_date>
- <sem_time>19:00</sem_time>
- <sem_title>Regular Expressions</sem_title>
- <sem_room>906</sem_room>
- <sem_url>http://www.eltrun.gr/seminar/presentations.ppt</sem_url>
- <sem_duration>3 hrs</sem_duration>
+<seminar>
+ <sem_date>20050112</sem_date>
+ <sem_time>12:00</sem_time>
+ <sem_room>901</sem_room>
+ <sem_duration>90 mins</sem_duration>
+ <presentation by="m_bkarak">
+  <pres_title>Introduction to Regular Expressions</pres_title>
+ </presentation>
 </seminar>
 \end{verbatim}
 }
-\caption{A typical seminar XML file}
+\caption{A typical seminar {\sc xml} file}
 \label{fig:project-xml}
 \end{figure}
 
@@ -606,56 +673,46 @@ and confidentiality.
 {\small \tt%
 \begin{verbatim}
 <xsl:template match="seminar" mode="full">
- <h3><xsl:value-of select="sem_title" /></h3>
-  <xsl:element name="a">
-  <xsl:attribute name="name">
-   <xsl:value-of select="sem_date" />
-  </xsl:attribute>
-</xsl:element>
- Presenter: <xsl:apply-templates 
- 	     select="/eltrun/member_list/member [@id=current()/@by]" 
-	     mode="simple-ref" /><br />
- Date: <xsl:call-template name="date">
-	<xsl:with-param name="date" select="sem_date" />
-       </xsl:call-template> <br />
- Time: <xsl:value-of select="sem_time" /><br />
- Duration: <xsl:value-of select="sem_duration" /><br />
- Location: <xsl:value-of select="sem_room" /><br /><br />
- <xsl:element name="a">
-  <xsl:attribute name="href">
-   <xsl:value-of select="sem_url"/>
-  </xsl:attribute>
-  Download the presentation
- </xsl:element>
+ <a name="{current()/sem_date}" />
+ <div class="title">
+  <xsl:call-template name="date">
+   <xsl:with-param name="date" select="sem_date" />
+  </xsl:call-template>
+ </div>
+ <div class="content">
+  <h3>Location: <xsl:value-of select="sem_room" /></h3>
+  <h3>Time: <xsl:value-of select="sem_time" /></h3>
+  <h3>Presentations</h3>
+  <xsl:apply-templates select="current()/presentation" mode="full"/>
+ </div>
 </xsl:template>
 \end{verbatim}
 }
-\caption{The XSLT transformation file for seminars}
+\caption{The {\sc xslt} transformation file for seminar}
 \label{fig:project-xslt}
 \end{figure}
 
 \begin{figure}
 {\small \tt%
 \begin{verbatim}
-<tbody valign="top">
+<a name="20050112"></a>
+<div class="title">12 January 2005</div>
+<div class="content">
+<h3>Location: 901</h3>
+<h3>Time: 12:00</h3>
+<h3>Presentations</h3>
+<table class="content">
+<tbody><tr>
+<td valign="top"><b>Title:</b></td>
+<td><a href="">Introduction to Regular Expressions</a></td>
+</tr>
 <tr>
-<td align="left" width="82%">
-<h2>Eltrun Seminars</h2>
-<a href="index.html#20040314">14 March 2004 - Regular Expressions</a>
-<br><br><br>
-<h3>Regular Expressions</h3>
-<a name="20040314"></a>
-Presenter: 
-<a href="../members/m_bkarak.html">
-Mr. Vassilios Karakoidas
-</a><br />
-Date: 14 March 2004<br />
-Time: 19:00<br />
-Duration: 3 hrs<br />
-Location: 906<br><br />
-<a href="http://www.eltrun.gr/seminar/presentations.ppt">
-Download the presentation
-</a>
+<td valign="top"><b>Presented by:</b></td>
+<td>
+<a href="../members/m_bkarak.html">Mr. Vassilios Karakoidas</a><br />
+</td>
+</tr>
+</tbody></table>
 \end{verbatim}
 }
 \caption{A generated HTML seminar file}
