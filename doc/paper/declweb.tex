@@ -22,9 +22,6 @@ sensitive=false
 %\def\epsfsize#1#2{\textwidth}
 \epsfverbosetrue
 
-%\renewcommand{\baselinestretch}{2}
-
-%\title{Declarative Implementation of Semi-dynamic Web Sites}
 \title{A Software Development Metaphor for Developing Semi-dynamic Web Sites through Declarative Specifications}
 
 \author{Diomidis Spinellis, Vassilios Karakoidas and Damianos Chatziantoniou\\
@@ -53,11 +50,11 @@ makes the choice a part of the problem space rather than the solution space.
 Based on the distributed software development approach, we present a suitable for managing 
 middle-sized semi-dynamic web sites. The technological dimensions of this
 approach are well-known open source technologies, such as version control systems
-and {\sc XML} transformation tools.
+and {\sc xml} transformation tools.
 \end{abstract}
 
 \subsection*{Keywords}
-Web site implementation, semi-dynamic web sites, {\sc xml}, make, {\sc BibTeX}, {\sc xslt}, X-Schema ({\sc xsd}), {\sc html}.
+Web site development, semi-dynamic web sites, {\sc xml}, make, {\sc BibTeX}, {\sc xslt}, {\sc X-Schema (xsd)}, {\sc html}.
 
 \section{Introduction}
 \label{sec:intro}
@@ -153,7 +150,9 @@ and discuss the lessons we learned.
 \section{Related Work}
 \label{sec:related}
 
-Here goes the related work.
+The last decade the Web became the most popular way for the users to perform everyday
+tasks through the internet. 
+\cite{FRA99}, \cite{MAM03}, \cite{FST99}, \cite{FP00}, \cite{KL03}
 
 \section{Methodology}
 \label{sec:meth}
@@ -180,7 +179,7 @@ templates, transformation, and schemas across content developers and
 administrators, synchronizing updates, and keeping a record of the project's history.
 (Thomas and Hunt \cite{HT00} aptly compare a version control system
 with a global undo command with unlimited undo levels.)
-\item Create the site's look and feel in {\sc html} format
+\item Create the site's look and feel in {\sc xhtml} format
 through {\sc xslt}  transformations \cite{HM01}.
 \item Express verification and building dependencies among
 data elements and schemas through {\em make} \cite{MAKE} or {\em ant}
@@ -312,20 +311,19 @@ other non-functional properties.
 
 \section{Design Process}
 
-
 \subsection{Conceptual Framework}
 
 The system's conceptual framework is illustrated in Figure \ref{fig:conc-model}.
-The main concept in our system is the \textit{Organization}. Each \textit{Organization} has 
-information that interests \textit{Content Consumers}. They 
-access the organization's \textit{Public Data}.
-To obtain information regarding the \textit{Organization}.
-It has also \textit{Content Developers} 
-who are usually its members. \textit{Content Developers} update the 
-\textit{Public Data} for the \textit{Organization}. \textit{Content Administrators} 
-are supporting the \textit{Content Developers} 
+The main concept in our system is the {\em Organization}. Each {\em Organization} has 
+information that interests {\em Content Consumers}. They 
+access the organization's {\em Public Data}.
+To obtain information regarding the {\em Organization}.
+It has also {\em Content Developers} 
+who are usually its members. {\em Content Developers} update the 
+{\em Public Data} for the {\em Organization}. {\em Content Administrators} 
+are supporting the {\em Content Developers} 
 (mostly troubleshooting and account management)
-and inspecting the submitted \textit{Public Data}.
+and inspecting the submitted {\em Public Data}.
 
 \begin{figure}[h!]
 \begin{center}
@@ -384,7 +382,7 @@ of a known-good product.
 What we needed for our approach were appropriate,
 declarative language-based formalisms for expressing our data,
 its transformation into web pages, and an efficient
-generation process. %We were clear that we wouldn't support the content in a makefile \cite{OTT91}.
+generation process.
 
 \subsection{Processes}
 
@@ -485,17 +483,17 @@ Unix group membership mechanism of the host where the
 {\sc cvs} repository was installed.
 We also used
 {\sc BibTeX} \cite{Pa88, Lam94} and {\sc bib2xhtml} \cite{BibXHMTL} for transforming the publications
-into {\sc html} and
+into {\sc xhtml} and
 xmlstarlet \cite{Gru04} for validating and transforming
 all other {\sc xml}-based data \cite{W3C_XML}.
 For data transformations we 
 implemented a system based on {\sc xslt} \cite{W3C_XSLT}, a language for transforming {\sc xml} documents.
-Finally, {\sc gnu} make \cite{gnu_make} and a couple of shell script
+Finally, {\sc gnu} {\em make} \cite{gnu_make} and a couple of shell script
 constructs were used for handling the project's makefile.
 The complete setup including all tools proved to be portable
 between Unix and Microsoft Windows, with team members working
 on machines running different versions of {\sc microsoft windows}, {\sc gnu/linux},
-and Free-{\sc bsd}.
+and Free{\sc bsd}.
 
 \subsection{System Development}
 
@@ -702,7 +700,7 @@ that shows references between the {\sc xhtml} pages.
 The above Figure shows the references  of a member ("m\_dds" is the ID for 
 Diomidis Spinellis), with other pages in the web site.
 The pages starting with "p\_" are projects, with "m\_" members, and "g\_" groups.
-At the time of writing the site generated 209 {\sc xhtml} pages with 1368 hyperlinks. 
+At the time of writing the site generated 215 {\sc xhtml} pages with 2432 hyperlinks. 
 
 \section{System Adoption}
 \label{sec:adopt}
