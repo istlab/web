@@ -1,0 +1,9 @@
+<seminar by="Required: m_id">
+	<sem_name>Required</sem_name>
+	<sem_date>Required</sem_date>
+	<sem_time>Required</sem_time>
+	<sem_title>Required</sem_title>
+	<sem_room>Required</sem_room>
+	<sem_url>Optional</sem_url>
+	<sem_duration>Required</sem_duration>
+</seminar>
