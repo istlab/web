@@ -16,7 +16,7 @@
 % listings language set
 \lstdefinelanguage{PROJECTXML}
 {morekeywords={project,id,scientific_coordinator,type,project_manager,shortname,projtitle,startdate,web_site,funding_agency,
-funding_programme,project_code,enddate,partner,shortname,country,web_site},
+funding_programme,project_code,enddate,partner,shortname,country,web_site,group},
 sensitive=false
 }
 
@@ -31,9 +31,9 @@ sensitive=false
 %\def\epsfsize#1#2{\textwidth}
 \epsfverbosetrue
 
-\title{Declarative Implementation of Semi-dynamic Web Sites}
+\title{Declarative Implementatieditoron of Semi-dynamic Web Sites}
 
-\author{Diomidis Spinellis and Vasileios Karakoidas\\
+\author{Diomidis Spinellis and Vassilios Karakoidas\\
 Department Management Science and Technology \\
 Athens University of Economics and Business \\
 Greece\\
@@ -46,6 +46,20 @@ email: \{dds,bkarak\}@aueb.gr}
 \maketitle
 
 \begin{abstract}
+\noindent
+Traditionally, the realization of Web sites involves either
+static content developed using web authoring tools like
+Microsoft's Front Page and DreamWeaver, or dynamic
+content delivered by a database driven front-end,
+where the structured content is organized
+in a relational schema and dynamically generated on the fly.
+The limitations of statically-authored web pages are easy to discern and
+for a number of applications, the use of a database
+introduces a level of additional complexity that
+makes the choice a part of the problem space rather than the solution space.
+We introduce a different approach, which is suitable for managing 
+middle-sized semi-dynamic web sites. The technological requirements of this
+approach are well-known open source tools, such as CVS and XML.
 \end{abstract}
 
 \subsection*{Keywords}
@@ -104,7 +118,10 @@ These may need to be integrated into an organization wide single
 login facility, or operated under a specific security policy.
 In the second case procedures for setting up passwords,
 resetting them, and revoking them need to be established
-and followed.
+ for a number of applications, the use of a database
+introduces a level of additional complexity that
+makes the choice a part of
+the problem space rather than the solution space.and followed.
 A properly running database also requires a skilled database
 administrator to install it, maintain it, organize backups,
 and perform modifications to the database schema.
@@ -194,7 +211,7 @@ we deemed important enough to guide our design.
 
 \begin{description}
 \item[Openness] The tools used in the realization
-should be available as open source, or sourced by multiple vendors.
+should be available as open soueditorrce, or sourced by multiple vendors.
 We wanted to avoid becoming tied with a particular proprietary
 tool.
 We reasoned that openness would mitigate two risks:
@@ -251,6 +268,18 @@ other non-functional requirements.
 \label{fig:rankyear}
 Yearly changes in web site rankings.}
 \end{figure}
+
+\subsection{Key Technologies}
+
+In order to meet the requirements we set in section 2, we decided to adopt open and popular
+technologies as key elements of our system. For data representation we used XML and bibtex.\\
+XML ...\\
+Bibtex ...\\
+To deal with the problem of versioning and multi-persion development we used CVS. CVS ...\\
+The simple tasks of our systems were automated using a make file. Make is ...\\
+
+\subsection{Design Concepts}
+
 The guiding paradigm we adopted for designing the process
 for implementing the web site was that the task was essentially
 a continuous multi-person development activity.
@@ -365,7 +394,7 @@ the front end, and the back end.
   Project Code: IST-2001-33432 (International) <br />
   Funding programme: IST<br />
   Funding Agency: European Commission<br />
-  Project type: RTD<br/>
+  Project type: RTD<br/>editor
   Web site:
   <a href="http://mexpress.intranet.gr/">
   http://mexpress.intranet.gr/
@@ -401,30 +430,49 @@ of a known-good product.
 What we needed for our approach were appropriate
 declarative language-based formalisms for expressing our data,
 its transformation into {\sc html} pages, and the
-generation process.
-Following the non-functional requirements we described in the
-previous section we narrowed down our design to the use of the
-following formalisms.
-\begin{itemize}
-\item We would store member, group, and project data
-in an {\sc xml} file for each element.
-\item We would express the our data's schema and
-constraints using the document type definition
-({\sc dtd}) formalism \cite{HM01}.
-\item The transformation of the {\sc xml}-structured data
-into {\sc html} would be declaratively expressed using
-the extensible stylesheet language transformations ({\sc xslt})
-formalism \cite{HM01}.
-\item We would maintain bibliographies in the
-widely-used BibTeX format \cite{Lam94}.
-\item We would define the processes for
-validating and updating the content in a {\em Makefile} \cite{OTT91}.
-\end{itemize}
+generation process.yWe were clear that we wouldn't support he content in a {\em Makefile} \cite{OTT91}.
 You can see representative samples of a project's
 {\sc dtd} schema description in figure \ref{fig:project-dtd}.
 {\sc Xml} data in figure \ref{fig:project-xml}.
 {\sc Xslt} transformationn in figure \ref{fig:project-xslt},
 and {\sc html} result in figure \ref{fig:project-html}.
+
+\subsection{Processes}
+
+\begin{figure}
+\includegraphics[scale=0.7]{use-case-diagram}
+\caption{UML Use Case Diagram of the System}
+\label{fig:use-case-diagram}
+\end{figure}
+
+In figure \ref{fig:use-case-diagram} is depicted a UML use case diagram of our system. 
+We have three actors which are interacting with the system:
+
+\begin{description}
+\item[DataCommiter] A DataCommiter is responsible for uploading data in the system. In our case is typically a person
+for each research group. He can upload XML data files and import new bibliography entries.
+
+\item[Developer] The developer is responsible for the maintaince and the evolution of the framework. He corrects problems with the XML Data, develops new features or corrects existing ones in the XSLT scripts and the DTD schemas.
+
+\item[EndUser] The EndUsers are outside our system and they have access only int the generated web site.
+\end{description}
+
+The use cases that comprise our system are:
+
+\begin{description}
+\item[Maintain Web Site]
+
+\item[Update Latest Version]
+
+\item[Commit Changes]
+
+\item[Generate Web site]
+
+\item[Validate data]
+
+\item[Browser Web site]
+
+\end{description}
 
 \section{Implementation}
 Once the design was finalized,
@@ -462,7 +510,7 @@ for coordinating the work between the two paper's authors.
 Because many page elements, like a project's description,
 could contain content more elaborate than plain text,
 we used W3C's modular {\sc xhtml} specification for
-importing existing {\sc xhtml} elements in our {\sc dtd}s.
+importing existing {\sc xhtml} elements editorin our {\sc dtd}s.
 This helped us keep our schema description simple,
 but the corresponding schema expressive.
 
@@ -480,8 +528,8 @@ corresponding to each of the above elements.
 The {\sc html} content is by default generated on the
 local machine, where its maintainer can verify it.
 After the new content is validated and verified,
-the maintainer can commit the change to the master
-{\sc cvs} repository.
+the maintainer can commit the change to tWe were clear 
+that we wouldn't support he master {\sc cvs} repository.
 A separate {\em Makefile} rule can then be used,
 to execute an update command on the
 host serving the content to the web.
@@ -495,6 +543,24 @@ All exchanges between the developers' machines and the
 {\sc cvs} and web host are performed using the secure session
 shell ({\sc ssh}) protocol guaranteeing the data's integrity
 and confidentiality.
+
+\begin{figure}
+\includegraphics[scale=0.7]{distro.eps}
+\caption{Directory structure of local repository}
+\label{fig:eltrun-web-distro}
+\end{figure}
+
+Our framework has a distribution that works in both win32 and 
+Unix Enviroments (Linux and FreeBSD). The directory structure of a typical local repository depicted in
+figure \ref{fig:eltrun-web-distro}.
+Most of our users are working in win32 enviroments and as 
+a result we decided to upload a win32 version of the needed tools 
+in the main repository under the directory "bin". The installation procedure is very simple,
+and the bootstrap tools that requires are only cvs for 
+the initial check out and a ssh client. The needed keys 
+for the secure shell session are provided once in each user. 
+A full version of the system now demands 8 megabytes of space 
+in local machine, plus some extra for the local content store and generation.
 
 \section{System Adoption}
 \label{sec:adopt}
@@ -536,6 +602,16 @@ After a few days we got the impression that non-technical users
 were becoming confident in their work, even proud of sharing
 sophisticated tools and processes with software engineers.
 
+Two weeks after the initial system presentation all users where able to upload 
+and maintain their data. The inexperienced users learned to edit XML files,
+importing bibtex entries into the system and commiting to the common CVS repository. 
+They just followed steps in procedure that they see as a black box. 
+Our technical persons experienced more problems than the inexperienced ones 
+and that was came as a suprise for us. Some of them were already familiar 
+with the key technologies and they tried to change the tools proposed with others more user-friendly. 
+These initiatives resulted in corruption of the local repositories, malformed XML data and wrong bibliography entries.
+After a few false attempts they decided to follow the proposed framework.
+
 \section{Lessons Learned}
 \label{sec:concl}
 We believe our design satisfies the non-functional specifications
@@ -558,6 +634,6 @@ metaphor and tools for developing and maintaining semi-dynamic
 web content is a practical worthwhile approach.
 
 \bibliographystyle{unsrt}
-\bibliography{macro,mybooks,myart,struct,perl,coderead}
+\bibliography{declweb}
 
 \end{document}

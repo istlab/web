@@ -1,0 +1,22 @@
+digraph rank {
+	rankdir = LR; 
+	"eltrun-web/" -> "bin/";
+	"bin/" -> "config/";
+	"config/" -> "miktex/";
+	"eltrun-web/" -> "build/";
+	"eltrun-web/" -> "data/";
+	"data/" -> "groups/";
+	"data/" -> "members/";
+	"data/" -> "publications/";
+	"data/" -> "projects/";
+	"eltrun-web/" -> "doc/";
+	"doc/" -> "tex/";
+	"eltrun-web/" -> "public_html/";
+	"public_html/" -> "groups/";
+	"public_html/" -> "images/";
+	"public_html/" -> "members/";
+	"public_html/" -> "projects/";
+	"public_html/" -> "publications/";
+	"eltrun-web/" -> "schema/";
+	"eltrun-web/" -> "tools/";
+}
