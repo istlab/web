@@ -264,7 +264,8 @@ It has also \textit{Content Developers}
 who are usually its members. \textit{Content Developers} update the 
 \textit{Public Data} for the \textit{organisation}.
 
-\textit{Content Administrators} are supporting the \textit{Content Developers} (mostly troubleshooting and account management)
+\textit{Content Administrators} are supporting the \textit{Content Developers} 
+(mostly troubleshooting and account management)
 and inspecting the submitted \textit{Public Data}.
 
 \subsection{Motivation and Design Paradigm}
@@ -307,7 +308,7 @@ the front end, and the back end.
 Continuous multi-person development projects are quite
 common in software development.
 Numerous developers contribute and coordinate their work
-through a version control system, like CVS that
+through a version control system, like {\sc CVS} that
 maintains a master repository of the source code.
 Concepts like the daily build \cite{CS95b} or the
 current and stable branches as practiced by
@@ -362,7 +363,7 @@ repository command. If there is a conflict, the users must correct the problem
 and rerun the update command.
 
 \item[Commit changes] Content developers and Content administrators must commit 
-the changes from their local repository to the CVS repository in the web site server.
+the changes from their local repository to the {\sc CVS} repository in the web site server.
 
 \item[Maintain content] This is the overall use case that allows Content 
 Developers to maintain the content of the web site. 
@@ -415,7 +416,7 @@ We adopted the concurrent versions system
 and update of all the system's components.
 Authentication for managing content was handled by the
 Unix group membership mechanism of the host where the
-CVS repository was installed.
+{\sc CVS} repository was installed.
 We also used
 {\sc BibTeX} \cite{Pa88} \cite{Lam94} and {\sc bib2xhtml} \cite{BibXHMTL} for transforming the publications
 into {\sc HTML} and
@@ -466,7 +467,7 @@ which are two different independently generated {\sc HTML} pages.
 The {\sc HTML} content is by default generated on the
 local machine, where its maintainer can verify it.
 After the new content is validated and verified,
-the maintainer can commit the change to the central  CVS repository. 
+the maintainer can commit the change to the central {\sc CVS} repository. 
 A separate makefile rule can then be used,
 to execute an update command on the
 host serving the content to the web.
@@ -694,7 +695,7 @@ of an evolving web site maintenance effort.
 Not all members of our research center proved ready to take
 this responsibility.
 Many groups delegated the maintenance to a single person. 
-Others started with a centralized approach adn later divided the
+Others started with a centralized approach and later divided the
 maintenance responsibilities as they came to appreciate the efficiency
 benefits of the distributed site maintenance.
 Still, however, we succeeded in distributing the previously
