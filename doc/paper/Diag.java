@@ -1,3 +1,8 @@
+/**
+ * $Id$
+ *
+ */
+
 import java.util.Date;
 
 /**
@@ -21,48 +26,26 @@ class ResearchCenter {}
  * @has - - - Publication
  * @has - - - Project
  */
-class Group {
-	String name;
-	String description;
-}
+class Group {}
 
 /**
  * @has - - - Publication
  */
-class Member {
-	String name;
-	String CV;
-}
+class Member {}
 
 /**
  * @has - - - Publication
  */
-class Project {
-	String name;
-	String description;
-	Integer budget;
-}
+class Project {}
 
-class Publication {
-	String author;
-	String title;
-	Integer year;
-}
+class Publication {}
 
 /**
  * @has - - - Member
  */
-class Seminar {
-	String instructor;
-	String title;
-	Date date;
-}
+class Seminar {}
 
 /**
  * @has - - - Group
  */
-class additional_pages {
-	String group;
-	String title;
-	String body;
-}
+class additional_pages {}

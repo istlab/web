@@ -40,8 +40,7 @@ email: \{dds,bkarak\}@aueb.gr}
 \begin{abstract}
 \noindent
 Traditionally, the realization of Web sites involves either
-static content developed using web authoring tools like
-Microsoft's Front Page and DreamWeaver, or dynamic
+static content developed using web authoring tools or dynamic
 content delivered by a database driven front-end,
 where the structured content is organized
 in a relational schema and dynamically generated on the fly.
@@ -235,7 +234,8 @@ review, generating localy the HTML pages,
 their changes without requiring network connectivity.
 This would allow them to work productively over dial-up connections
 or while on the road. In addition, all the editing can be done with 
-a simple text editor and the each end-user can work both in win32 and unix oriented systems.
+a simple text editor and the each end-user can work both in win32 
+and unix oriented systems.
 Minimizing the dependencies on additional servers (such as a
 database or an application server) and on the network
 should result in a more robust and easier to maintain system.   
@@ -250,6 +250,36 @@ other non-functional properties.
 
 \section{Design Process}
 
+<<<<<<< declweb.tex
+\subsection{Conceptual Framework}
+
+In order to design a system that corresponds to the aforementioned principles, 
+we must create it's conceptual framework and observe through a high-level
+approach the systems functions and constraints. This is illustrated 
+in figure \ref{fig:conc-model}.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.6]{conc-model}
+\end{center}
+\caption{Conceptual design of our system}
+\label{fig:conc-model}
+\end{figure}
+
+The main concept in our system is the {\sc Research Group}. Each group has 
+information that interests {\sc Content Consumers}. In our system {\sc Content Consumers} 
+can access the {\sc Research Group} data thourgh a series of {\sc HTML pages}.
+
+Each {\sc Research Group} has {\sc Content Developers} who are usually its members. Each 
+{\sc Content Developer} updates the {\sc Group Data} which are then submitted in the 
+{\sc Data Repository}.
+
+The {\sc HTML pages} are produced through a series of transformations of the data that
+are kept in the {\sc Data Repository}.
+
+
+
+=======
 \subsection{Conceptual model}
 
 \begin{figure}[h!]
@@ -260,8 +290,15 @@ other non-functional properties.
 \label{fig:conc-model}
 \end{figure}
 
+>>>>>>> 1.17
 \subsection{Design Concepts}
+<<<<<<< declweb.tex
+
+Our main guiding principle for was to create a continuous multi-person 
+development activity.
+=======
 Our main guiding principle for was to create a continuous multi-person development activity.
+>>>>>>> 1.17
 Live web sites continuously evolve;
 adopting the content authoring paradigm implied
 by the first approach was a mistake.
