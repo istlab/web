@@ -460,7 +460,7 @@ We have three actors which are interacting with the system:
 \item[ContentConsumer] The content consumers are outside our system and they have access only int the generated web site.
 \end{description}
 
-The use cases that comprise our system are:
+The use cases that comprise our system are (Figure \ref{fig:use-case-diagram}):
 
 \begin{figure}
 \includegraphics[scale=0.5]{maintain-content-activity}
@@ -469,23 +469,25 @@ The use cases that comprise our system are:
 \end{figure}
 
 \begin{description}
-\item[Maintain schemas, transformations and users]
+\item[Maintain schemas, transformations and users] This use case describes the maintainence and development procedures of the system. Each Content Developer can update the DTD schemas, XSL scripts and the make file in order to correct errors or add new features.
 
-\item[Update local repository]
+\item[Update local repository] Each user in the system must update the local repository each time he uses the system.
 
-\item[Commit changes]
+\item[Commit changes] Content developers and administrators must commit the changes from their local repository to the CVS repository in the web site server.
 
-\item[Maintain content] This use case is described with the acrivity diagram in Figure \ref{fig:maintain-content-diagram}.
+\item[Maintain content] Content Developers maintain the content of the web site. Content consists of XML data and bibtex collection files.
 
-\item[Generate web site]
+\item[Generate web site] Content administrators and developers can generate the web site localy for preview. 
 
-\item[Validate data]
+\item[Validate data] Content developers can validate the data in the local repository before the final commit.
 
-\item[Manage user accounts]
+\item[Manage user accounts] Content Administrators can perform user management in the system.
 
-\item[Browse web site]
+\item[Browse web site] Content consumers can browse the web site.
 
 \end{description}
+
+In figure \ref{fig:maintain-content-diagram} we show the activity diagram of the most complex use case in the system. The Content Developer first updates the local repository and then begins the initiation of data maintanance by adding, removing or modifying XML files and bibtex entries. Upon completion data vaildation must be performed before the commit to the CVS repository. If data are valid, then local web site generation must be performed to correct possible presentation problems. After that, the data are ready to be submitted to the main CVS repository and from their to the web site.
 
 \section{Implementation}
 Once the design was finalized,
@@ -645,6 +647,11 @@ entirely centralized maintenance effort across our groups.
 Summarizing, we believe that adopting a software development
 metaphor and tools for developing and maintaining semi-dynamic
 web content is a practical worthwhile approach.
+
+\section{Acknoledgements}
+\label{sec:ack}
+
+Special thanks to Diamianos Chatziadoniou who reviewed early versions of this paper and provided very intriguing comments.
 
 \bibliographystyle{unsrt}
 \bibliography{declweb}

@@ -46,3 +46,21 @@ class Publication {
 	String title;
 	Integer year;
 }
+
+/**
+ * @has - - - Member
+ */
+class Seminar {
+	String instructor;
+	String title;
+	Date date;
+}
+
+/**
+ * @has - - - Group
+ */
+class additional_pages {
+	String group;
+	String title;
+	String body;
+}
