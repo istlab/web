@@ -447,32 +447,37 @@ In Figure \ref{fig:use-case-diagram} is depicted a UML use case diagram of our s
 We have three actors which are interacting with the system:
 
 \begin{description}
-\item[ContentDeveloper] A DataCommiter is responsible for uploading data in the system. In our case is typically a person
-for each research group. He can upload XML data files and import new bibliography entries.
+\item[ContentDeveloper] A content developer is responsible for uploading data in the system. In our case is typically a person for each research group. He can upload XML data files and import new bibliography entries.
 
-\item[ContentAdministrator] The developer is responsible for the maintaince and the evolution of the framework. He corrects problems with the XML Data, develops new features or corrects existing ones in the XSLT scripts and the DTD schemas.
+\item[ContentAdministrator] The content administrator is responsible for the maintaince and the evolution of the framework. He corrects problems with the XML Data, develops new features or corrects existing ones in the XSLT scripts and the DTD schemas.
 
-\item[ContentConsumer] The EndUsers are outside our system and they have access only int the generated web site.
+\item[ContentConsumer] The content consumers are outside our system and they have access only int the generated web site.
 \end{description}
 
 The use cases that comprise our system are:
 
+\begin{figure}
+\includegraphics[scale=0.5]{maintain-content-activity}
+\caption{UML activity diagram for Maintain Content}
+\label{fig:maintain-content-diagram}
+\end{figure}
+
 \begin{description}
-\item[Maintain schemas, transformations and Users]
+\item[Maintain Schemas, Transformations and Users]
 
-\item[Update local repository]
+\item[Update Local Repository]
 
-\item[Commit changes]
+\item[Commit Changes]
 
-\item[Maintain content]
+\item[Maintain Content] This use case is described with the acrivity diagram in Figure \ref{fig:maintain-content-diagram}.
 
-\item[Generate web site]
+\item[Generate Web Site]
 
-\item[Validate data]
+\item[Validate Data]
 
-\item[Manage user accounts]
+\item[Manage User Accounts]
 
-\item[Browse web site]
+\item[Browse Web Site]
 
 \end{description}
 
