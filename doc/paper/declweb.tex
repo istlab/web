@@ -53,7 +53,7 @@ implementation style, based on the declarative specification
 of all the site's elements.
 
 The limitations of statically-authored web pages are easy to discern.
-The content is authored in an loosely organized manner, manually updated web pages, and, as a result,
+The content is authored in a loosely organized manner, manually updated web pages, and, as a result,
 can be inconsistent in both structure and presentation.
 While the use of cascading style sheets can help one obtain a
 consistent look, their use still requires discipline.
@@ -318,7 +318,7 @@ Static Content Export & Yes & &\\
 
 \section{Designing a Prototype}
 
-To illustrate our methodology in concrete terms
+To illustrate our methodology in concrete terms, 
 the following sections contain as a case-study the design and implementation
 of our research group's web site.
 Through the case study we will demonstrate the key points applied in
@@ -346,8 +346,7 @@ It numbers about 50 members, is a participant of 35 past and current research
 projects, and the originator of about 400 publications.
 The site's pages should represent the content and the relationships
 we illustrate in Figure \ref{fig:diag}.
-The self-referential relationship on the group entity exists because the center should  an ``umbrella'' group of multiple subgroups.
-Members of our center and our research projects are associated
+The self-referential relationship on the group entity exists, because the center should be an ``umbrella'' group of multiple subgroups. Members of our center and our research projects are associated
 with one or more groups.
 Publications are associated
 with one or more members, groups and projects.
@@ -363,7 +362,7 @@ In order to have the ability to add web site data that is not part of the aforem
 each group can have additional pages of unstructured {\sc xhtml} content, in a dictated manner.
 Finally, each member of our groups may be performing a presentation in our group's weekly seminar.
 
-Before embarking on our third attempt,
+Before embarking on our implementation attempt,
 we articulated those non-functional requirements, to ensure that our 
 third attempt would produce
 a result with a longer life span.
@@ -425,7 +424,7 @@ The system's conceptual framework is illustrated in Figure \ref{fig:conc-model}.
 The main concept in our system is the {\em Organization}. Each {\em Organization} has 
 information that interests {\em Content Consumers}. They 
 access the organization's {\em Public Data}, in order to obtain it.
-It has also {\em Content Developers} 
+It also has {\em Content Developers} 
 who are usually its members. {\em Content Developers} update the 
 {\em Public Data} for the {\em Organization}. {\em Content Administrators} 
 are supporting the {\em Content Developers} 
@@ -452,7 +451,7 @@ of a single person update process.
 Empirical evidence supports this observation.
 Yanakoudakis \cite{G03} researched the usability rankings given from 21 Greek government department
 web sites between the years 2002 and 2003. He concluded that 
-the there is a statically authored pages web sites are degrading to
+the statically authored pages web sites are degrading to
 a point of irrelevance, and then being overhauled from scratch.
 The change of ranking can be explained as decay of the web site when dropping,
 and re-engineering when rising.
@@ -492,16 +491,17 @@ We have three actors (roles) interacting with the system:
 
 \begin{description}
 \item[ContentDeveloper] A Content Developer is responsible for uploading data in the system. 
-In our case, a Content Developer is typically a single person for each research group. They can upload data files and 
+In our case, a Content Developer is typically a single person for each research group. She or he can upload data files and 
 import new bibliography entries in the repository, review and correct any presentation problems and finally publish the 
 updated content.
 
-\item[ContentAdministrator] The Content Administrator is responsible for the maintenance 
+\item[ContentAdministrator] Content Administrator is responsible for the maintenance 
 and the further extension of the system. A Content Administrator corrects problems with the data, develops 
 new features or corrects existing ones in the transformation scripts.
 
-\item[ContentConsumer] The content consumers are typically outside of our system
-and have access only in the generated web site.
+\item[ContentConsumer] Content consumers are typically interested for information in our system
+and have access only in the generated web site. We have to note here, that Content Consumers are 
+outside our system design.
 \end{description}
 
 The use cases that comprise our system are:
@@ -733,8 +733,8 @@ and {\sc xhtml} result in Figure \ref{fig:project-html}.
 
 The directory structure of a typical 
 local repository is illustrated in Figure \ref{fig:eltrun-web-distro}.
-Most of our users are working {\sc microsoft windows} environments and as 
-a result we decided to upload a {\sc microsoft windows} version of the needed tools 
+Most of our users are working with {\sc microsoft windows} environments and as 
+a result we decided to upload a {\sc win32} version of the needed tools 
 in the main repository under the directory \textit{bin}.
 The directory \textit{data} contains the {\sc xml} and {\sc BibTeX} files and \textit{schema}
 includes all the available {\sc dtd / xsd} and the modular {\sc xhtml} specifications.
