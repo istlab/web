@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<group id="Required" director="Required" contact="Required">
+	<grouptitle>Required</grouptitle>
+	<shortname>Required</shortname>
+	<description>
+		Required
+		<!-- You can write HTML tags in here in order to provide style for the text -->
+	</description>
+	<rel_link>
+		Optional
+		<!-- Zero or many - Example link ,<a href="http://istlab.dmst.aueb.gr/colab.html">Collaborators</a> -->
+	</rel_link>
+	<logo>
+		Optional
+		<!-- relative path to logo image for group, example: ../images/eltrun.jpg --> 
+	</logo>
+</group>
