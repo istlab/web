@@ -223,12 +223,12 @@ multiple intermediaries.
 any programs other than the web server for serving
 its content.
 Users updating the data, should be able to author, validate and 
-review, generating localy the HTML pages, 
+review, generating locally the HTML pages, 
 their changes without requiring network connectivity.
 This would allow them to work productively over dial-up connections
 or while on the road. In addition, all the editing can be done with 
 a simple text editor and the each end-user can work both in win32 
-and unix oriented systems.
+and UNIX oriented systems.
 Minimizing the dependencies on additional servers (such as a
 database or an application server) and on the network
 should result in a more robust and easier to maintain system.   
@@ -259,7 +259,7 @@ scope. This is illustrated in Figure \ref{fig:conc-model}.
 
 The main concept in our system is the Research Group. Each group has 
 information that interests Content Consumers. Content Consumers 
-can access the Research Group data thourgh a series of HTML pages.
+can access the Research Group data through a series of HTML pages.
 
 Each Research Group has also Content Developers who are usually its members.
 Content Developers update the Group Data, which are then submitted in the 
@@ -340,7 +340,7 @@ import new bibliography entries.
 
 \item[ContentAdministrator] The content administrator is responsible for the maintenance 
 and the further extension of the system. He corrects problems with the data, develops 
-new features or corrects existing ones in the transformation scripts..
+new features or corrects existing ones in the transformation scripts.
 
 \item[ContentConsumer] The content consumers are typically outside of our system
 and have access only in the generated web site.
@@ -355,8 +355,8 @@ The use cases that comprise our system are (Figure \ref{fig:use-case-diagram}):
 \end{figure}
 
 \begin{description}
-\item[Maintain schemas, transformations and users] This use case describes the maintainence and development
- procedures of the system. Each Content Developer can update the Data schemas, the trasnforamtion scripts 
+\item[Maintain schemas, transformations and users] This use case describes the maintenance and development
+ procedures of the system. Each Content Developer can update the Data schemas, the transformation scripts 
  in order to correct errors or add new features.
 
 \item[Update local repository] Each user in the system must update the local repository each time he uses the system. 
@@ -382,7 +382,7 @@ the system use the appropriate data schemas.
 
 \end{description} 
 
-In figure \ref{fig:maintain-content-diagram} we show the activity diagram of the most complex use case in the system. The Content Developer first updates the local repository and then begins the initiation of data maintanance by adding, removing or modifying data files and bibliography entries. Upon completion data vaildation must be performed before the commit to the data repository. If data are valid, then local web site generation must be performed to correct possible presentation problems. After that, the data are ready to be submitted to the main data repository. After the update of the data repository the process terminates.
+In figure \ref{fig:maintain-content-diagram} we show the activity diagram of the most complex use case in the system. The Content Developer first updates the local repository and then begins the initiation of data maintenance by adding, removing or modifying data files and bibliography entries. Upon completion data validation must be performed before the commit to the data repository. If data are valid, then local web site generation must be performed to correct possible presentation problems. After that, the data are ready to be submitted to the main data repository. After the update of the data repository the process terminates.
 
 \section{Implementation}
 
@@ -409,13 +409,13 @@ into HTML and
 xmlstarlet \cite{Gru04} for validating and transforming
 all other XML-based data \cite{W3C_XML}.
 For data transformations we 
-implemented a system based on XSLT \cite{W3C_XSLT}. XSLT is a language for tranforming XML documents.
+implemented a system based on XSLT \cite{W3C_XSLT}. XSLT is a language for transforming XML documents.
 Finally, GNU make \cite{gnu_make} and a couple of shell script
 constructs were used for handling the project's makefile.
 The complete setup including all tools proved to be portable
 between Unix and Microsoft Windows, with team members working
 on machines running different versions of Windows, GNU/Linux,
-and FreeBSD..
+and FreeBSD.
 
 \subsection{System Development}
 
@@ -575,7 +575,7 @@ Download the presentation
 You can see representative samples of a project's
 XSD schema description in figure \ref{fig:project-dtd},
 XML data in figure \ref{fig:project-xml},
-XSLT transformationn in figure \ref{fig:project-xslt},
+XSLT transformation in figure \ref{fig:project-xslt},
 and HTML result in figure \ref{fig:project-html}.
 
 \begin{figure}
@@ -585,12 +585,12 @@ and HTML result in figure \ref{fig:project-html}.
 \end{figure}
 
 Our system has a distribution that works in both win32 and 
-Unix Enviroments (Linux and FreeBSD). The directory structure of a typical local repository is depicted in
+Unix Environments (Linux and Free BSD). The directory structure of a typical local repository is depicted in
 figure \ref{fig:eltrun-web-distro}.
-Most of our users are working in win32 enviroments and as 
+Most of our users are working in win32 environments and as 
 a result we decided to upload a win32 version of the needed tools 
 in the main repository under the directory "bin". The installation procedure is very simple,
-and the bootstrap tools that requires are only cvs for 
+and the bootstrap tools that requires are only CVS for 
 the initial check out and a ssh client. The needed keys 
 for the secure shell session are provided once in each user by the Content Administrator. 
 A full version of the system now demands 8 megabytes of space 
@@ -647,14 +647,14 @@ After a few days we got the impression that non-technical users
 were becoming confident in their work, even proud of sharing
 sophisticated tools and processes with software engineers.
 Our technical persons experienced more problems than the inexperienced ones 
-and that came as a suprise for us. Some of them were already familiar 
+and that came as a surprise for us. Some of them were already familiar 
 with the key technologies and they tried to change the tools proposed with others more user-friendly. 
 These initiatives resulted in corruption of the local repositories, malformed XML data and wrong bibliography entries.
-After a few false attempts they decided to follow the proposed system..
+After a few false attempts they decided to follow the proposed system.
 
 Two weeks after the initial system presentation all users where able to upload 
 and maintain their data. The inexperienced users learned to edit XML files,
-importing bibtex entries into the system and commiting to the CVS repository. 
+importing bibtex entries into the system and committing to the CVS repository. 
 They just followed steps in a procedure that they see as a black box. 
 
 \section{Lessons Learned}
@@ -668,7 +668,7 @@ and that our approach stands a higher chance to succeed where the
 two other approaches failed.
 The initial user reaction was not favorable, but this can
 be explained by the significantly higher requirements we
-placed on our users. Typical users are not well acquinted
+placed on our users. Typical users are not well acquainted
 with command line tools, and often see these as a threat to their productivity.
 Instead of giving instructions by email to an unfortunate
 web site maintainer, they now had to become active members
