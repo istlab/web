@@ -135,16 +135,79 @@ All in all, a database-driven approach appears to be suitable
 only for those with ample resources to justify the full
 development and appropriate maintenance of a sophisticated infrastructure.
 
-Having faced the problems we described above within our organisation, we reasoned that
-a fresh approach was needed for this problem.
-The ad-hoc authoring tool--based approach was abandoned,
+Having faced the problems we described above within our organisation,
+we reasoned that a fresh approach was needed to tackle them.
+Specifically,
+in an internal effort to develop and maintain our group's web site
+we had already abandoned the ad-hoc authoring tool--based approach
 because it led to an inconsistent look and stale content,
 while the maintenance of a subsequent database-driven
 design approach was proving intractable for the resources that
 our group could afford.
-Our goal was to experiment with a different approach,
-proving its suitability for managing middle-sized semi-dynamic
-web sites.
+In the following sections we describe the methodology we developed
+for implementing semi-dynamic web sites,
+illustrate it by means
+of a case study covering the requirements, design, and implementation,
+and discuss the lessons we learned.
+
+\section{Methodology}
+\label{sec:meth}
+Our proposed methoodology for developing semi-dynamic web sites uses as
+its metaphor the distributed software development activity, as popularized
+by many high-visibiliy distributed open-source development projects,
+such as Eclipse \cite{GB04}, Mozilla, and Free{\sc bsd}.
+Using a metaphor as a guiding principle for a development activity
+is a practice we adopted from extreme programming \cite{Bec00}.
+The methodology can be summarized in a few key points.
+
+\begin{itemize}
+\item Structure the site's data as {\sc xml} files,
+or another declarative formalism.
+Content developers create and edit these to modify the site's contents.
+\item Use {\sc xml} schemas and corresponding tools to validate the content.
+\item Exploit modular {\sc xhtml} \cite{XXX} to create schemas for rich
+data elements.
+These can be used to allow the inclusion of specific {\sc xhtml} tags
+in the site's {\sc xml} files, without having to reinvent {\sc html}
+from scratch.
+\item Adopt a version control system for distributing the content,
+templates, transformation, and schemas across content developers and
+administrators, synchronizing updates, and keeping a record of the project's history.
+(Thomas and Hunt \cite{HT00} aptly compare a version control system
+with a global undo command with unlimited undo levels.)
+\item Create the site's look and feel in {\sc html} format
+through {\sc xslt}  transformations \cite{HM01}.
+\item Express verification and building dependencies among
+data elements and schemas through {\em make} \cite{MAKE} or {\em ant}
+\cite{XXX} rules.
+\item Make the local generation of the site's content the default
+building option to allow developers and administrators to verify
+the results of  their work, before putting them online.
+\item Use existing mechanisms and tools, such as the secure session shell,
+public key authentication, and group membership permissions to implement
+authentication and authorization policies.
+\item Have an instance of the project on a centralized server, kept up to
+date through the version control system, as the source to generate and export
+the definitive version web site's contents.
+\end{itemize}
+
+One can easily discern from the above points the similarities of our
+approach with distributed software development.
+A version control system is used to distribute the artefacts among
+developers in their current form, and a building tool, such as {\em make}
+or {\em ant} guides the building process.
+Developers edit and build their work localy, and commit it to a central server when ready.
+The repository on the central server is the source for creating the end-result
+result of the product, through a {\em daily build} process.
+In our case however, the developers work with {\sc xml} and {\sc xslt}
+files, instead of programming language source code files.
+
+To illustrate our methodology in concrete terms
+the following sections contain as a case-study the design and implementation
+of our research group's web site.
+Through the case study we will demonstrate the key points applied in
+practice, discuss important technical and human issues we faced,
+and present the lessons we learned.
 
 \section{Requirements}
 \label{sec:req}
@@ -162,6 +225,11 @@ Overview of data element relationships.}
 The functional requirements for our center's site were
 simple, but not trivial, and had already been satisfied
 twice in two different forms.
+The site should present our research center's members, groups, publications,
+and projects in an organized fashion.
+Our center is divided into five groups.
+It numbers about 50 members, is a participant of 35 past and current research
+projects, and the originator of about 400 publications.
 The site's pages should represent the content and the relationships
 we illustrate in Figure \ref{fig:diag}.
 The center is also an "umbrella" group that consists of multiple subgroups.
@@ -303,7 +371,7 @@ the front end, and the back end.
 Continuous multi-person based projects are quite
 common in software development.
 Numerous programmers and engineers contribute and coordinate their work
-through a version control system, like {\sc CVS} that
+through a version control system, like {\sc CVS} \cite{BF01} that
 maintains a master repository of the source code.
 Concepts like the \textit{daily build} \cite{CS95b} or the
 \textit{current} and \textit{stable} branches as practiced by
