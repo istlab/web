@@ -5,7 +5,7 @@
 %.eps: %.dot
 	dot -Tps -o$@ $<
 
-all: Diag.eps rankyear.eps
+all: Diag.eps 
 	dot -Tps -o distro.eps distro.dot
 	dot -Tps -o dep-graph.eps dep-graph.dot
 	dot -Tps -o conc-model.eps conc-model.dot
