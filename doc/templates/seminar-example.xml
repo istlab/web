@@ -1,4 +1,4 @@
-<seminar by="Required: m_id">
+<seminar id="Required: date yyyymmdd" by="Required: m_id">
 	<sem_name>Required</sem_name>
 	<sem_date>Required</sem_date>
 	<sem_time>Required</sem_time>
