@@ -250,11 +250,18 @@ other non-functional properties.
 
 \section{Design Process}
 
+\subsection{Conceptual model}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.6]{conc-model}
+\end{center}
+\caption{Conceptual design of our system}
+\label{fig:conc-model}
+\end{figure}
+
 \subsection{Design Concepts}
-Our main guiding principle for was to create a continuous multi-person
-The guiding paradigm we adopted
-for implementing the web site was
-a continuous multi-person development activity.
+Our main guiding principle for was to create a continuous multi-person development activity.
 Live web sites continuously evolve;
 adopting the content authoring paradigm implied
 by the first approach was a mistake.
@@ -282,9 +289,8 @@ the front end, and the back end.
 \epsfysize.8\vsize
 \epsfbox{rankyear.eps}
 \end{center}
-\caption{
+\caption{Yearly changes in web site rankings}
 \label{fig:rankyear}
-Yearly changes in web site rankings}
 \end{figure}
 
 Continuous multi-person development projects are quite
@@ -300,7 +306,6 @@ What we needed for our approach were appropriate
 declarative language-based formalisms for expressing our data,
 its transformation into {\sc html} pages, and the
 generation process. We were clear that we wouldn't support the content in a {\em Makefile} \cite{OTT91}.
-% Here we must put the conceptual model
 
 \subsection{Processes}
 
@@ -381,7 +386,7 @@ Authentication for managing content was handled by the
 Unix group membership mechanism of the host where the
 {\sc cvs} repository was stored.
 We also used
-{\em BibTeX} \cite{Pa88} \cite{Ja99} and {\em bib2xhtml} \cite{BibXHMTL} for transforming the publications
+{\em BibTeX} \cite{Pa88} and {\em bib2xhtml} \cite{BibXHMTL} for transforming the publications
 into {\sc html} and
 {\em xmlstarlet} \cite{Gru04} for validating and transforming
 all other {\sc xml}-based data \cite{W3C_XML}.

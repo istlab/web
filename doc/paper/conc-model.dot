@@ -1,0 +1,30 @@
+#!/usr/bin/dot
+# $id: $
+
+digraph G{
+	nodesep=.1;
+	rankdir=UD;
+	node [height=.15,shape=box,fontname="Helvetica",fontsize=8];
+	edge [arrowhead=normal,arrowtail=none];
+
+	html [label="HTML pages"];
+	xml [label="XML Data"];
+	bib [label="Bibliography Data"];
+	content_providers [label="Content Providers"];
+	group_data [label="Group Data"];
+	system_administrator [label="Content Administrator"];
+	repository [label="Data Repository"];
+	end_user [label="Content Consumer"];
+	
+	group_data->xml [label="part of"];
+	group_data->bib [label="part of"];
+	xml->html [label="transforms to"];
+	bib->xml [label="transforms to"];
+	content_providers->group_data [label="submit"];
+	system_administrator->content_providers [label="support"];
+	system_administrator->repository [label="maintain"];
+	xml->repository [label="submitted"];
+	bib->repository [label="submitted"];
+	end_user->html [label="accessing"];
+
+}
