@@ -116,15 +116,15 @@ All in all, a database-driven approach appears to be suitable
 only for those with ample resources to justify the full
 development and appropriate maintenance of a sophisticated infrastructure.
 Elmasri and Navathe have identified the implications that are created when an organization
-adopts such an approach \cite[p.19]{EN00}. They clarify that an organization should avoid
-using a database system, if they cannot aford the overhead cost for:
+adopts such an approach \cite{EN00}. They clarify that an organization should avoid
+using a database system, if they cannot afford the overhead cost for:
 
 \begin{itemize}
 	\item High initial investment in hardware, software and training
 
 	\item Generality of the {\sc dbms} for the definition and processing of data
 
-	\item Provision of security, concurency control, recovery, integrity functions
+	\item Provision of security, concurrency control, recovery, integrity functions
 \end{itemize}
 
 In addition, they note that it is desirable to use a straight-forward regular file solution when the following criteria are met.
@@ -153,7 +153,7 @@ and discuss the lessons we learned.
 \section{Related Work}
 \label{sec:related}
 
-During the last decade, the World Wide Web became a popular platform for many {\sc IT} applications.
+During the last decade, the World Wide Web became a popular platform for many {\sc it} applications.
 Researchers and companies, in their attempt to make robust and easily maintainable web applications,
 developed many frameworks and tools to formalize and make efficient the creation and maintenance process.
 
@@ -167,7 +167,7 @@ and {\em observability}.
 As a plus, in our methodology we implement the system taking into account the organizational aspect of maintainability of content and the underlying application.
 
 In addition, Fraternali categorizes relevant software tools into six individual categories: (1) {\em visual editors and site managers},
- (2) {\em web-enabled hypermedia authoring tools}, (3) {\em web-DBPL (database programming languages) integrators}, (4) {\em web form editors, report writers,
+ (2) {\em web-enabled hypermedia authoring tools}, (3) {\em web-{\sc dbpl} (database programming languages) integrators}, (4) {\em web form editors, report writers,
  and database publishing wizards},
  (5) {\em multiparadigm tools} and (6) {\em model-driven application generators} \cite{FRA99}. These tools are both commercial and open-source and they are widely used.
  In section \ref{subsec:key-tech}, we will see that in our case we chose open source tools to satisfy the {\em openness} non-functional requirement.
@@ -198,12 +198,26 @@ offline programmatic generation of web pages.
 Our approach however differs in that we use a declarative specification,
 rather than imperative code for creating the static content.
 
+Similarities also exist in the context of content management systems ({\sc cms}) and enterprise content management ({\sc ecm}).
+{\sc cms} support the creation, management, distribution, publishing, and discovery of corporate information, where {\sc ecm} 
+involves a broader range of organizational information. Leading {\sc ecm} providers include Interwoven, 
+Vignette (www.vignette.com), Documentum and others. In those systems, similar motivation to ours 
+leads the research and analogous goals are set \cite{KW05,DOC05}. For example, the infeasibility of static HTML pages for modern 
+web sites and the problems of database-driven approach are also mentioned in \cite{KW05}. Quite recently, {\sc cms}s based solely on 
+open standards architecture have been developed, utilizing methodologies similar to those described here \cite{OS05}. However,
+ we do not propose a content management system but an approach for managing content based on established, widely deployed 
+and tested software configuration management tools. Our approach can be readily adopted by teams already using {\sc cms}. 
+Our use of industry-standard data formats and tools provides us with proven scalability (the same tools have been used 
+to manage multi-million line software projects) and flexibility (the tools are used as building blocks and a freely 
+configurable environment). The downside of our approach is that many features that come out of the box in {\sc cms}s need 
+to be explicitly tailored.
+
 \section{Methodology}
 \label{sec:meth}
 Our proposed methodology for developing semi-dynamic web sites uses as
 its metaphor the distributed software development activity, as popularized
 by many high-visibility distributed open-source development projects,
-such as Eclipse \cite{GB04}, Mozilla, and Free {\sc bsd}.
+such as Eclipse \cite{GB04}, Mozilla, and Free{\sc bsd}.
 Using a metaphor as a guiding principle for a development activity
 is a practice we adopted from extreme programming \cite{Bec00}.
 The methodology can be summarized in a few key points.
@@ -251,22 +265,10 @@ As we will see in later section, in our case the developers work with {\sc xml} 
 files, instead of programming language source code files, and the {\sc build} process can be called exclusively as a part of
 the self-reviewing process.
 
-Similarities also exist in the context of content management systems ({\sc cms}) and enterprise content management ({\sc ecm}).
-{\sc cms} support the creation, management, distribution, publishing, and discovery of corporate information, where {\sc ecm} 
-involves a broader range of organizational information. Leading {\sc ecm} providers include Interwoven (www.interwoven.com), 
-Vignette (www.vignette.com), Documentum (www.documentum.com) and others. In those systems, similar motivation to ours 
-leads the research and analogous goals are set \cite{KW05,DOC05}. For example, the infeasibility of static HTML pages for modern 
-web sites and the problems of database-driven approach are also mentioned in \cite{KW05}. Quite recently, {\sc cms}s based solely on 
-open standards architecture have been developed, utilizing methodologies similar to those described here \cite{OS05}. However,
- we do not propose a content management system but an approach for managing content based on established, widely deployed 
-and tested software configuration management tools. Our approach can be readily adopted by teams already using {\sc cms}. 
-Our use of industry-standard data formats and tools provides us with proven scalability (the same tools have been used 
-to manage multi-million line software projects) and flexibility (the tools are used as building blocks and a freely 
-configurable environment). The downside of our approach is that many features that come out of the box in {\sc cms}s need 
-to be explicitly tailored.
+Our proposal also covers the issue of \textit{efficient replication management}, for almost all the available types of Content Delivery Networks ({\sc cdn}). Our version control system centric approach, simplifies the integration of Server Triggered Replication Strategies \cite{SSPS04}, where the content can be generated in each replica. On the other hand, an organization can apply a static content {\sc html} replication strategy, since all the web site is generated as plain {\sc html} pages.
 
 In order to provide a more detailed comparison between our proposed approach and other commercial or open source {\sc cms's} we 
-created a comparison table based on criteria found in CMSMatrix web site \cite{PBC05}. The feature matrix is illustrated in Table \ref{tbl:cms-matrix}.
+created a comparison table based on criteria found in CMSMatrix web site \cite{PBC05}. The feature matrix is illustrated in Figure \ref{tbl:cms-matrix}.
 
 \begin{figure}
 \begin{center}
@@ -407,8 +409,7 @@ to work on a platform of their choice ({\sc unix}, {\sc microsoft windows} and {
 using only a text editor of their choice.
 Minimizing the dependencies on additional servers (such as a
 database or an application server) and on the network
-should result in a more robust and easier to maintain system. 
-\textbf{!!!!Efficient replication management (add here)!!!} \cite{SSPS04}.
+should result in a more robust and easier to maintain system.
 
 \item[Parsimony] The implementation effort for
 the system should be minimal.
@@ -584,7 +585,7 @@ into {\sc xhtml} and
 all other {\sc xml}-based data \cite{W3C_XML}.
 For data transformations we 
 implemented a system based on {\sc xslt} \cite{W3C_XSLT}, a language for transforming {\sc xml} documents.
-we chose {\sc xslt} as the transformation language, because tt is based on {\sc xml} ({\sc xslt} documents are 100\% valid {\sc xml}), so the
+we chose {\sc xslt} as the transformation language, because it is based on {\sc xml} ({\sc xslt} documents are 100\% valid {\sc xml}), so the
 developers can easily learn xslt, if they understand the basics of {\sc xml} technology.
 Finally, {\sc gnu} {\em make} \cite{gnu_make} and a couple of shell script
 constructs were used for handling the project's makefile.
@@ -626,7 +627,7 @@ reference attributes ({\sc idref}s).
 The same file is also used to extract the identifiers of
 all projects, members, and groups into makefile
 variables.
-The web pages are assembled through a iteration that applies different pserspctive each time
+The web pages are assembled through a iteration that applies different perspective each time
 to the data. It starts, by generating the group {\sc xhtml} pages, then proceeds with the project, members, groups, seminars, publications.
 Each project, member, group etc. refers to the relevant {\sc xml id}s.
 Upon generation, links are created dynamically each time, to
@@ -815,7 +816,10 @@ After a few false attempts they decided to stay with the procedures of the syste
 Two weeks after the initial system presentation all users where able to upload 
 and maintain their data. The inexperienced users learned how to edit {\sc xml} files,
 importing {\sc BibTeX} entries into the system and committing to the {\sc cvs} repository. 
-They just followed steps in a procedure that they see as a black box. 
+They just followed steps in a procedure that they see as a black box.
+
+A few months from our initial system presentation to our departments technical staff, they decided to adopt our 
+methodology, and develop a similar framework to provide technical on-line documentation for our department's students. This development effort started without our involvement, and we think that it's adoption points out the practical value of our approach. We have to note that our technical staff consists of programmers and network administrator, whose experience is limited to technical aspects of computer science.
 
 \section{Lessons Learned}
 \label{sec:concl}
