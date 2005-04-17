@@ -1,4 +1,4 @@
-W i n d o w s   R e g i s t r y   E d i t o r   V e r s i o n   5 . 0 0
- [ H K E Y _ L O C A L _ M A C H I N E \ S O F T W A R E \ M i K \ M i K T e X \ C u r r e n t V e r s i o n \ M i K T e X ] 
- " T e X M F   R o o t   D i r e c t o r i e s " = " . \ \ b i n "
- " L o c a l   R o o t " = " . \ \ b i n "
+WindowsRegistryEditorVersion5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\MiK\MiKTeX\CurrentVersion\MiKTeX]
+"TeXMF Root Directories"=".\\bin"
+"Local Root"=".\\bin"
