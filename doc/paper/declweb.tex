@@ -1,19 +1,29 @@
 % $Id$
 
-\documentclass{elsart}
+\documentclass{article}
 \usepackage{mathptmx}
 %\usepackage{courier}
 \usepackage{graphicx}
 
-\begin{document}
+\pagestyle{myheadings}
+\markboth{Implementing Semi-dynamic Web Sites}{Implementing Semi-dynamic Web Sites}
 
-\begin{frontmatter}
+
+\begin{document}
 
 \title{A Software Development Metaphor for Implementing Semi-dynamic Web Sites through Declarative Specifications}
 
-\author{Diomidis Spinellis, Vassilios Karakoidas and Damianos Chatziantoniou}
+\author{Diomidis Spinellis,\footnote{
+Contact author.  Address:
+Patision 76, GR-106 74, Athens, Greece.
+Email:dds@aueb.gr; phone: +302108203981; fax:+302108203370}
+\,\,Vassilios Karakoidas, Damianos Chatziantoniou\\
+Department of Management Science and Technology\\
+Athens University of Economics and Business}
 
-\address{Department of Management Science and Technology, Athens University of Economics and Business, Greece email:\{dds, bkarak, damianos\}@aueb.gr}
+\date{}
+
+
 
 \maketitle
 
@@ -45,7 +55,7 @@ configuration management,
 {\sc xsd},
 {\sc html}.
 
-\end{frontmatter}
+\newpage
 
 \section{Introduction}
 \label{sec:intro}
@@ -163,6 +173,11 @@ for implementing semi-dynamic web sites,
 illustrate it by means
 of a case study covering the requirements, design, and implementation,
 and discuss the lessons we learned.
+
+The main contribution of our work is the identification of
+a class of web sites where the application of lightweight
+development tools and techniques, such as the ones we describe,
+will efficiently yield structured and maintainable content.
 
 \section{Related Work}
 \label{sec:related}
@@ -894,7 +909,7 @@ We would like to thank Manolis Skordalakis for his very perceptive comments duri
 The authors would also like to thank George Oikonomou and Marianthi Theocharidou who reviewed versions 
 of this paper and provided many corrections and observations.
 
-\bibliographystyle{elsart-num}
+\bibliographystyle{alpha}
 \bibliography{declweb}
 
 \end{document}
