@@ -8,10 +8,8 @@
 all: docs
 
 docs: presentation.tex user-manual.tex
-	latex presentation.tex
-	dvips presentation.dvi
-	latex user-manual.tex
-	dvips user-manual.dvi
+	pdflatex presentation.tex
+	pdflatex user-manual.tex
 
 clean:
 	-rm -f *.dvi
