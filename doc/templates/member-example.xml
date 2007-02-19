@@ -16,7 +16,10 @@
 	    Required
 	    <!-- XHTML -->
 	</shortcv>
-	<phd-info completed="Required: 0(false) or 1(true)" supervisor="Required: member-id" startdate="Required"> <!-- Optional -->
+	<phd-info completed="Required: 0(false) or 1(true)" 
+			  supervisor="Required: member-id" <!-- or supervisor-external -->
+			  supervisor-external="Required" <!-- or supervisor -->
+			  startdate="Required"> <!-- Optional -->
 		<phd-title>Required</phd-title>
 		<phd-summary>
 			Required
