@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<member id="Required" group="Required: group-1 group-2">
+<member id="Required" group="Required: group-1 group-2" joined="Required">
 	<givenname>Required</givenname>
 	<surname>Required</surname>
 	<memb_title>Optional</memb_title>
@@ -19,7 +19,8 @@
 	<phd-info completed="Required: 0(false) or 1(true)" 
 			  supervisor="Optional (or supervisor-external): member-id" 
 			  supervisor-external="Optional (or supervisor)"
-			  startdate="Required"> <!-- Optional -->
+			  startdate="Required"
+			  enddate="Optional"> <!-- Optional -->
 		<phd-title>Required</phd-title>
 		<phd-summary>
 			Required
