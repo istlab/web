@@ -1,3 +1,5 @@
+Windows Registry Editor Version 5.00
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\MiK\MiKTeX\CurrentVersion\MiKTeX]
 "TeXMF Root Directories"=".\\bin"
 "Local Root"=".\\bin"
