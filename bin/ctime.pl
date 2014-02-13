@@ -32,7 +32,7 @@ sub ctime {
     package ctime;
 
     local($time) = @_;
-    local($[) = 0;
+    #local($[) = 0;
     local($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst);
 
     # Determine what time zone is in effect.
