@@ -1,0 +1,16 @@
+#!/usr/bin/env perl
+#
+# Convert publications to the format required for the BA lab web site
+#
+
+$/ = '@';
+while (<>) {
+	if (/g_sense/ || /g_cube/) {
+		my $cat = $ARGV;
+		$cat =~ s/\.bib//;
+		s/\n@//;
+		s/(\s*)XEgroup[^,\n]*/$1XEcategory = "$cat"/i;
+		s/\burl\b/XEurl/i;
+		print "\@$_\n";
+	}
+}
