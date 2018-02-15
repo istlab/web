@@ -8,7 +8,7 @@ export PATH=/usr/local/bin:$PATH
 cd web
 
 # Fetch updates and see if something was fetched
-git fetch 2>fetch.out || exit 1
+git fetch 2>&1 | fgrep -v 'Permanently added the' >fetch.out || exit 1
 
 if ! [ -s fetch.out ]
 then
